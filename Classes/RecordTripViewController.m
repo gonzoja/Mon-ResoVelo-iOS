@@ -63,6 +63,13 @@
 
 #pragma mark CLLocationManagerDelegate methods
 
+NSNumberFormatter *nf;
+
+NSString *kmUnit = @"km";
+NSString *km = @"";
+NSString *kmhUnit = @"km/h";
+NSString *kmh = @"";
+
 
 - (CLLocationManager *)getLocationManager {
 	appDelegate = [[UIApplication sharedApplication] delegate];
@@ -83,6 +90,16 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
+    nf = [[NSNumberFormatter alloc] init];
+    [nf setUsesGroupingSeparator:NO];
+    [nf setNumberStyle:NSNumberFormatterDecimalStyle];
+    [nf setUsesSignificantDigits:YES];
+    [nf setMaximumSignificantDigits:4];
+    [nf setMaximumFractionDigits:1];
+    [nf setRoundingMode:NSNumberFormatterRoundDown];
+    
+	
+    
 	CLLocationDistance deltaDistance = [newLocation distanceFromLocation:oldLocation];
     
     if (!myLocation) {
@@ -113,14 +130,24 @@
 	{
 		// add to CoreData store
 		CLLocationDistance distance = [tripManager addCoord:newLocation];
-		self.distCounter.text = [NSString stringWithFormat:@"%.1f mi", distance / 1609.344];
+//		self.distCounter.text = [NSString stringWithFormat:@"%.1f km", ];
+        km = [nf stringFromNumber:[NSNumber numberWithDouble:distance/1000]];
+        
+        self.distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
 	}
 	
 	// 	double mph = ( [trip.distance doubleValue] / 1609.344 ) / ( [trip.duration doubleValue] / 3600. );
-	if ( newLocation.speed >= 0. )
-		speedCounter.text = [NSString stringWithFormat:@"%.1f mph", newLocation.speed * 3600 / 1609.344];
-	else
-		speedCounter.text = @"0.0 mph";
+    
+    if ( newLocation.speed >= 0. ){
+        kmh = [nf stringFromNumber:[NSNumber numberWithDouble:newLocation.speed *3.6]];
+//		speedCounter.text = [NSString stringWithFormat:@"%.1f km/h", newLocation.speed * 3600 / 1000];
+//        speedCounter.text =[[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
+	}
+    else{
+        kmh = [nf stringFromNumber:[NSNumber numberWithInt:0]];
+       
+    }
+     speedCounter.text = [[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
 }
 
 
@@ -225,8 +252,8 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationController.navigationBarHidden = YES;
 	
-	// init map region to Atlanta
-	MKCoordinateRegion region = { { 33.749038, -84.388068 }, { 0.0078, 0.0068 } };
+	// init map region to Montreal
+	MKCoordinateRegion region = { { 45.553968,-73.664017 }, { 0.0178, 0.0168 } };
 	[mapView setRegion:region animated:NO];
 	
 	// setup info button used when showing recorded trips
@@ -649,13 +676,15 @@
 		timeCounter.text = @"00:00:00";
 	
 	if ( distCounter != nil )
-		distCounter.text = @"0 mi";
+        
+        km = [nf stringFromNumber:[NSNumber numberWithInt:0]];
+		distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
 }
 
 
 - (void)setCounterTimeSince:(NSDate *)startDate distance:(CLLocationDistance)distance
 {
-	if ( timeCounter != nil )
+ 	if ( timeCounter != nil )
 	{
 		NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:startDate];
 		
@@ -672,7 +701,8 @@
 	}
 	
 	if ( distCounter != nil )
-		distCounter.text = [NSString stringWithFormat:@"%.1f mi", distance / 1609.344];
+        kmh = [nf stringFromNumber:[NSNumber numberWithInt:0]];
+		distCounter.text = [[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
 ;
 }
 
@@ -936,6 +966,10 @@ shouldSelectViewController:(UIViewController *)viewController
     self.tripManager = nil;
     self.noteManager = nil;
     self.appDelegate = nil;
+    km = nil;
+    kmh = nil;
+    kmhUnit=nil;
+    kmhUnit=nil;
     
 //    [appDelegate.locationManager release];
     [appDelegate release];
