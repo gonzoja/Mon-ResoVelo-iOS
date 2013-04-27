@@ -165,15 +165,13 @@
 		[inputFormatter setDateFormat:@"HH:mm:ss"];
 		NSDate *outputDate = [[[NSDate alloc] initWithTimeInterval:(NSTimeInterval)[trip.duration doubleValue] sinceDate:fauxDate] autorelease];
         
-		double mph = ( [trip.distance doubleValue] / 1609.344 ) / ( [trip.duration doubleValue] / 3600. );
+		double kph = ( [trip.distance doubleValue] / 1000 ) / ( [trip.duration doubleValue] / 3600. );
 		
-		self.navigationItem.prompt = [NSString stringWithFormat:@"elapsed: %@ ~ %@",
- 									  [inputFormatter stringFromDate:outputDate],
-									  [dateFormatter stringFromDate:[trip start]]];
+		self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"elapsed: %@ ~ %@", @"elapsedTime"), [inputFormatter stringFromDate:outputDate], [dateFormatter stringFromDate:[trip start]]];
         
-		self.title = [NSString stringWithFormat:@"%.1f mi ~ %.1f mph",
-					  [trip.distance doubleValue] / 1609.344,
-					  mph ];
+		self.title = [NSString stringWithFormat:@"%.1f km ~ %.1f kph",
+					  [trip.distance doubleValue] / 1000,
+					  kph ];
 		
 		//self.title = trip.purpose;
 		
@@ -292,11 +290,11 @@
         //add start/end pins
         MKPointAnnotation *startPoint = [[[MKPointAnnotation alloc] init] autorelease];
         startPoint.coordinate = routePath[0];
-        startPoint.title = @"Start";
+        startPoint.title = NSLocalizedString(@"Start", @"Start");
         [mapView addAnnotation:startPoint];
         MKPointAnnotation *endPoint = [[[MKPointAnnotation alloc] init] autorelease];
         endPoint.coordinate = routePath[numPoints-1];
-        endPoint.title = @"End";
+        endPoint.title = NSLocalizedString(@"End", @"End");
         [mapView addAnnotation:endPoint];
         
         
@@ -308,7 +306,7 @@
 		if ( last == [sortedCoords lastObject] )
 		{
 			pin.last = YES;
-			pin.title = @"End";
+			pin.title = NSLocalizedString(@"End", @"End");
 			pin.subtitle = [dateFormatter stringFromDate:last.recorded];
 		}
 		
@@ -345,16 +343,16 @@
 		}
 		else
 		{
-			// init map region to Atlanta
-			MKCoordinateRegion region = { { 33.749038, -84.388068 }, { 0.10825, 0.10825 } };
+			// init map region to Montreal
+			MKCoordinateRegion region = { { 45.50922, -73.55490 }, { 0.10825, 0.10825 } };
 			[mapView setRegion:region animated:NO];
 		}
         free(routePath);
 	}
 	else
 	{
-		// error: init map region to Atlanta
-		MKCoordinateRegion region = { { 33.749038, -84.388068 }, { 0.10825, 0.10825 } };
+		// error: init map region to Montreal
+		MKCoordinateRegion region = { { 45.50922, -73.55490 }, { 0.10825, 0.10825 } };
 		[mapView setRegion:region animated:NO];
 	}
     
@@ -576,12 +574,12 @@ UIImage *shrinkImage(UIImage *original, CGSize size) {
     } else {
         //handle 'normal' pins
         
-        if([annotation.title isEqual:@"Start"]){
+        if([annotation.title isEqual:NSLocalizedString(@"Start", @"Start")]){
             MKPinAnnotationView *annView=[[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"tripPin"] autorelease];
             annView.image = [UIImage imageNamed:@"tripStart.png"];
             annView.centerOffset = CGPointMake(-(annView.image.size.width/4),(annView.image.size.height/3));
             return annView;
-        }else if ([annotation.title isEqual:@"End"]){
+        }else if ([annotation.title isEqual:NSLocalizedString(@"End", @"End")]){
             MKPinAnnotationView *annView=[[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"tripPin"] autorelease];
             annView.image = [UIImage imageNamed:@"tripEnd.png"];
             annView.centerOffset = CGPointMake(-(annView.image.size.width/4),(annView.image.size.height/3));

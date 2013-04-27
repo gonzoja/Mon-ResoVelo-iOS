@@ -84,7 +84,7 @@
 	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
 	textField.borderStyle = UITextBorderStyleRoundedRect;
 	textField.textAlignment = UITextAlignmentRight;
-	textField.placeholder = @"Choose one";
+	textField.placeholder = NSLocalizedString(@"Choose one", nil);
 	textField.delegate = self;
 	return textField;
 }
@@ -95,7 +95,7 @@
 	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
 	textField.borderStyle = UITextBorderStyleRoundedRect;
 	textField.textAlignment = UITextAlignmentRight;
-	textField.placeholder = @"Choose one";
+	textField.placeholder = NSLocalizedString(@"Choose one", nil);
 	textField.delegate = self;
 	return textField;
 }
@@ -108,7 +108,7 @@
 	textField.autocapitalizationType = UITextAutocapitalizationTypeNone,
 	textField.borderStyle = UITextBorderStyleRoundedRect;
 	textField.textAlignment = UITextAlignmentRight;
-	textField.placeholder = @"name@domain";
+	textField.placeholder = NSLocalizedString(@"name@domain", nil);
 	textField.keyboardType = UIKeyboardTypeEmailAddress;
 	textField.returnKeyType = UIReturnKeyDone;
 	textField.delegate = self;
@@ -122,7 +122,7 @@
 	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
 	textField.borderStyle = UITextBorderStyleRoundedRect;
 	textField.textAlignment = UITextAlignmentRight;
-	textField.placeholder = @"12345";
+	textField.placeholder = @"A1A 1A1";
 	textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
 	textField.returnKeyType = UIReturnKeyDone;
 	textField.delegate = self;
@@ -152,19 +152,19 @@
 	// Set the title.
 	// self.title = @"Personal Info";
     
-    genderArray = [[NSArray alloc]initWithObjects: @" ", @"Female",@"Male", nil];
+    genderArray = [[NSArray alloc]initWithObjects: @" ", NSLocalizedString(@"Female", nil), NSLocalizedString(@"Male", nil), nil];
     
-    ageArray = [[NSArray alloc]initWithObjects: @" ", @"Less than 18", @"18-24", @"25-34", @"35-44", @"45-54", @"55-64", @"65+", nil];
+    ageArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Less than 18", nil), NSLocalizedString(@"18-24", nil), NSLocalizedString(@"25-34", nil), NSLocalizedString(@"35-44", nil), NSLocalizedString(@"45-54", nil), NSLocalizedString(@"55-64", nil), NSLocalizedString(@"65+",nil), nil];
     
-    ethnicityArray = [[NSArray alloc]initWithObjects: @" ", @"White", @"African American", @"Asian", @"Native American", @"Pacific Islander", @"Multi-racial", @"Hispanic / Mexican / Latino", @"Other", nil];
+    ethnicityArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"White", nil), NSLocalizedString(@"African American", nil), NSLocalizedString(@"Asian", nil), NSLocalizedString(@"Native American", nil), NSLocalizedString(@"Pacific Islander", nil), NSLocalizedString(@"Multi-racial", nil), NSLocalizedString(@"Hispanic / Mexican / Latino", nil), NSLocalizedString(@"Other", nil), nil];
     
-    incomeArray = [[NSArray alloc]initWithObjects: @" ", @"Less than $20,000", @"$20,000 to $39,999", @"$40,000 to $59,999", @"$60,000 to $74,999", @"$75,000 to $99,999", @"$100,000 or greater", nil];
+    incomeArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Less than $20,000", nil), NSLocalizedString(@"$20,000 to $39,999", nil), NSLocalizedString(@"$40,000 to $59,999", nil), NSLocalizedString(@"$60,000 to $74,999", nil), NSLocalizedString(@"$75,000 to $99,999", nil), NSLocalizedString(@"$100,000 or greater", nil), nil];
     
-    cyclingFreqArray = [[NSArray alloc]initWithObjects: @" ", @"Less than once a month", @"Several times per month", @"Several times per week", @"Daily", nil];
+    cyclingFreqArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Less than once a month", nil), NSLocalizedString(@"Several times per month", nil), NSLocalizedString(@"Several times per week", nil), NSLocalizedString(@"Daily", nil), nil];
     
-    riderTypeArray = [[NSArray alloc]initWithObjects: @" ", @"Strong & fearless", @"Enthused & confident", @"Comfortable, but cautious", @"Interested, but concerned", nil];
+    riderTypeArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Strong & fearless", nil), NSLocalizedString(@"Enthused & confident", nil), NSLocalizedString(@"Comfortable, but cautious", nil), NSLocalizedString(@"Interested, but concerned", nil), nil];
     
-    riderHistoryArray = [[NSArray alloc]initWithObjects: @" ", @"Since childhood", @"Several years", @"One year or less", @"Just trying it out / just started", nil];
+    riderHistoryArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Since childhood", nil), NSLocalizedString(@"Several years", nil), NSLocalizedString(@"One year or less", nil), NSLocalizedString(@"Just trying it out / just started", nil), nil];
     
     
     CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
@@ -519,19 +519,19 @@
 			return nil;
 			break;
 		case 1:
-			return @"Tell us about yourself";
+			return NSLocalizedString(@"Tell us about yourself", nil);
 			break;
 		case 2:
-			return @"Your typical commute";
+			return NSLocalizedString(@"Your typical commute", nil);
 			break;
 		case 3:
-			return @"How often do you cycle?";
+			return NSLocalizedString(@"How often do you cycle?", nil);
 			break;
         case 4:
-			return @"What kind of rider are you?";
+			return NSLocalizedString(@"What kind of rider are you?", nil);
 			break;
         case 5:
-			return @"How long have you been a cyclist?";
+			return NSLocalizedString(@"How long have you been a cyclist?", nil);
 			break;
 	}
     return nil;
@@ -631,7 +631,7 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-					cell.textLabel.text = @"Getting started with Cycle Atlanta";
+					cell.textLabel.text = NSLocalizedString(@"Getting started with Mon RésoVélo", nil);
 					break;
 			}
 			
@@ -651,23 +651,23 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-					cell.textLabel.text = @"Age";
+					cell.textLabel.text = NSLocalizedString(@"Age", nil);
 					[cell.contentView addSubview:age];
 					break;
 				case 1:
-					cell.textLabel.text = @"Email";
+					cell.textLabel.text = NSLocalizedString(@"Email", nil);
 					[cell.contentView addSubview:email];
 					break;
 				case 2:
-					cell.textLabel.text = @"Gender";
+					cell.textLabel.text = NSLocalizedString(@"Gender", nil);
 					[cell.contentView addSubview:gender];
 					break;
                 case 3:
-					cell.textLabel.text = @"Ethnicity";
+					cell.textLabel.text = NSLocalizedString(@"Ethnicity", nil);
 					[cell.contentView addSubview:ethnicity];
 					break;
                 case 4:
-					cell.textLabel.text = @"Home Income";
+					cell.textLabel.text = NSLocalizedString(@"Home Income", nil);
 					[cell.contentView addSubview:income];
 					break;
 			}
@@ -687,15 +687,15 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-					cell.textLabel.text = @"Home ZIP";
+					cell.textLabel.text = NSLocalizedString(@"Home Postal Code", nil);
 					[cell.contentView addSubview:homeZIP];
 					break;
 				case 1:
-					cell.textLabel.text = @"Work ZIP";
+					cell.textLabel.text = NSLocalizedString(@"Work Postal Code", nil);
 					[cell.contentView addSubview:workZIP];
 					break;
 				case 2:
-					cell.textLabel.text = @"School ZIP";
+					cell.textLabel.text = NSLocalizedString(@"School Postal Code", nil);
 					[cell.contentView addSubview:schoolZIP];
 					break;
 			}
@@ -716,7 +716,7 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-                    cell.textLabel.text = @"Cycle Frequency";
+                    cell.textLabel.text = NSLocalizedString(@"Cycle Frequency", nil);
 					[cell.contentView addSubview:cyclingFreq];
 					break;
             }
@@ -736,7 +736,7 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-                    cell.textLabel.text = @"Rider Type";
+                    cell.textLabel.text = NSLocalizedString(@"Rider Type", nil);
 					[cell.contentView addSubview:riderType];
 					break;
             }
@@ -757,7 +757,7 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-                    cell.textLabel.text = @"Rider History";
+                    cell.textLabel.text = NSLocalizedString(@"Rider History", nil);
                     [cell.contentView addSubview:riderHistory];
 					break;
 			}

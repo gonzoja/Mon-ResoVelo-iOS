@@ -89,13 +89,17 @@
 #define kSaveAccepted		@"Your trip has already been uploaded. Thank you."
 #define kSaveError			@"Your trip has been saved. Please try uploading again later."
 
-#define kInfoURL			@"http://cycleatlanta.org/CycleAtlantaInfo"
-#define kInstructionsURL	@"http://cycleatlanta.org/instructions-v2/"
+#define kInfoURL			@"http://ks3309217.kimsufi.com/monresovelo/CycleAtlantaInfo"
+#define kInstructionsURL	@"http://ks3309217.kimsufi.com/monresovelo/instructions-v2/"
 
-#define kSaveURL			@"http://ks3309217.kimsufi.com/cycleatlanta/post/index.php"
+#define kSaveURL			@"http://ks3309217.kimsufi.com/monresovelo/post/index.php"
 //#define kSaveURL			@""
 
 #define kTripNotesPlaceholder	@"Comments"
+
+#define kGHGMessage @"Emisssions saved: "
+#define kCaloriesMessage    @"Calories burned: "
+
 
 // CustomView metrics used by UIPickerViewDataSource, UIPickerViewDelegate
 #define MAIN_FONT_SIZE		18

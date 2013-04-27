@@ -199,10 +199,10 @@ static UIImage *shrinkImage(UIImage *original, CGSize size) {
 //        [picker release];
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"Error accessing media"
-                              message:@"Device doesn’t support that media source."
+                              initWithTitle:NSLocalizedString(@"Error accessing media", @"mediaError")
+                              message:NSLocalizedString(@"Device doesn’t support that media source.", @"mediaErrorMessage")
                               delegate:nil
-                              cancelButtonTitle:@"Drat!"
+                              cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];
         [alert show];
     }

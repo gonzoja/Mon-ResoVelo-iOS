@@ -106,7 +106,7 @@
 		self.managedObjectContext = context;
 
 		// Set the title NOTE: important for tab bar tab item to set title here before view loads
-		self.title = @"View Saved Trips";
+		self.title = NSLocalizedString(@"View Saved Trips", @"viewSavedTrips");
     }
     return self;
 }
@@ -123,7 +123,7 @@
 		self.tripManager = manager;
 		
 		// Set the title NOTE: important for tab bar tab item to set title here before view loads
-		self.title = @"View Saved Trips";
+		self.title = NSLocalizedString(@"View Saved Trips", @"viewSavedTrips");
     }
     return self;
 }
@@ -189,8 +189,8 @@
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kZeroDistanceTitle
 														message:kZeroDistanceMessage
 													   delegate:self
-											  cancelButtonTitle:@"Cancel"
-											  otherButtonTitles:@"Recalculate", nil];
+											  cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
+											  otherButtonTitles:NSLocalizedString(@"Recalculate", @"Recalculate"), nil];
 		alert.tag = 202;
 		[alert show];
 		[alert release];
@@ -594,14 +594,14 @@
     durationText.text = [NSString stringWithFormat:@"%@",[inputFormatter stringFromDate:outputDate]];
 	
     
-    CO2Text.text = [NSString stringWithFormat:@"CO2 Saved: %.1f lbs", 0.93 * [trip.distance doubleValue] / 1609.344];
+    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), 0.93 * [trip.distance doubleValue] / 1000];
     
-    double calory = 49 * [trip.distance doubleValue] / 1609.344 - 1.69;
+    double calory = 49 * [trip.distance doubleValue] / 1609.344 - 1.69; //TODO Update these formulas
     if (calory <= 0) {
-        CaloryText.text = [NSString stringWithFormat:@"Calories Burned: 0 kcal"];
+        CaloryText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
     }
     else
-        CaloryText.text = [NSString stringWithFormat:@"Calories Burned: %.1f kcal", calory];
+        CaloryText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calory];
     
     [cell.contentView addSubview:CaloryText];
     [cell.contentView addSubview:CO2Text];
@@ -638,14 +638,14 @@
 //		purpose = tripManager.trip.purpose;
 
 	//NSString *confirm = [NSString stringWithFormat:@"This trip has not yet been uploaded. Confirm the trip's purpose to try again: %@", purpose];
-	NSString *confirm = [NSString stringWithFormat:@"This trip has not yet been uploaded. Try now?"];
+	NSString *confirm = [NSString stringWithFormat:NSLocalizedString(@"This trip has not yet been uploaded. Try now?", @"uploadNow")];
 	
 	// present action sheet
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:confirm
 															 delegate:self
-													cancelButtonTitle:@"Cancel"
+													cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
 											   destructiveButtonTitle:nil
-													otherButtonTitles:@"Upload", nil];
+													otherButtonTitles:NSLocalizedString(@"Upload", @"Upload"), nil];
 	
 	actionSheet.actionSheetStyle	= UIActionSheetStyleBlackTranslucent;
 	[actionSheet showInView:self.tabBarController.view];
@@ -761,13 +761,13 @@
 	if ( viewController == self )
 	{
 		//NSLog(@"willShowViewController:self");
-		self.title = @"View Saved Trips";
+		self.title = NSLocalizedString(@"View Saved Trips", @"ViewSavedTrips");
 	}
 	else
 	{
 		//NSLog(@"willShowViewController:else");
-		self.title = @"Back";
-		self.tabBarItem.title = @"View Saved Trips"; // important to maintain the same tab item title
+		self.title = NSLocalizedString(@"Back", @"Back");
+		self.tabBarItem.title = NSLocalizedString(@"View Saved Trips", @"ViewSavedTrips"); // important to maintain the same tab item title
 	}
 }
 
