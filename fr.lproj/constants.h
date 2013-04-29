@@ -69,7 +69,7 @@
 #define kSavingNoteTitle    @"Uploading your note"
 #define kSuccessTitle		@"Upload complete"
 #define kTripNotesTitle		@"Enter Comments Below"
-#define kConsentFor18Title  @"In order to send route data to Georgia Tech and the City of Atlanta, you must be at least 18."
+#define kConsentFor18Title  @"In order to send route data to Mon RésoVélo and the city of Montréal, you must be at least 18."
 
 
 #define kInterruptedTitle		@"Recording Interrupted"
@@ -92,7 +92,7 @@
 #define kInfoURL			@"http://cycleatlanta.org/CycleAtlantaInfo"
 #define kInstructionsURL	@"http://cycleatlanta.org/instructions-v2/"
 
-#define kSaveURL			@"http://ks3309217.kimsufi.com/cycleatlanta/post/"
+#define kSaveURL			@"http://ks3309217.kimsufi.com/monresovelo/post/"
 //#define kSaveURL			@""
 
 #define kTripNotesPlaceholder	@"Comments"
