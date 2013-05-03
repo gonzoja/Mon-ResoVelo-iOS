@@ -59,35 +59,35 @@
 #define kJpegQuality        0.9
 
 // error messages
-#define kConnectionError	@"Server unreachable, \n try again later."
-#define kServerError		@"Upload failed, \n try again later."
+#define kConnectionError	@"Problème avec le serveur, \n essayez plus tard."
+#define kServerError		@"Telechargement pas completé, \n essayez plus tard."
 
 // alert titles
-#define kBatteryTitle		@"Battery Low"
-#define kRetryTitle			@"Retry Upload?"
-#define	kSavingTitle		@"Uploading your trip"
-#define kSavingNoteTitle    @"Uploading your note"
-#define kSuccessTitle		@"Upload complete"
-#define kTripNotesTitle		@"Enter Comments Below"
-#define kConsentFor18Title  @"In order to send route data to Mon RésoVélo and the city of Montréal, you must be at least 18."
+#define kBatteryTitle		@"Batterie faible"
+#define kRetryTitle			@"Synchroniser maintenant?"
+#define	kSavingTitle		@"Téléchargement en course"
+#define kSavingNoteTitle    @"Téléchargement du note en course"
+#define kSuccessTitle		@"Téléchargement complet"
+#define kTripNotesTitle		@"Commentaires"
+#define kConsentFor18Title  @"Il faut être 18 ans ou plus pour envoyer les trajets a Mon RésoVélo."
 
 
-#define kInterruptedTitle		@"Recording Interrupted"
-#define kInterruptedMessage		@"Oops! Looks like a previous trip recording has been interrupted."
-#define kUnsyncedTitle			@"Found Unsynced Trip(s)"
-#define kUnsyncedMessage		@"You have at least one saved trip that has not yet been uploaded."
-#define kZeroDistanceTitle		@"Recalculate Trip Distance?"
-#define kZeroDistanceMessage	@"Your trip distance estimates may need to be recalculated..."
+#define kInterruptedTitle		@"Enregistrement interrompu"
+#define kInterruptedMessage		@""
+#define kUnsyncedTitle			@"Trajets à envoyer"
+#define kUnsyncedMessage		@"Il y a au moins un trajet prêt à télécharger"
+#define kZeroDistanceTitle		@"Nouveau calcul de la distance parcourue"
+#define kZeroDistanceMessage	@"Voulez-vous recalculer la distance parcourue pour chaque trajet?"
 
 // alert messages
-#define kConsentFor18Message @"Are you at least 18 years old?"
-#define kBatteryMessage		@"Recording of your trip has been halted to preserve battery life."
-#define kConnecting			@"Contacting server..."
-#define kPreparingData		@"Preparing your trip data for transfer."
-#define kRetryMessage		@"This trip has not yet been uploaded successfully. Try again?"
-#define kSaveSuccess		@"Your trip has been uploaded successfully. Thank you."
-#define kSaveAccepted		@"Your trip has already been uploaded. Thank you."
-#define kSaveError			@"Your trip has been saved. Please try uploading again later."
+#define kConsentFor18Message @"Avez-vous au moins 18 ans?"
+#define kBatteryMessage		@"Enregistrement de votre trajet interrompu pour éviter le déchargement de la batterie."
+#define kConnecting			@"Connexion au serveur"
+#define kPreparingData		@"Préparation des données"
+#define kRetryMessage		@"Problème de téléchargement. Essayez à nouveau?"
+#define kSaveSuccess		@"Téléchargement des trajets réussi"
+#define kSaveAccepted		@"Ce trajet est déja synchronisé"
+#define kSaveError			@"Téléchargement non effectué. Prochain essai lors de votre prochain trajet"
 
 #define kInfoURL			@"http://cycleatlanta.org/CycleAtlantaInfo"
 #define kInstructionsURL	@"http://cycleatlanta.org/instructions-v2/"
@@ -95,7 +95,7 @@
 #define kSaveURL			@"http://ks3309217.kimsufi.com/monresovelo/post/"
 //#define kSaveURL			@""
 
-#define kTripNotesPlaceholder	@"Comments"
+#define kTripNotesPlaceholder	@"Commentaires"
 
 // CustomView metrics used by UIPickerViewDataSource, UIPickerViewDelegate
 #define MAIN_FONT_SIZE		18
