@@ -46,7 +46,7 @@
 #import "NoteManager.h"
 #import "LoadingView.h"
 #import "RecordTripViewController.h"
-#import "CycleAtlantaAppDelegate.h"
+#import "MonResoVeloAppDelegate.h"
 #import "ImageResize.h"
 
 
@@ -163,7 +163,7 @@
     NSString *newDateStringURL = [outputFormatterURL stringFromDate:note.recorded];
     [noteDict setValue:newDateString forKey:@"r"];    //recorded timestamp
     
-    CycleAtlantaAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    MonResoVeloAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     self.deviceUniqueIdHash1 = delegate.uniqueIDHash;
     NSLog(@"deviceUniqueIdHash is %@", deviceUniqueIdHash1);
     
@@ -276,7 +276,7 @@
     NSString *newDateStringURL = [outputFormatterURL stringFromDate:_note.recorded];
     [noteDict setValue:newDateString forKey:@"r"];    //recorded timestamp
     
-    CycleAtlantaAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    MonResoVeloAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     self.deviceUniqueIdHash1 = delegate.uniqueIDHash;
     NSLog(@"deviceUniqueIdHash is %@", deviceUniqueIdHash1);
     

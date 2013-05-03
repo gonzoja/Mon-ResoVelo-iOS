@@ -145,6 +145,14 @@
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationController.navigationBarHidden = NO;
     
+    NSNumberFormatter* nf = [[NSNumberFormatter alloc] init];
+    [nf setLocale:[NSLocale currentLocale]];
+    [nf setUsesGroupingSeparator:NO];
+    [nf setNumberStyle:NSNumberFormatterDecimalStyle];
+    [nf setUsesSignificantDigits:YES];
+    [nf setMaximumFractionDigits:1];
+    [nf setRoundingMode:NSNumberFormatterRoundDown];
+    
 	if ( trip )
 	{
 		// format date as a string
@@ -169,9 +177,9 @@
 		
 		self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"elapsed: %@ ~ %@", @"elapsedTime"), [inputFormatter stringFromDate:outputDate], [dateFormatter stringFromDate:[trip start]]];
         
-		self.title = [NSString stringWithFormat:@"%.1f km ~ %.1f kph",
-					  [trip.distance doubleValue] / 1000,
-					  kph ];
+		self.title = [NSString stringWithFormat:@"%@ km ~ %@ kph",
+					  [nf stringFromNumber:[NSNumber numberWithDouble:[trip.distance doubleValue] / 1000]],
+					  [nf stringFromNumber:[NSNumber numberWithDouble:kph]]];
 		
 		//self.title = trip.purpose;
 		

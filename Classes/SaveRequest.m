@@ -38,7 +38,7 @@
 //	e-mail Billy Charlton at the SFCTA <billy.charlton@sfcta.org>
 
 #import "constants.h"
-#import "CycleAtlantaAppDelegate.h"
+#import "MonResoVeloAppDelegate.h"
 #import "SaveRequest.h"
 #import "ZipUtil.h"
 
@@ -58,7 +58,7 @@
         [request setHTTPMethod:@"POST"];
         
         // Nab the unique device id hash from our delegate.
-		CycleAtlantaAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+		MonResoVeloAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 		self.deviceUniqueIdHash = delegate.uniqueIDHash;
         
         self.postVars = [NSMutableDictionary dictionaryWithDictionary:inPostVars];

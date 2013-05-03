@@ -91,12 +91,14 @@ NSString *kmh = @"";
            fromLocation:(CLLocation *)oldLocation
 {
     nf = [[NSNumberFormatter alloc] init];
+//    NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
+//    [nf setGroupingSeparator:groupingSeparator];
+    [nf setLocale:[NSLocale currentLocale]];
     [nf setUsesGroupingSeparator:NO];
     [nf setNumberStyle:NSNumberFormatterDecimalStyle];
-    [nf setUsesSignificantDigits:YES];
-    [nf setMaximumSignificantDigits:4];
-    [nf setMaximumFractionDigits:1];
     [nf setRoundingMode:NSNumberFormatterRoundDown];
+    [nf setMaximumFractionDigits:1];
+    [nf setMinimumFractionDigits:1];
     
 	
     
@@ -139,7 +141,7 @@ NSString *kmh = @"";
 	// 	double mph = ( [trip.distance doubleValue] / 1609.344 ) / ( [trip.duration doubleValue] / 3600. );
     
     if ( newLocation.speed >= 0. ){
-        kmh = [nf stringFromNumber:[NSNumber numberWithDouble:newLocation.speed *3.6]];
+        kmh = [nf stringFromNumber:[NSNumber numberWithDouble:newLocation.speed*3.6]];
 //		speedCounter.text = [NSString stringWithFormat:@"%.1f km/h", newLocation.speed * 3600 / 1000];
 //        speedCounter.text =[[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
 	}
@@ -328,7 +330,7 @@ NSString *kmh = @"";
     startButton.backgroundColor = [UIColor clearColor];
     startButton.enabled = YES;
     
-    [startButton setTitle:@"Start" forState:UIControlStateNormal];
+    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
     [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     startButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
     startButton.titleLabel.shadowOffset = CGSizeMake (0, 0);
@@ -392,7 +394,7 @@ NSString *kmh = @"";
     
     [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    [startButton setTitle:@"Start" forState:UIControlStateNormal];
+    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
 	
 	// reset trip, reminder managers
 	NSManagedObjectContext *context = tripManager.managedObjectContext;
@@ -467,7 +469,7 @@ NSString *kmh = @"";
 
 					startButton.enabled = YES;
 
-                    [startButton setTitle:@"Continue" forState:UIControlStateNormal];
+                    [startButton setTitle:NSLocalizedString(@"Continue", @"Continue") forState:UIControlStateNormal];
 					break;
 			}
 		}
@@ -533,7 +535,7 @@ NSString *kmh = @"";
                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
         [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
         [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-        [startButton setTitle:@"Save" forState:UIControlStateNormal];
+        [startButton setTitle:NSLocalizedString(@"Save", @"Save") forState:UIControlStateNormal];
 
         // set recording flag so future location updates will be added as coords
         appDelegate = [[UIApplication sharedApplication] delegate];
@@ -552,9 +554,9 @@ NSString *kmh = @"";
         saveActionSheet = [[UIActionSheet alloc]
                            initWithTitle:@""
                            delegate:self
-                           cancelButtonTitle:@"Continue"
-                           destructiveButtonTitle:@"Discard"
-                           otherButtonTitles:@"Save",nil];
+                           cancelButtonTitle:NSLocalizedString(@"Continue", @"Continue")
+                           destructiveButtonTitle:NSLocalizedString(@"Discard", @"Discard")
+                           otherButtonTitles:NSLocalizedString(@"Save", @"Save"),nil];
         //[saveActionSheet showInView:self.view];
         [saveActionSheet showInView:[UIApplication sharedApplication].keyWindow];
     }
@@ -589,14 +591,14 @@ NSString *kmh = @"";
 		if ( tripManager != nil )
 			purpose = [self getPurposeString:[tripManager getPurposeIndex]];
 		
-		NSString *confirm = [NSString stringWithFormat:@"Stop recording & save this trip?"];
+		NSString *confirm = [NSString stringWithFormat:NSLocalizedString(@"Stop recording & save this trip?", nil)];
 		
 		// present action sheet
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:confirm
 																 delegate:self
-														cancelButtonTitle:@"Cancel"
+														cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
 												   destructiveButtonTitle:nil
-														otherButtonTitles:@"Save", nil];
+														otherButtonTitles:NSLocalizedString(@"Save", @"Save"), nil];
 		
 		actionSheet.actionSheetStyle		= UIActionSheetStyleBlackTranslucent;
 		UIViewController *pvc = self.parentViewController;
@@ -651,14 +653,14 @@ NSString *kmh = @"";
 		if ( tripManager != nil )
 			purpose = [self getPurposeString:[tripManager getPurposeIndex]];
 		
-		NSString *confirm = [NSString stringWithFormat:@"Stop recording & save this trip?"];
+		NSString *confirm = [NSString stringWithFormat:NSLocalizedString(@"Stop recording & save this trip?", nil)];
 		
 		// present action sheet
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:confirm
 																 delegate:self
-														cancelButtonTitle:@"Cancel"
+														cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
 												   destructiveButtonTitle:nil
-														otherButtonTitles:@"Save", nil];
+														otherButtonTitles:NSLocalizedString(@"Save", @"Save"), nil];
 		
 		actionSheet.actionSheetStyle		= UIActionSheetStyleBlackTranslucent;
 		UIViewController *pvc = self.parentViewController;
@@ -802,13 +804,13 @@ NSString *kmh = @"";
 	if ( viewController == self )
 	{
 		//NSLog(@"willShowViewController:self");
-		self.title = @"Record New Trip";
+		self.title = NSLocalizedString(@"Record New Trip", nil);
 	}
 	else
 	{
 		//NSLog(@"willShowViewController:else");
-		self.title = @"Back";
-		self.tabBarItem.title = @"Record New Trip"; // important to maintain the same tab item title
+		self.title = NSLocalizedString(@"Back", @"Back");
+		self.tabBarItem.title = NSLocalizedString(@"Record New Trip", nil); // important to maintain the same tab item title
 	}
 }
 

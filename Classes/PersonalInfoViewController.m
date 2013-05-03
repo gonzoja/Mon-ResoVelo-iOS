@@ -122,7 +122,7 @@
 	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
 	textField.borderStyle = UITextBorderStyleRoundedRect;
 	textField.textAlignment = UITextAlignmentRight;
-	textField.placeholder = @"A1A 1A1";
+	textField.placeholder = @"H1H 1A1";
 	textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
 	textField.returnKeyType = UIReturnKeyDone;
 	textField.delegate = self;
@@ -154,7 +154,7 @@
     
     genderArray = [[NSArray alloc]initWithObjects: @" ", NSLocalizedString(@"Female", nil), NSLocalizedString(@"Male", nil), nil];
     
-    ageArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Less than 18", nil), NSLocalizedString(@"18-24", nil), NSLocalizedString(@"25-34", nil), NSLocalizedString(@"35-44", nil), NSLocalizedString(@"45-54", nil), NSLocalizedString(@"55-64", nil), NSLocalizedString(@"65+",nil), nil];
+    ageArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Less than 18", nil), @"18-24", @"25-34", @"35-44", @"45-54", @"55-64", @"65+", nil];
     
     ethnicityArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"White", nil), NSLocalizedString(@"African American", nil), NSLocalizedString(@"Asian", nil), NSLocalizedString(@"Native American", nil), NSLocalizedString(@"Pacific Islander", nil), NSLocalizedString(@"Multi-racial", nil), NSLocalizedString(@"Hispanic / Mexican / Latino", nil), NSLocalizedString(@"Other", nil), nil];
     
@@ -522,7 +522,7 @@
 			return NSLocalizedString(@"Tell us about yourself", nil);
 			break;
 		case 2:
-			return NSLocalizedString(@"Your typical commute", nil);
+			return NSLocalizedString(@"Your typical commute (by postal code)", nil);
 			break;
 		case 3:
 			return NSLocalizedString(@"How often do you cycle?", nil);
@@ -687,15 +687,15 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-					cell.textLabel.text = NSLocalizedString(@"Home Postal Code", nil);
+					cell.textLabel.text = NSLocalizedString(@"Home", nil);
 					[cell.contentView addSubview:homeZIP];
 					break;
 				case 1:
-					cell.textLabel.text = NSLocalizedString(@"Work Postal Code", nil);
+					cell.textLabel.text = NSLocalizedString(@"Work", nil);
 					[cell.contentView addSubview:workZIP];
 					break;
 				case 2:
-					cell.textLabel.text = NSLocalizedString(@"School Postal Code", nil);
+					cell.textLabel.text = NSLocalizedString(@"School", nil);
 					[cell.contentView addSubview:schoolZIP];
 					break;
 			}
