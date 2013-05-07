@@ -416,8 +416,9 @@
 		64F824E4106AFFA4001413F8 /* PersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoViewController.h; sourceTree = "<group>"; };
 		64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Mon-ResoVelo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mon-ResoVelo-Info.plist"; sourceTree = "<group>"; };
-		8D3260341738869E002F63A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/NewsView.xib; sourceTree = "<group>"; };
-		8D326036173886B5002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/NewsView.xib; sourceTree = "<group>"; };
+		8D3260341738869E002F63A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsView.xib; sourceTree = "<group>"; };
+		8D326036173886B5002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/NewsView.xib; sourceTree = "<group>"; };
+		8D32607B1739715F002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		8D4E3AF3172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = constants.h; sourceTree = "<group>"; };
 		8D4E3AF5172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = DetailView.xib; sourceTree = "<group>"; };
 		8D4E3AF7172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
@@ -442,7 +443,6 @@
 		8D7EC6C8171F89BC0076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TripDetailViewController.xib; sourceTree = "<group>"; };
 		8D7EC6CB171F89C00076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PersonalInfo.xib; sourceTree = "<group>"; };
 		8D7EC6CF171F8AC40076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NoteViewController.xib; sourceTree = "<group>"; };
-		8D7EC6D0171F8BE50076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		8D7EC6D1171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MapViewController.xib; sourceTree = "<group>"; };
 		8D7EC6D2171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/NoteViewController.xib; sourceTree = "<group>"; };
 		8D7EC6D3171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RecordMap.xib; sourceTree = "<group>"; };
@@ -2788,7 +2788,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8D7EC6B6171F897D0076F17F /* en */,
-				8D7EC6D0171F8BE50076F17F /* fr */,
+				8D32607B1739715F002F63A3 /* fr */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";

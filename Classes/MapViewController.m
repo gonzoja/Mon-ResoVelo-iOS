@@ -173,7 +173,7 @@
 		[inputFormatter setDateFormat:@"HH:mm:ss"];
 		NSDate *outputDate = [[[NSDate alloc] initWithTimeInterval:(NSTimeInterval)[trip.duration doubleValue] sinceDate:fauxDate] autorelease];
         
-		double kph = ( [trip.distance doubleValue] / 1000 ) / ( [trip.duration doubleValue] / 3600. );
+		double kph = ( [trip.distance doubleValue] / 1000 ) / ( [trip.duration doubleValue] / 3600);
 		
 		self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"elapsed: %@ ~ %@", @"elapsedTime"), [inputFormatter stringFromDate:outputDate], [dateFormatter stringFromDate:[trip start]]];
         
