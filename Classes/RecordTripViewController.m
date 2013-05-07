@@ -133,7 +133,9 @@ NSString *kmh = @"";
 		// add to CoreData store
 		CLLocationDistance distance = [tripManager addCoord:newLocation];
 //		self.distCounter.text = [NSString stringWithFormat:@"%.1f km", ];
-        km = [nf stringFromNumber:[NSNumber numberWithDouble:distance/1000]];
+        double *kmDouble = distance/1000;
+        
+        km = [nf stringFromNumber:[NSNumber numberWithDouble:kmDouble]];
         
         self.distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
 	}

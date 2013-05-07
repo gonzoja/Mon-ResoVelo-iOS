@@ -42,6 +42,7 @@
 		64F823C6106AB42B001413F8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F823C5106AB42B001413F8 /* Security.framework */; };
 		64F823E1106AC151001413F8 /* SaveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F823E0106AC151001413F8 /* SaveRequest.m */; };
 		64F824E6106AFFA4001413F8 /* PersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */; };
+		8D3260331738869E002F63A3 /* NewsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260351738869E002F63A3 /* NewsView.xib */; };
 		8D4E3B13172AF3AB007F6A35 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF4172AF3AB007F6A35 /* DetailView.xib */; };
 		8D4E3B14172AF3AB007F6A35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF6172AF3AB007F6A35 /* Localizable.strings */; };
 		8D4E3B15172AF3AB007F6A35 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF8172AF3AB007F6A35 /* MainWindow.xib */; };
@@ -415,6 +416,8 @@
 		64F824E4106AFFA4001413F8 /* PersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoViewController.h; sourceTree = "<group>"; };
 		64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Mon-ResoVelo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mon-ResoVelo-Info.plist"; sourceTree = "<group>"; };
+		8D3260341738869E002F63A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/NewsView.xib; sourceTree = "<group>"; };
+		8D326036173886B5002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/NewsView.xib; sourceTree = "<group>"; };
 		8D4E3AF3172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = constants.h; sourceTree = "<group>"; };
 		8D4E3AF5172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = DetailView.xib; sourceTree = "<group>"; };
 		8D4E3AF7172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
@@ -884,7 +887,7 @@
 		8F9C086916DC947A003EA308 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		8F9C086B16DC947A003EA308 /* Coord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coord.h; sourceTree = "<group>"; };
 		8F9C086C16DC947A003EA308 /* Coord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coord.m; sourceTree = "<group>"; };
-		8FA0AD9216BB4ED800E0E7C4 /* CycleAtlanta 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CycleAtlanta 2.xcdatamodel"; sourceTree = "<group>"; };
+		8FA0AD9216BB4ED800E0E7C4 /* MonResoVelo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MonResoVelo 2.xcdatamodel"; sourceTree = "<group>"; };
 		8FA0AD9316BB4ED800E0E7C4 /* CycleAtlanta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CycleAtlanta.xcdatamodel; sourceTree = "<group>"; };
 		8FAD930316F189EE00082B6F /* UIImageViewResizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageViewResizable.h; path = ../UIImageViewResizable.h; sourceTree = "<group>"; };
 		8FAD930416F189EE00082B6F /* UIImageViewResizable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageViewResizable.m; path = ../UIImageViewResizable.m; sourceTree = "<group>"; };
@@ -1131,6 +1134,7 @@
 				6458114D107AA4D30075DABD /* bicycle-bell-normalized.aiff */,
 				8D1107310486CEB800E47090 /* Mon-ResoVelo-Info.plist */,
 				64577E28106DC2FD003ACBFD /* dist.plist */,
+				8D3260351738869E002F63A3 /* NewsView.xib */,
 				8D7EC6B7171F897D0076F17F /* MainWindow.xib */,
 				8D7EC6BA171F89810076F17F /* MapViewController.xib */,
 				8D7EC6BD171F89890076F17F /* NoteViewController.xib */,
@@ -2595,6 +2599,7 @@
 				8D4E3B1E172AF3AB007F6A35 /* PersonalInfo.xib in Resources */,
 				8D4E3B1F172AF3AB007F6A35 /* RecordMap.xib in Resources */,
 				8D4E3B20172AF3AB007F6A35 /* TripPurposePicker.xib in Resources */,
+				8D3260331738869E002F63A3 /* NewsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2642,6 +2647,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8D3260351738869E002F63A3 /* NewsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D3260341738869E002F63A3 /* en */,
+				8D326036173886B5002F63A3 /* fr */,
+			);
+			name = NewsView.xib;
+			sourceTree = "<group>";
+		};
 		8D4E3AF2172AF3AB007F6A35 /* constants.h */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3106,10 +3120,10 @@
 		8FA0AD9116BB4ED800E0E7C4 /* MonResoVelo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8FA0AD9216BB4ED800E0E7C4 /* CycleAtlanta 2.xcdatamodel */,
+				8FA0AD9216BB4ED800E0E7C4 /* MonResoVelo 2.xcdatamodel */,
 				8FA0AD9316BB4ED800E0E7C4 /* CycleAtlanta.xcdatamodel */,
 			);
-			currentVersion = 8FA0AD9216BB4ED800E0E7C4 /* CycleAtlanta 2.xcdatamodel */;
+			currentVersion = 8FA0AD9216BB4ED800E0E7C4 /* MonResoVelo 2.xcdatamodel */;
 			path = MonResoVelo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -88,7 +88,7 @@
 						<array key="IBUIItems">
 							<object class="IBUINavigationItem" id="865450256">
 								<reference key="IBUINavigationBar" ref="983938707"/>
-								<string key="IBUITitle">Detail</string>
+								<string key="IBUITitle">Détails</string>
 								<object class="IBUIBarButtonItem" key="IBUIBackBarButtonItem" id="231824764">
 									<string key="IBUITitle">Skip</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -195,7 +195,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Additional details:</string>
+						<string key="IBUIText">Plus de détails:</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>

@@ -256,8 +256,8 @@
     pickerCategory = [[NSUserDefaults standardUserDefaults] integerForKey:@"pickerCategory"];
     
     if (pickerCategory == 0) {
-        navBarItself.topItem.title = @"Trip Purpose";
-        self.descriptionText.text = @"Please select your trip purpose & tap Save";
+        navBarItself.topItem.title = NSLocalizedString(@"Trip Purpose", nil);
+        self.descriptionText.text = NSLocalizedString(@"Please select your trip purpose & tap Save",nil);
     }
     else if (pickerCategory == 1){
         navBarItself.topItem.title = @"Boo this...";
