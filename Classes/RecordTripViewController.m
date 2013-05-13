@@ -53,6 +53,8 @@
 //TODO: Fix incomplete implementation
 @implementation RecordTripViewController
 
+
+
 @synthesize tripManager;// reminderManager;
 @synthesize noteManager;
 @synthesize infoButton, saveButton, startButton, noteButton, parentView;
@@ -69,7 +71,6 @@ NSString *kmUnit = @"km";
 NSString *km = @"";
 NSString *kmhUnit = @"km/h";
 NSString *kmh = @"";
-
 
 - (CLLocationManager *)getLocationManager {
 	appDelegate = [[UIApplication sharedApplication] delegate];
@@ -116,16 +117,16 @@ NSString *kmh = @"";
 	{
 		NSLog(@"zooming to current user location");
 		MKCoordinateRegion region = { newLocation.coordinate, { 0.0078, 0.0068 } };
-		[mapView setRegion:region animated:YES];
+		[map setRegion:region animated:YES];
 
 		didUpdateUserLocation = YES;
 	}
 	
-	// only update map if deltaDistance is at least some epsilon 
+	// only update map if deltaDistance is at least some epsilon
 	else if ( deltaDistance > 1.0 )
 	{
 		//NSLog(@"center map to current user location");
-		[mapView setCenterCoordinate:newLocation.coordinate animated:YES];
+		[map setCenterCoordinate:newLocation.coordinate animated:YES];
 	}
 
 	if ( recording )
@@ -251,14 +252,49 @@ NSString *kmh = @"";
 	NSLog(@"RecordTripViewController viewDidLoad");
     NSLog(@"Bundle ID: %@", [[NSBundle mainBundle] bundleIdentifier]);
     [super viewDidLoad];
+    [map setDelegate:self];
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
-	
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationController.navigationBarHidden = YES;
 	
-	// init map region to Montreal
+
+    
+    //mapview overlays
+    
+    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
+    NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
+    NSArray *pointsArray = arrayArray[0];
+//    NSArray *routesArray = [NSArray alloc
+    
+     for (int i = 0; i < arrayArray.count; i++) {
+//    for (int i = 0; i < 1; i++) {
+
+        pointsArray = arrayArray[i];
+        NSInteger pointsCount = pointsArray.count;
+        CLLocationCoordinate2D pointsToUse[pointsCount];
+        for (int j = 0; j < pointsCount ; j++){
+            CGPoint p = CGPointFromString(pointsArray[j]);
+            pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
+//            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
+//            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
+        }
+//        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
+        MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
+//        NSLog("routePolyLine Length: %@")
+        
+        
+        //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
+        [map addOverlay:routePolyline];
+        map.visibleMapRect = MKMapRectWorld;
+//        map.visibleMapRect = ([routePolyline boundingMapRect]);
+//        NSLog(@"overlay added");
+    }
+    
+//    // init map region to Montreal
 	MKCoordinateRegion region = { { 45.553968,-73.664017 }, { 0.0178, 0.0168 } };
-	[mapView setRegion:region animated:NO];
+	[map setRegion:region animated:NO];
+
+    
 	
 	// setup info button used when showing recorded trips
 	infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -293,6 +329,18 @@ NSString *kmh = @"";
 	NSLog(@"save");
 }
 
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+    NSLog(@"MKOverlayView is being called");
+    if ([overlay isKindOfClass:MKPolyline.class]) {
+        MKPolylineView *lineView = [[MKPolylineView alloc] initWithOverlay:overlay];
+        lineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.9];
+    
+        return [lineView autorelease];
+    } 
+    
+    return nil;
+}
+
 
 - (UIButton *)createNoteButton
 {
@@ -306,7 +354,7 @@ NSString *kmh = @"";
     [noteButton setTitleColor:[[[UIColor alloc] initWithRed:185.0 / 255 green:91.0 / 255 blue:47.0 / 255 alpha:1.0 ] autorelease] forState:UIControlStateHighlighted];
     
 //    noteButton.backgroundColor = [UIColor clearColor];
-    noteButton.enabled = YES;
+    noteButton.enabled = NO;
     
     [noteButton setTitle:@"Note this..." forState:UIControlStateNormal];
 
@@ -940,6 +988,9 @@ shouldSelectViewController:(UIViewController *)viewController
 
 
 
+
+
+
 #pragma mark RecordingInProgressDelegate method
 
 
@@ -993,7 +1044,7 @@ shouldSelectViewController:(UIViewController *)viewController
     [myLocation release];
     
     [managedObjectContext release];
-    [mapView release];
+    [map release];
     
     [super dealloc];
 }

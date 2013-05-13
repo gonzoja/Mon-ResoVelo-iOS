@@ -43,6 +43,8 @@
 		64F823E1106AC151001413F8 /* SaveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F823E0106AC151001413F8 /* SaveRequest.m */; };
 		64F824E6106AFFA4001413F8 /* PersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */; };
 		8D3260331738869E002F63A3 /* NewsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260351738869E002F63A3 /* NewsView.xib */; };
+		8D3260AE17398797002F63A3 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3260AD17398797002F63A3 /* libsqlite3.dylib */; };
+		8D3260B2173AC5DD002F63A3 /* mapdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260B1173AC5DD002F63A3 /* mapdata.plist */; };
 		8D4E3B13172AF3AB007F6A35 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF4172AF3AB007F6A35 /* DetailView.xib */; };
 		8D4E3B14172AF3AB007F6A35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF6172AF3AB007F6A35 /* Localizable.strings */; };
 		8D4E3B15172AF3AB007F6A35 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF8172AF3AB007F6A35 /* MainWindow.xib */; };
@@ -419,6 +421,8 @@
 		8D3260341738869E002F63A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsView.xib; sourceTree = "<group>"; };
 		8D326036173886B5002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/NewsView.xib; sourceTree = "<group>"; };
 		8D32607B1739715F002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		8D3260AD17398797002F63A3 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		8D3260B1173AC5DD002F63A3 /* mapdata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mapdata.plist; sourceTree = "<group>"; };
 		8D4E3AF3172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = constants.h; sourceTree = "<group>"; };
 		8D4E3AF5172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = DetailView.xib; sourceTree = "<group>"; };
 		8D4E3AF7172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
@@ -1008,6 +1012,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D3260AE17398797002F63A3 /* libsqlite3.dylib in Frameworks */,
 				8DD3A5451726280900356710 /* SystemConfiguration.framework in Frameworks */,
 				9D504DA416B6D0AE00B99EBC /* libz.dylib in Frameworks */,
 				8FD696E91655E36600324E6E /* MediaPlayer.framework in Frameworks */,
@@ -1040,11 +1045,11 @@
 				9DD65FB916FEA3CC00F2EB63 /* ImageResize.h */,
 				9DD65FBA16FEA3CC00F2EB63 /* ImageResize.m */,
 				645E4EDA1200C1C800EFF0E6 /* LoadingView.h */,
-				645E4EDB1200C1C800EFF0E6 /* LoadingView.m */,
 				642F161B1071ED1C0050BCB9 /* MapCoord.h */,
 				642F161C1071ED1C0050BCB9 /* MapCoord.m */,
 				642F15251071DA700050BCB9 /* MapViewController.h */,
 				642F15261071DA700050BCB9 /* MapViewController.m */,
+				645E4EDB1200C1C800EFF0E6 /* LoadingView.m */,
 				8FB7C20B16C55EB9001A8A48 /* NoteManager.h */,
 				8FB7C20C16C55EB9001A8A48 /* NoteManager.m */,
 				8FBCD3C716E0E58100C11EBE /* NoteViewController.h */,
@@ -1092,6 +1097,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				8D3260AD17398797002F63A3 /* libsqlite3.dylib */,
 				8DD3A5441726280900356710 /* SystemConfiguration.framework */,
 				8DD3A31A172627F000356710 /* plcrashreporter-bugsense */,
 				8D7EC6DA171F8D900076F17F /* AppIcon114.png */,
@@ -1114,6 +1120,7 @@
 			isa = PBXGroup;
 			children = (
 				64119F031069ACF800C201F0 /* TripManager.m */,
+				8D3260B1173AC5DD002F63A3 /* mapdata.plist */,
 				8D85BCC517219A870028223C /* constants.h */,
 				32CA4F630368D1EE00C91783 /* Cycle Atlanta_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -2600,6 +2607,7 @@
 				8D4E3B1F172AF3AB007F6A35 /* RecordMap.xib in Resources */,
 				8D4E3B20172AF3AB007F6A35 /* TripPurposePicker.xib in Resources */,
 				8D3260331738869E002F63A3 /* NewsView.xib in Resources */,
+				8D3260B2173AC5DD002F63A3 /* mapdata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

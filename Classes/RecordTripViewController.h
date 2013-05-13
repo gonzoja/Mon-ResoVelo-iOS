@@ -74,7 +74,7 @@
 	UITableViewCell *personalInfoCell;
 	*/
 	BOOL				didUpdateUserLocation;
-	IBOutlet MKMapView	*mapView;
+	IBOutlet MKMapView	*map;
 	
 	IBOutlet UIButton *infoButton;
 	IBOutlet UIButton *saveButton;
