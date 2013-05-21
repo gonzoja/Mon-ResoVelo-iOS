@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * rider_type;
 @property (nonatomic, retain) NSNumber * income;
 @property (nonatomic, retain) NSNumber * ethnicity;
+@property (nonatomic, retain) NSNumber * rider_winter;
 @property (nonatomic, retain) NSString * homeZIP;
 @property (nonatomic, retain) NSString * schoolZIP;
 @property (nonatomic, retain) NSString * workZIP;

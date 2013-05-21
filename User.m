@@ -19,6 +19,7 @@
 @dynamic rider_type;
 @dynamic income;
 @dynamic ethnicity;
+@dynamic rider_winter;
 @dynamic homeZIP;
 @dynamic schoolZIP;
 @dynamic workZIP;

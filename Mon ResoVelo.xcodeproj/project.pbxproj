@@ -43,7 +43,6 @@
 		64F823E1106AC151001413F8 /* SaveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F823E0106AC151001413F8 /* SaveRequest.m */; };
 		64F824E6106AFFA4001413F8 /* PersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */; };
 		8D3260331738869E002F63A3 /* NewsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260351738869E002F63A3 /* NewsView.xib */; };
-		8D3260AE17398797002F63A3 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3260AD17398797002F63A3 /* libsqlite3.dylib */; };
 		8D3260B2173AC5DD002F63A3 /* mapdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260B1173AC5DD002F63A3 /* mapdata.plist */; };
 		8D4E3B13172AF3AB007F6A35 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF4172AF3AB007F6A35 /* DetailView.xib */; };
 		8D4E3B14172AF3AB007F6A35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF6172AF3AB007F6A35 /* Localizable.strings */; };
@@ -1012,7 +1011,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D3260AE17398797002F63A3 /* libsqlite3.dylib in Frameworks */,
 				8DD3A5451726280900356710 /* SystemConfiguration.framework in Frameworks */,
 				9D504DA416B6D0AE00B99EBC /* libz.dylib in Frameworks */,
 				8FD696E91655E36600324E6E /* MediaPlayer.framework in Frameworks */,
