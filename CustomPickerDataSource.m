@@ -88,49 +88,49 @@
         
         if (pickerCategory == 0) {
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"Commute";
+            view.title = NSLocalizedString(@"Commute", nil);
             view.image = [UIImage imageNamed:kTripPurposeCommuteIcon];
             [viewArray addObject:view];
             [view release];
             
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"School";
+            view.title = NSLocalizedString(@"School", nil);
             view.image = [UIImage imageNamed:kTripPurposeSchoolIcon];
             [viewArray addObject:view];
             [view release];
             
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"Work-Related";
+            view.title = NSLocalizedString(@"Work-Related", nil);
             view.image = [UIImage imageNamed:kTripPurposeWorkIcon];
             [viewArray addObject:view];
             [view release];
             
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"Exercise";
+            view.title = NSLocalizedString(@"Exercise", nil);
             view.image = [UIImage imageNamed:kTripPurposeExerciseIcon];
             [viewArray addObject:view];
             [view release];
             
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"Social";
+            view.title = NSLocalizedString(@"Social", nil);
             view.image = [UIImage imageNamed:kTripPurposeSocialIcon];
             [viewArray addObject:view];
             [view release];
             
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"Shopping";
+            view.title = NSLocalizedString(@"Shopping", nil);
             view.image = [UIImage imageNamed:kTripPurposeShoppingIcon];
             [viewArray addObject:view];
             [view release];
             
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"Errand";
+            view.title = NSLocalizedString(@"Errand", nil);
             view.image = [UIImage imageNamed:kTripPurposeErrandIcon];
             [viewArray addObject:view];
             [view release];
             
             view = [[CustomView alloc] initWithFrame:CGRectZero];
-            view.title = @"Other";
+            view.title = NSLocalizedString(@"Other", nil);
             view.image = [UIImage imageNamed:kTripPurposeOtherIcon];
             [viewArray addObject:view];
             [view release];

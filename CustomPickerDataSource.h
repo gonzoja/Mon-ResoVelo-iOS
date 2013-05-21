@@ -38,14 +38,15 @@
 //	e-mail Billy Charlton at the SFCTA <billy.charlton@sfcta.org>
 
 // Trip Purpose descriptions
-#define kDescCommute	@"The primary reason for this bike trip is to get between home and your primary work location."
-#define kDescSchool		@"The primary reason for this bike trip is to go to or from school or college."
-#define kDescWork		@"The primary reason for this bike trip is to go to or from business-related meeting, function, or work-related errand for your job."
-#define kDescExercise	@"The primary reason for this bike trip is exercise or biking for the sake of biking."
-#define kDescSocial		@"The primary reason for this bike trip is going to or from a social activity (e.g. at a friend's house, the park, a restaurant, the movies)."
-#define kDescShopping	@"The primary reason for this bike trip is to purchase or bring home goods or groceries."
-#define kDescErrand		@"The primary reason for this bike trip is to attend to personal business such as banking, doctor visit, going to the gym, etc."
-#define kDescOther		@"If none of the other reasons apply to this trip, you can enter trip comments after saving your trip to tell us more."
+//extern #define 
+#define kDescCommute    NSLocalizedString(@"The primary reason for this bike trip is to get between home and your primary work location.", nil)
+#define kDescSchool     NSLocalizedString(@"The primary reason for this bike trip is to go to or from school or college.", nil)
+#define kDescWork       NSLocalizedString(@"The primary reason for this bike trip is to go to or from business-related meeting, function, or work-related errand for your job.", nil)
+#define kDescExercise   NSLocalizedString(@"The primary reason for this bike trip is exercise or biking for the sake of biking.", nil)
+#define kDescSocial     NSLocalizedString(@"The primary reason for this bike trip is going to or from a social activity (e.g. at a friend's house, the park, a restaurant, the movies).", nil)
+#define kDescShopping   NSLocalizedString(@"The primary reason for this bike trip is to purchase or bring home goods or groceries.", nil)
+#define kDescErrand     NSLocalizedString(@"The primary reason for this bike trip is to attend to personal business such as banking, doctor visit, going to the gym, etc.", nil)
+#define kDescOther      NSLocalizedString(@"If none of the other reasons apply to this trip, you can enter trip comments after saving your trip to tell us more.", nil)
 
 // Issue descriptions
 #define kIssueDescPavementIssue  @"Here’s a spot where the road needs to be repaired (pothole, rough concrete, gravel in the road, manhole cover, sewer grate)."
