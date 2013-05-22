@@ -888,7 +888,7 @@
 		8F9C086B16DC947A003EA308 /* Coord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coord.h; sourceTree = "<group>"; };
 		8F9C086C16DC947A003EA308 /* Coord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coord.m; sourceTree = "<group>"; };
 		8FA0AD9216BB4ED800E0E7C4 /* MonResoVelo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MonResoVelo 2.xcdatamodel"; sourceTree = "<group>"; };
-		8FA0AD9316BB4ED800E0E7C4 /* CycleAtlanta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CycleAtlanta.xcdatamodel; sourceTree = "<group>"; };
+		8FA0AD9316BB4ED800E0E7C4 /* MonResoVelo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MonResoVelo.xcdatamodel; sourceTree = "<group>"; };
 		8FAD930316F189EE00082B6F /* UIImageViewResizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageViewResizable.h; path = ../UIImageViewResizable.h; sourceTree = "<group>"; };
 		8FAD930416F189EE00082B6F /* UIImageViewResizable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageViewResizable.m; path = ../UIImageViewResizable.m; sourceTree = "<group>"; };
 		8FB7C20B16C55EB9001A8A48 /* NoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NoteManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -3097,7 +3097,7 @@
 			isa = XCVersionGroup;
 			children = (
 				8FA0AD9216BB4ED800E0E7C4 /* MonResoVelo 2.xcdatamodel */,
-				8FA0AD9316BB4ED800E0E7C4 /* CycleAtlanta.xcdatamodel */,
+				8FA0AD9316BB4ED800E0E7C4 /* MonResoVelo.xcdatamodel */,
 			);
 			currentVersion = 8FA0AD9216BB4ED800E0E7C4 /* MonResoVelo 2.xcdatamodel */;
 			path = MonResoVelo.xcdatamodeld;
