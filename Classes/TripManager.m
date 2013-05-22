@@ -410,7 +410,7 @@
             [userDict setValue:user.income          forKey:@"income"];
             [userDict setValue:user.rider_type      forKey:@"rider_type"];
             [userDict setValue:user.rider_history	forKey:@"rider_history"];
-            [userDict setValue:user.rider_winter    forKey:@"rider_winter"];
+            [userDict setValue:user.winter          forKey:@"winter"];
             [userDict setValue:appVersion           forKey:@"app_version"];
 		}
 		else

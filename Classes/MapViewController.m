@@ -177,7 +177,7 @@
 		
 		self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"elapsed: %@ ~ %@", @"elapsedTime"), [inputFormatter stringFromDate:outputDate], [dateFormatter stringFromDate:[trip start]]];
         
-		self.title = [NSString stringWithFormat:@"%@ km ~ %@ kph",
+		self.title = [NSString stringWithFormat:@"%@ km ~ %@ km/h",
 					  [nf stringFromNumber:[NSNumber numberWithDouble:[trip.distance doubleValue] / 1000]],
 					  [nf stringFromNumber:[NSNumber numberWithDouble:kph]]];
 		

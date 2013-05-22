@@ -406,7 +406,7 @@
 
 - (void)displaySelectedNoteMap
 {
-	loading		= [[LoadingView loadingViewInView:self.parentViewController.view messageString:@"Loading..."] retain];
+	loading		= [[LoadingView loadingViewInView:self.parentViewController.view messageString:NSLocalizedString(@"Loading...", nil)] retain];
 	loading.tag = 999;
 	if ( selectedNote )
 	{
@@ -487,7 +487,7 @@
     
     selectedNote = (Note *)[notes objectAtIndex:indexPath.row];
     
-    loading		= [[LoadingView loadingViewInView:self.parentViewController.view messageString:@"Loading..."] retain];
+    loading		= [[LoadingView loadingViewInView:self.parentViewController.view messageString:NSLocalizedString(@"Loading...", nil)] retain];
 	loading.tag = 999;
     [loading performSelector:@selector(removeView) withObject:nil afterDelay:0.5];
     

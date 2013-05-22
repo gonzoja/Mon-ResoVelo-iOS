@@ -176,7 +176,7 @@
     
     riderHistoryArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Since childhood", nil), NSLocalizedString(@"Several years", nil), NSLocalizedString(@"One year or less", nil), NSLocalizedString(@"Just trying it out / just started", nil), nil];
     
-    riderWinterArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Yes", nil), NSLocalizedString(@"No", nil), nil];
+    riderWinterArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"No", nil), NSLocalizedString(@"Yes", nil), nil];
     
     
     CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
@@ -257,8 +257,8 @@
         riderTypeSelectedRow    = [user.rider_type integerValue];
         riderHistory.text       = [riderHistoryArray objectAtIndex:[user.rider_history integerValue]];
         riderHistorySelectedRow = [user.rider_history integerValue];
-        riderWinter.text       = [riderWinterArray objectAtIndex:[user.rider_winter integerValue]];
-        riderWinterSelectedRow = [user.rider_winter integerValue];
+        riderWinter.text       = [riderWinterArray objectAtIndex:[user.winter integerValue]];
+        riderWinterSelectedRow = [user.winter integerValue];
 		
 		// init cycling frequency
 		//NSLog(@"init cycling freq: %d", [user.cyclingFreq intValue]);
@@ -344,7 +344,7 @@
         }else if (myTextField == riderHistory){
             selectedItem = [user.rider_history integerValue];
         }else if (myTextField == riderWinter){
-            selectedItem = [user.rider_winter integerValue];
+            selectedItem = [user.winter integerValue];
         }
         
         [pickerView selectRow:selectedItem inComponent:0 animated:NO];
@@ -464,8 +464,8 @@
         [user setRider_history:[NSNumber numberWithInt:riderHistorySelectedRow]];
         NSLog(@"saved rider history index: %@ and text: %@", user.rider_history, riderHistory.text);
         
-        [user setRider_winter:[NSNumber numberWithInt:riderWinterSelectedRow]];
-        NSLog(@"saved rider winter index: %@ and text: %@", user.rider_winter, riderWinter.text);
+        [user setWinter:[NSNumber numberWithInt:riderWinterSelectedRow]];
+        NSLog(@"saved rider winter index: %@ and text: %@", user.winter, riderWinter.text);
 
 		
 		//NSLog(@"saving cycling freq: %d", [cyclingFreq intValue]);
@@ -1175,7 +1175,7 @@
     }
     if(currentTextField == riderWinter){
         //enable save button if value has been changed.
-        if (selectedRow != [user.rider_winter integerValue]){
+        if (selectedRow != [user.winter integerValue]){
             self.navigationItem.rightBarButtonItem.enabled = YES;
         }
         

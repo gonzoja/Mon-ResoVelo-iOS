@@ -318,7 +318,7 @@
 // display map view
 - (void)displaySelectedTripMap
 {
-	loading		= [[LoadingView loadingViewInView:self.parentViewController.view messageString:@"Loading..."] retain];
+	loading		= [[LoadingView loadingViewInView:self.parentViewController.view messageString:NSLocalizedString(@"Loading...", nil)] retain];
 	loading.tag = 909;
 	[self performSelectorInBackground:@selector(_recalculateDistanceForSelectedTripMap) withObject:nil];
 }
@@ -438,22 +438,22 @@
     [timeText setTextColor:[UIColor grayColor]];
     
     UILabel *purposeText = [[[UILabel alloc] init] autorelease];
-    purposeText.frame = CGRectMake( 10, 24, 120, 30);
+    purposeText.frame = CGRectMake( 10, 24, 160, 30);
     [purposeText setFont:[UIFont boldSystemFontOfSize:18]];
     [purposeText setTextColor:[UIColor blackColor]];
     
     UILabel *durationText = [[[UILabel alloc] init] autorelease];
-    durationText.frame = CGRectMake( 140, 24, 190, 30);
+    durationText.frame = CGRectMake( 170, 24, 190, 30);
     [durationText setFont:[UIFont systemFontOfSize:18]];
     [durationText setTextColor:[UIColor blackColor]];
     
     UILabel *CO2Text = [[[UILabel alloc] init] autorelease];
-    CO2Text.frame = CGRectMake( 10, 50, 120, 20);
+    CO2Text.frame = CGRectMake( 10, 50, 160, 20);
     [CO2Text setFont:[UIFont systemFontOfSize:12]];
     [CO2Text setTextColor:[UIColor grayColor]];
     
     UILabel *CaloryText = [[[UILabel alloc] init] autorelease];
-    CaloryText.frame = CGRectMake( 140, 50, 190, 20);
+    CaloryText.frame = CGRectMake( 170, 50, 190, 20);
     [CaloryText setFont:[UIFont systemFontOfSize:12]];
     [CaloryText setTextColor:[UIColor grayColor]];
     
