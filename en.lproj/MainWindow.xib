@@ -116,9 +116,9 @@
 				</object>
 				<array class="NSMutableArray" key="IBUIViewControllers">
 					<object class="IBUINavigationController" id="609938122">
-						<string key="IBUITitle">Record</string>
+						<string key="IBUITitle">Back</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="246586907">
-							<string key="IBUITitle">Record</string>
+							<string key="IBUITitle">Back</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">tabbar_record.png</string>
@@ -144,9 +144,9 @@
 						</object>
 						<array class="NSMutableArray" key="IBUIViewControllers">
 							<object class="IBUIViewController" id="18922672">
-								<string key="IBUITitle">Record</string>
+								<string key="IBUITitle">Back</string>
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="870192499">
-									<string key="IBUITitle">Record</string>
+									<string key="IBUITitle">Back</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIParentViewController" ref="609938122"/>

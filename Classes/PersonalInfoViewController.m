@@ -48,8 +48,8 @@
 
 @synthesize delegate, managedObjectContext, user;
 @synthesize age, email, gender, ethnicity, income, homeZIP, workZIP, schoolZIP;
-@synthesize cyclingFreq, riderType, riderHistory;
-@synthesize ageSelectedRow, genderSelectedRow, ethnicitySelectedRow, incomeSelectedRow, cyclingFreqSelectedRow, riderTypeSelectedRow, riderHistorySelectedRow, selectedItem;
+@synthesize cyclingFreq, riderType, riderHistory, riderWinter;
+@synthesize ageSelectedRow, genderSelectedRow, ethnicitySelectedRow, incomeSelectedRow, cyclingFreqSelectedRow, riderTypeSelectedRow, riderHistorySelectedRow, riderWinterSelectedRow, selectedItem;
 
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -100,6 +100,16 @@
 	return textField;
 }
 
+- (UITextField*)initTextFieldGamma
+{
+	CGRect frame = CGRectMake( 7, 7, 290, 29 );
+	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
+	textField.borderStyle = UITextBorderStyleRoundedRect;
+	textField.textAlignment = UITextAlignmentRight;
+	textField.placeholder = NSLocalizedString(@"Choose one", nil);
+	textField.delegate = self;
+	return textField;
+}
 
 - (UITextField*)initTextFieldEmail
 {
@@ -123,7 +133,7 @@
 	textField.borderStyle = UITextBorderStyleRoundedRect;
 	textField.textAlignment = UITextAlignmentRight;
 	textField.placeholder = @"H1H 1A1";
-	textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+	textField.keyboardType = UIKeyboardTypeDefault;
 	textField.returnKeyType = UIReturnKeyDone;
 	textField.delegate = self;
 	return textField;
@@ -166,6 +176,8 @@
     
     riderHistoryArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Since childhood", nil), NSLocalizedString(@"Several years", nil), NSLocalizedString(@"One year or less", nil), NSLocalizedString(@"Just trying it out / just started", nil), nil];
     
+    riderWinterArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"Yes", nil), NSLocalizedString(@"No", nil), nil];
+    
     
     CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
     pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
@@ -183,9 +195,10 @@
 	self.homeZIP	= [self initTextFieldNumeric];
 	self.workZIP	= [self initTextFieldNumeric];
 	self.schoolZIP	= [self initTextFieldNumeric];
-    self.cyclingFreq = [self initTextFieldBeta];
+    self.cyclingFreq = [self initTextFieldGamma];
     self.riderType  =  [self initTextFieldBeta];
-    self.riderHistory =[self initTextFieldBeta];
+    self.riderHistory =[self initTextFieldGamma];
+    self.riderWinter = [self initTextFieldBeta];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -244,6 +257,8 @@
         riderTypeSelectedRow    = [user.rider_type integerValue];
         riderHistory.text       = [riderHistoryArray objectAtIndex:[user.rider_history integerValue]];
         riderHistorySelectedRow = [user.rider_history integerValue];
+        riderWinter.text       = [riderWinterArray objectAtIndex:[user.rider_winter integerValue]];
+        riderWinterSelectedRow = [user.rider_winter integerValue];
 		
 		// init cycling frequency
 		//NSLog(@"init cycling freq: %d", [user.cyclingFreq intValue]);
@@ -282,7 +297,7 @@
     NSLog(@"currentTextfield: picker");*/
     currentTextField = myTextField;
     
-    if(myTextField == gender || myTextField == age || myTextField == ethnicity || myTextField == income || myTextField == cyclingFreq || myTextField == riderType || myTextField == riderHistory){
+    if(myTextField == gender || myTextField == age || myTextField == income || myTextField == cyclingFreq || myTextField == riderType || myTextField == riderHistory|| myTextField == riderWinter){
         
         [myTextField resignFirstResponder];
         
@@ -328,6 +343,8 @@
             selectedItem = [user.rider_type integerValue];
         }else if (myTextField == riderHistory){
             selectedItem = [user.rider_history integerValue];
+        }else if (myTextField == riderWinter){
+            selectedItem = [user.rider_winter integerValue];
         }
         
         [pickerView selectRow:selectedItem inComponent:0 animated:NO];
@@ -446,6 +463,10 @@
         
         [user setRider_history:[NSNumber numberWithInt:riderHistorySelectedRow]];
         NSLog(@"saved rider history index: %@ and text: %@", user.rider_history, riderHistory.text);
+        
+        [user setRider_winter:[NSNumber numberWithInt:riderWinterSelectedRow]];
+        NSLog(@"saved rider winter index: %@ and text: %@", user.rider_winter, riderWinter.text);
+
 		
 		//NSLog(@"saving cycling freq: %d", [cyclingFreq intValue]);
 		//[user setCyclingFreq:cyclingFreq];
@@ -528,10 +549,13 @@
 			return NSLocalizedString(@"How often do you cycle?", nil);
 			break;
         case 4:
-			return NSLocalizedString(@"What kind of rider are you?", nil);
+			return NSLocalizedString(@"How long have you been a cyclist?", nil);
 			break;
         case 5:
-			return NSLocalizedString(@"How long have you been a cyclist?", nil);
+			return NSLocalizedString(@"Do you cycle in the winter (December to March)?", nil);
+			break;
+        case 6:
+			return NSLocalizedString(@"What kind of rider are you?", nil);
 			break;
 	}
     return nil;
@@ -589,7 +613,7 @@
             return 1;
             break;
 		case 1:
-			return 5;
+			return 4;
 			break;
 		case 2:
 			return 3;
@@ -603,6 +627,9 @@
         case 5:
 			return 1;
 			break;
+        case 6:
+            return 1;
+            break;
 		default:
 			return 0;
 	}
@@ -663,12 +690,12 @@
 					[cell.contentView addSubview:gender];
 					break;
                 case 3:
-					cell.textLabel.text = NSLocalizedString(@"Ethnicity", nil);
-					[cell.contentView addSubview:ethnicity];
+                    cell.textLabel.text = NSLocalizedString(@"Home Income", nil);
+					[cell.contentView addSubview:income];
 					break;
                 case 4:
-					cell.textLabel.text = NSLocalizedString(@"Home Income", nil);
-					[cell.contentView addSubview:income];
+                    cell.textLabel.text = NSLocalizedString(@"Ethnicity", nil);
+					[cell.contentView addSubview:ethnicity];
 					break;
 			}
 			
@@ -716,7 +743,7 @@
 			switch ([indexPath indexAtPosition:1])
 			{
 				case 0:
-                    cell.textLabel.text = NSLocalizedString(@"Cycle Frequency", nil);
+//                    cell.textLabel.text = NSLocalizedString(@"Cycle Frequency", nil);
 					[cell.contentView addSubview:cyclingFreq];
 					break;
             }
@@ -724,7 +751,50 @@
 		}
 			break;
             
+            
         case 4:
+		{
+			static NSString *CellIdentifier = @"CellHistory";
+			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			}
+            
+			// inner switch statement identifies row
+			switch ([indexPath indexAtPosition:1])
+			{
+				case 0:
+//                    cell.textLabel.text = NSLocalizedString(@"Rider History", nil);
+                    [cell.contentView addSubview:riderHistory];
+					break;
+			}
+			
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+		}
+            break;
+            
+        case 5:
+		{
+			static NSString *CellIdentifier = @"CellWinter";
+			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			}
+            
+			// inner switch statement identifies row
+			switch ([indexPath indexAtPosition:1])
+			{
+				case 0:
+                    cell.textLabel.text = NSLocalizedString(@"Winter Cyclist", nil);
+                    [cell.contentView addSubview:riderWinter];
+					break;
+			}
+			
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+		}
+            break;
+            
+        case 6:
 		{
 			static NSString *CellIdentifier = @"CellType";
 			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -744,27 +814,6 @@
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		}
 			break;
-            
-        case 5:
-		{
-			static NSString *CellIdentifier = @"CellHistory";
-			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			if (cell == nil) {
-				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-			}
-            
-			// inner switch statement identifies row
-			switch ([indexPath indexAtPosition:1])
-			{
-				case 0:
-                    cell.textLabel.text = NSLocalizedString(@"Rider History", nil);
-                    [cell.contentView addSubview:riderHistory];
-					break;
-			}
-			
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-		}
-            break;
             
 //        case 5:
 //		{
@@ -913,7 +962,18 @@
 			}
 			break;
 		}
-		
+            
+        case 6:
+		{
+			switch ([indexPath indexAtPosition:1])
+			{
+				case 0:
+					break;
+				case 1:
+					break;
+			}
+			break;
+		}
 //		case 2:
 //		{
 //			// cycling frequency
@@ -1006,6 +1066,9 @@
     else if(currentTextField == riderHistory){
         return [riderHistoryArray count];
     }
+    else if(currentTextField == riderWinter){
+        return [riderWinterArray count];
+    }
     return 0;
 }
 
@@ -1030,6 +1093,9 @@
     }
     else if(currentTextField == riderHistory){
         return [riderHistoryArray objectAtIndex:row];
+    }
+    else if(currentTextField == riderWinter){
+        return [riderWinterArray objectAtIndex:row];
     }
     return nil;
 }
@@ -1107,6 +1173,17 @@
         NSString *riderHistorySelect = [riderHistoryArray objectAtIndex:selectedRow];
         riderHistory.text = riderHistorySelect;
     }
+    if(currentTextField == riderWinter){
+        //enable save button if value has been changed.
+        if (selectedRow != [user.rider_winter integerValue]){
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+        }
+        
+        riderWinterSelectedRow = selectedRow;
+        NSString *riderWinterSelect = [riderWinterArray objectAtIndex:selectedRow];
+        riderWinter.text = riderWinterSelect;
+    }
+
     [actionSheet dismissWithClickedButtonIndex:1 animated:YES];
 }
 
@@ -1129,6 +1206,7 @@
     self.cyclingFreq = nil;
     self.riderType = nil;
     self.riderHistory = nil;
+    self.riderWinter = nil;
     self.ageSelectedRow = nil;
     self.genderSelectedRow = nil;
     self.ethnicitySelectedRow = nil;
@@ -1136,6 +1214,7 @@
     self.cyclingFreqSelectedRow = nil;
     self.riderTypeSelectedRow = nil;
     self.riderHistorySelectedRow = nil;
+    self.riderWinterSelectedRow = nil;
     self.selectedItem = nil;
     
     [delegate release];
@@ -1152,6 +1231,7 @@
     [cyclingFreq release];
     [riderType release];
     [riderHistory release];
+    [riderWinter release];
     
     [doneToolbar release];
     [actionSheet release];
@@ -1160,6 +1240,9 @@
     [genderArray release];
     [ageArray release];
     [ethnicityArray release];
+    [riderWinterArray release];
+    [riderHistoryArray release];
+    [riderTypeArray release];
     
     [super dealloc];
 }

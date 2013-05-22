@@ -370,7 +370,7 @@
 - (NSDictionary*)encodeUserData
 {
 	NSLog(@"encodeUserData");
-	NSMutableDictionary *userDict = [NSMutableDictionary dictionaryWithCapacity:7];
+	NSMutableDictionary *userDict = [NSMutableDictionary dictionaryWithCapacity:8];
 	
 	NSFetchRequest		*request = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:managedObjectContext];
@@ -410,6 +410,7 @@
             [userDict setValue:user.income          forKey:@"income"];
             [userDict setValue:user.rider_type      forKey:@"rider_type"];
             [userDict setValue:user.rider_history	forKey:@"rider_history"];
+            [userDict setValue:user.rider_winter    forKey:@"rider_winter"];
             [userDict setValue:appVersion           forKey:@"app_version"];
 		}
 		else
@@ -1192,29 +1193,29 @@
 {
 	switch (index) {
 		case kTripPurposeCommute:
-			return @"Commute";
+			return NSLocalizedString(@"Commute", nil);
 			break;
 		case kTripPurposeSchool:
-			return @"School";
+			return NSLocalizedString(@"School", nil);
 			break;
 		case kTripPurposeWork:
-			return @"Work-related";
+			return NSLocalizedString(@"Work-related", nil);
 			break;
 		case kTripPurposeExercise:
-			return @"Exercise";
+			return NSLocalizedString(@"Exercise", nil);
 			break;
 		case kTripPurposeSocial:
-			return @"Social";
+			return NSLocalizedString(@"Social", nil);
 			break;
 		case kTripPurposeShopping:
-			return @"Shopping";
+			return NSLocalizedString(@"Shopping", nil);
 			break;
 		case kTripPurposeErrand:
-			return @"Errand";
+			return NSLocalizedString(@"Errand", nil);
 			break;
 		case kTripPurposeOther:
 		default:
-			return @"Other";
+			return NSLocalizedString(@"Other", nil);
 			break;
 	}
 }

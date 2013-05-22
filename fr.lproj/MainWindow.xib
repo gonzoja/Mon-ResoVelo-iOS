@@ -70,9 +70,9 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
 				<object class="IBUINavigationController" key="IBUISelectedViewController" id="909100406">
-					<string key="IBUITitle">My Notes</string>
+					<string key="IBUITitle">Mes notes</string>
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="965922684">
-						<string key="IBUITitle">My Notes</string>
+						<string key="IBUITitle">Mes notes</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">tabbar_notes.png</string>
@@ -99,7 +99,7 @@
 					</object>
 					<array class="NSMutableArray" key="IBUIViewControllers">
 						<object class="IBUITableViewController" id="821331473">
-							<string key="IBUITitle">My Notes</string>
+							<string key="IBUITitle">Mes notes</string>
 							<object class="IBUITableView" key="IBUIView" id="980482031">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">274</int>
@@ -124,7 +124,7 @@
 								<float key="IBUISectionFooterHeight">22</float>
 							</object>
 							<object class="IBUINavigationItem" key="IBUINavigationItem" id="831821857">
-								<string key="IBUITitle">My Notes</string>
+								<string key="IBUITitle">Mes notes</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<reference key="IBUIParentViewController" ref="909100406"/>
@@ -140,7 +140,7 @@
 				</object>
 				<array class="NSMutableArray" key="IBUIViewControllers">
 					<object class="IBUINavigationController" id="609938122">
-						<string key="IBUITitle">Record</string>
+						<string key="IBUITitle">Retour</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="246586907">
 							<string key="IBUITitle">Enregistrer</string>
 							<object class="NSCustomResource" key="IBUIImage">
@@ -168,9 +168,9 @@
 						</object>
 						<array class="NSMutableArray" key="IBUIViewControllers">
 							<object class="IBUIViewController" id="18922672">
-								<string key="IBUITitle">Record</string>
+								<string key="IBUITitle">Retour</string>
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="870192499">
-									<string key="IBUITitle">Record</string>
+									<string key="IBUITitle">Retour</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIParentViewController" ref="609938122"/>
@@ -185,7 +185,7 @@
 						</array>
 					</object>
 					<object class="IBUINavigationController" id="213160608">
-						<string key="IBUITitle">My Trips</string>
+						<string key="IBUITitle">Mes tMes trajetsrajets</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="1025489404">
 							<string key="IBUITitle">Mes trajets</string>
 							<object class="NSCustomResource" key="IBUIImage">
@@ -215,7 +215,7 @@
 							<object class="IBUIViewController" id="1071074092">
 								<string key="IBUITitle">Trips</string>
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="366356441">
-									<string key="IBUITitle">My Trips</string>
+									<string key="IBUITitle">Mes trajets</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIParentViewController" ref="213160608"/>
@@ -230,7 +230,7 @@
 					</object>
 					<reference ref="909100406"/>
 					<object class="IBUINavigationController" id="197080772">
-						<string key="IBUITitle">Personal Info</string>
+						<string key="IBUITitle">Profil</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="440059487">
 							<string key="IBUITitle">Paramètres</string>
 							<object class="NSCustomResource" key="IBUIImage">
@@ -258,9 +258,9 @@
 						</object>
 						<array class="NSMutableArray" key="IBUIViewControllers">
 							<object class="IBUIViewController" id="17962692">
-								<string key="IBUITitle">Personal Info</string>
+								<string key="IBUITitle">Profil</string>
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="267837448">
-									<string key="IBUITitle">Personal Info</string>
+									<string key="IBUITitle">Profil</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIParentViewController" ref="197080772"/>
