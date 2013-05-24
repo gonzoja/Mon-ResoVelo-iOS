@@ -51,6 +51,7 @@
 #import "constants.h"
 #import "DetailViewController.h"
 #import "NoteManager.h"
+#import "NewsViewController.h"
 #import <CoreData/NSMappingModel.h>
 
 
@@ -152,7 +153,7 @@
     [notesVC initNoteManager:noteManager];
 	
 	UINavigationController	*nav	= (UINavigationController*)[tabBarController.viewControllers 
-															 objectAtIndex:3];
+															 objectAtIndex:4];
 	PersonalInfoViewController *vc	= (PersonalInfoViewController *)[nav topViewController];
 	vc.managedObjectContext			= context;
     

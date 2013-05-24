@@ -41,6 +41,8 @@
 		64F823C6106AB42B001413F8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F823C5106AB42B001413F8 /* Security.framework */; };
 		64F823E1106AC151001413F8 /* SaveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F823E0106AC151001413F8 /* SaveRequest.m */; };
 		64F824E6106AFFA4001413F8 /* PersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */; };
+		8D2292A717500B4B0006DDFE /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2292A517500B4B0006DDFE /* NewsViewController.m */; };
+		8D2292A817500B4B0006DDFE /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2292A617500B4B0006DDFE /* NewsViewController.xib */; };
 		8D3260331738869E002F63A3 /* NewsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260351738869E002F63A3 /* NewsView.xib */; };
 		8D3260B2173AC5DD002F63A3 /* mapdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260B1173AC5DD002F63A3 /* mapdata.plist */; };
 		8D4E3B13172AF3AB007F6A35 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF4172AF3AB007F6A35 /* DetailView.xib */; };
@@ -415,6 +417,9 @@
 		64F824E4106AFFA4001413F8 /* PersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoViewController.h; sourceTree = "<group>"; };
 		64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Mon-ResoVelo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mon-ResoVelo-Info.plist"; sourceTree = "<group>"; };
+		8D2292A417500B4A0006DDFE /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		8D2292A517500B4B0006DDFE /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		8D2292A617500B4B0006DDFE /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewsViewController.xib; path = Classes/NewsViewController.xib; sourceTree = "<group>"; };
 		8D3260341738869E002F63A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsView.xib; sourceTree = "<group>"; };
 		8D326036173886B5002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/NewsView.xib; sourceTree = "<group>"; };
 		8D32607B1739715F002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -1048,6 +1053,8 @@
 				8FB7C20B16C55EB9001A8A48 /* NoteManager.h */,
 				8FB7C20C16C55EB9001A8A48 /* NoteManager.m */,
 				8FBCD3C716E0E58100C11EBE /* NoteViewController.h */,
+				8D2292A417500B4A0006DDFE /* NewsViewController.h */,
+				8D2292A517500B4B0006DDFE /* NewsViewController.m */,
 				8FBCD3C816E0E58100C11EBE /* NoteViewController.m */,
 				8F5E60621602CBE000D8F85D /* NSString+MD5Addition.h */,
 				8F5E60631602CBE000D8F85D /* NSString+MD5Addition.m */,
@@ -1139,6 +1146,7 @@
 				8D3260351738869E002F63A3 /* NewsView.xib */,
 				8D7EC6B7171F897D0076F17F /* MainWindow.xib */,
 				8D7EC6BA171F89810076F17F /* MapViewController.xib */,
+				8D2292A617500B4B0006DDFE /* NewsViewController.xib */,
 				8D7EC6BD171F89890076F17F /* NoteViewController.xib */,
 				8D7EC6C0171F89AC0076F17F /* RecordMap.xib */,
 				8D7EC6C3171F89B10076F17F /* TripPurposePicker.xib */,
@@ -2601,6 +2609,7 @@
 				8D4E3B20172AF3AB007F6A35 /* TripPurposePicker.xib in Resources */,
 				8D3260331738869E002F63A3 /* NewsView.xib in Resources */,
 				8D3260B2173AC5DD002F63A3 /* mapdata.plist in Resources */,
+				8D2292A817500B4B0006DDFE /* NewsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2642,6 +2651,7 @@
 				9DD65FBB16FEA3CC00F2EB63 /* ImageResize.m in Sources */,
 				8F316F671703161E0087529E /* Model.xcmappingmodel in Sources */,
 				8D7E57D2174C1E06006AC9C1 /* CustomPickerDataSource.m in Sources */,
+				8D2292A717500B4B0006DDFE /* NewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
