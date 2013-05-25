@@ -42,7 +42,7 @@
 		64F823E1106AC151001413F8 /* SaveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F823E0106AC151001413F8 /* SaveRequest.m */; };
 		64F824E6106AFFA4001413F8 /* PersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */; };
 		8D2292A717500B4B0006DDFE /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2292A517500B4B0006DDFE /* NewsViewController.m */; };
-		8D2292A817500B4B0006DDFE /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2292A617500B4B0006DDFE /* NewsViewController.xib */; };
+		8D2292C817503C180006DDFE /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2292CA17503C180006DDFE /* NewsViewController.xib */; };
 		8D3260331738869E002F63A3 /* NewsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260351738869E002F63A3 /* NewsView.xib */; };
 		8D3260B2173AC5DD002F63A3 /* mapdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D3260B1173AC5DD002F63A3 /* mapdata.plist */; };
 		8D4E3B13172AF3AB007F6A35 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF4172AF3AB007F6A35 /* DetailView.xib */; };
@@ -419,7 +419,8 @@
 		8D1107310486CEB800E47090 /* Mon-ResoVelo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mon-ResoVelo-Info.plist"; sourceTree = "<group>"; };
 		8D2292A417500B4A0006DDFE /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		8D2292A517500B4B0006DDFE /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
-		8D2292A617500B4B0006DDFE /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewsViewController.xib; path = Classes/NewsViewController.xib; sourceTree = "<group>"; };
+		8D2292C917503C180006DDFE /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/NewsViewController.xib; sourceTree = "<group>"; };
+		8D2292CB17503C210006DDFE /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/NewsViewController.xib; sourceTree = "<group>"; };
 		8D3260341738869E002F63A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewsView.xib; sourceTree = "<group>"; };
 		8D326036173886B5002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/NewsView.xib; sourceTree = "<group>"; };
 		8D32607B1739715F002F63A3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -1146,7 +1147,7 @@
 				8D3260351738869E002F63A3 /* NewsView.xib */,
 				8D7EC6B7171F897D0076F17F /* MainWindow.xib */,
 				8D7EC6BA171F89810076F17F /* MapViewController.xib */,
-				8D2292A617500B4B0006DDFE /* NewsViewController.xib */,
+				8D2292CA17503C180006DDFE /* NewsViewController.xib */,
 				8D7EC6BD171F89890076F17F /* NoteViewController.xib */,
 				8D7EC6C0171F89AC0076F17F /* RecordMap.xib */,
 				8D7EC6C3171F89B10076F17F /* TripPurposePicker.xib */,
@@ -2609,7 +2610,7 @@
 				8D4E3B20172AF3AB007F6A35 /* TripPurposePicker.xib in Resources */,
 				8D3260331738869E002F63A3 /* NewsView.xib in Resources */,
 				8D3260B2173AC5DD002F63A3 /* mapdata.plist in Resources */,
-				8D2292A817500B4B0006DDFE /* NewsViewController.xib in Resources */,
+				8D2292C817503C180006DDFE /* NewsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2658,6 +2659,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8D2292CA17503C180006DDFE /* NewsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D2292C917503C180006DDFE /* en */,
+				8D2292CB17503C210006DDFE /* fr */,
+			);
+			name = NewsViewController.xib;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		8D3260351738869E002F63A3 /* NewsView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

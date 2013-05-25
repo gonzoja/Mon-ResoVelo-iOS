@@ -147,13 +147,13 @@
 	// set parent view so we can apply opacity mask to it
 	recordVC.parentView = tabBarController.view;
     
-    UINavigationController *notesNav = (UINavigationController*)[tabBarController.viewControllers
-                                                                 objectAtIndex:2];
-    SavedNotesViewController *notesVC = (SavedNotesViewController *)[notesNav topViewController];
-    [notesVC initNoteManager:noteManager];
+//    UINavigationController *notesNav = (UINavigationController*)[tabBarController.viewControllers
+//                                                                 objectAtIndex:2];
+//    SavedNotesViewController *notesVC = (SavedNotesViewController *)[notesNav topViewController];
+//    [notesVC initNoteManager:noteManager];
 	
 	UINavigationController	*nav	= (UINavigationController*)[tabBarController.viewControllers 
-															 objectAtIndex:4];
+															 objectAtIndex:3];
 	PersonalInfoViewController *vc	= (PersonalInfoViewController *)[nav topViewController];
 	vc.managedObjectContext			= context;
     
