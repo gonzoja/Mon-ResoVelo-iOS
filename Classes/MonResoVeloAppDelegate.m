@@ -67,12 +67,36 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
+- (void)customizeAppearance
+{
+    UIImage *tabBackground = [[self imageWithColor:[UIColor colorWithRed:239.0f/255.0f green:62.0f/255.0f blue:52.0f/255.0f alpha:1.0f] ]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [[UITabBar appearance] setBackgroundImage:tabBackground];
+}
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
 	// disable screen lock
 	//[UIApplication sharedApplication].idleTimerDisabled = NO;
 	//[UIApplication sharedApplication].idleTimerDisabled = YES;
-	
+    
+//    [self customizeAppearance];
+    tabBarController.tabBar.tintColor = [UIColor colorWithRed:239.0f/255.0f green:62.0f/255.0f blue:52.0f/255.0f alpha:1.0f];
+//    tabBarController.tabBar.
+    
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
 	
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -86,41 +110,6 @@
 	// initialize trip manager with the managed object context
 	TripManager *tripManager = [[[TripManager alloc] initWithManagedObjectContext:context] autorelease];
     NoteManager *noteManager = [[[NoteManager alloc] initWithManagedObjectContext:context] autorelease];
-	
-	
-	/*
-	 // initialize each tab's root view controller with the trip manager	
-	 RecordTripViewController *recordTripViewController = [[[RecordTripViewController alloc]
-	 initWithTripManager:manager]
-	 autorelease];
-	 
-	 // create tab bar items for the tabs themselves
-	 UIImage *image = [UIImage imageNamed:@"tabbar_record.png"];
-	 UITabBarItem *recordTab = [[UITabBarItem alloc] initWithTitle:@"Record New Trip" image:image tag:101];
-	 recordTripViewController.tabBarItem = recordTab;
-	 
-	 SavedTripsViewController *savedTripsViewController = [[[SavedTripsViewController alloc]
-	 initWithTripManager:manager]
-	 autorelease];
-	 
-	 // RecordingInProgressDelegate
-	 savedTripsViewController.delegate = recordTripViewController;
-	 
-	 image = [UIImage imageNamed:@"tabbar_view.png"];
-	 UITabBarItem *viewTab = [[UITabBarItem alloc] initWithTitle:@"View Saved Trips" image:image tag:102];
-	 savedTripsViewController.tabBarItem = viewTab;
-	 
-	 // create a navigation controller stack for each tab, set delegates to respective root view controller
-	 UINavigationController *recordTripNavController = [[UINavigationController alloc]
-	 initWithRootViewController:recordTripViewController];
-	 recordTripNavController.delegate = recordTripViewController;
-	 recordTripNavController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-	 
-	 UINavigationController *savedTripsNavController = [[UINavigationController alloc]
-	 initWithRootViewController:savedTripsViewController];
-	 savedTripsNavController.delegate = savedTripsViewController;
-	 savedTripsNavController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-	 */
 	
 	
 	UINavigationController	*recordNav	= (UINavigationController*)[tabBarController.viewControllers 
