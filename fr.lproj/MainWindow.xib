@@ -47,6 +47,7 @@
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="222182867">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -76,6 +77,10 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">tabbar_settings.png</string>
 						</object>
+						<double key="IBUIImageInsets.top">2</double>
+						<double key="IBUIImageInsets.bottom">0.0</double>
+						<double key="IBUIImageInsets.left">1</double>
+						<double key="IBUIImageInsets.right">1</double>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<reference key="IBUIParentViewController" ref="835399444"/>
@@ -206,6 +211,10 @@
 					<object class="IBUINavigationController" id="43499312">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="920208274">
 							<string key="IBUITitle">Nouvelles</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">tabbar_news.png</string>
+							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<reference key="IBUIParentViewController" ref="835399444"/>
@@ -231,6 +240,7 @@
 									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">274</int>
 									<string key="NSFrame">{{0, 20}, {320, 411}}</string>
+									<reference key="NSNextKeyView" ref="356377961"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
 									<reference key="IBUIBackgroundColor" ref="222182867"/>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -258,6 +268,7 @@
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSNextKeyView"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
 						<bytes key="NSWhite">MCAwAA</bytes>
@@ -553,6 +564,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="tabbar_news.png">{30, 30}</string>
 			<string key="tabbar_record.png">{30, 30}</string>
 			<string key="tabbar_settings.png">{30, 30}</string>
 			<string key="tabbar_view.png">{30, 30}</string>

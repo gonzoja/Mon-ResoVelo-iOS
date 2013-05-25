@@ -69,8 +69,14 @@
 
 - (void)customizeAppearance
 {
-    UIImage *tabBackground = [[self imageWithColor:[UIColor colorWithRed:239.0f/255.0f green:62.0f/255.0f blue:52.0f/255.0f alpha:1.0f] ]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [[UITabBar appearance] setBackgroundImage:tabBackground];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:240.0f/255.0f green:107.0f/255.0f blue:99.0f/255.0f alpha:1.0f]];
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:193.0f/255.0f green:0.0f/255.0f blue:13.0f/255.0f alpha:1.0f]];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] }
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] }
+                                             forState:UIControlStateHighlighted];
+    
+	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color {
@@ -94,10 +100,10 @@
 	//[UIApplication sharedApplication].idleTimerDisabled = YES;
     
 //    [self customizeAppearance];
-    tabBarController.tabBar.tintColor = [UIColor colorWithRed:239.0f/255.0f green:62.0f/255.0f blue:52.0f/255.0f alpha:1.0f];
+//    tabBarController.tabBar.tintColor = [UIColor colorWithRed:239.0f/255.0f green:62.0f/255.0f blue:52.0f/255.0f alpha:1.0f];
 //    tabBarController.tabBar.
     
-	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
+    [self customizeAppearance];
 	
     NSManagedObjectContext *context = [self managedObjectContext];
     if (!context) {
