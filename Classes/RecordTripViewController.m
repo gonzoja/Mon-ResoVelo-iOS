@@ -388,50 +388,50 @@ NSString *kmh = @"";
                                    (self.view.bounds.size.height - BUTTON_SIZE - BUTTON_PADDING_BOTTOM),
                                    BUTTON_SIZE,
                                    BUTTON_SIZE);
-    [self setButtonToStartMode:self.startStopButton];
+    [self setToStartMode];
     [self.view addSubview:self.startStopButton];
 
 }
 
--(void)setButtonToStartMode:(UIButton*)button{
+-(void)setToStartMode{
     // a really nasty way of doing this but will work for now
     // this should really just be stored in a property, to save us from having to pass it around
 //    this is going to animate a quick fade out before switching images and animating a quick fade in
     [UIView animateWithDuration:0.2
                      animations:^{
-                         button.alpha = 0.0;
+                         self.startStopButton.alpha = 0.0;
                      } completion:^(BOOL finished) {
-                         [button setBackgroundImage:[UIImage imageNamed:@"startbutton.png"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startbutton.png"]
                                            forState:UIControlStateNormal];
-                         [button setBackgroundImage:[UIImage imageNamed:@"startbuttonpressed.png"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startbuttonpressed.png"]
                                            forState:UIControlStateHighlighted];
-                         [button removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
-                         [button addTarget:self
+                         [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
+                         [self.startStopButton addTarget:self
                                     action:@selector(startButtonPressed:)
                           forControlEvents:UIControlEventTouchUpInside];
                          [UIView animateWithDuration:0.2
                                           animations:^{
-                                              button.alpha = 1.0;
+                                              self.startStopButton.alpha = 1.0;
                                           }];
                      }];
     }
 
--(void)setButtonToStopMode:(UIButton*)button{
+-(void)setToStopMode{
     [UIView animateWithDuration:0.2
                      animations:^{
-                         button.alpha = 0.0;
+                         self.startStopButton.alpha = 0.0;
                      } completion:^(BOOL finished) {
-                         [button setBackgroundImage:[UIImage imageNamed:@"stopbutton"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopbutton"]
                                            forState:UIControlStateNormal];
-                         [button setBackgroundImage:[UIImage imageNamed:@"stopbuttonpressed"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopbuttonpressed"]
                                            forState:UIControlStateHighlighted];
-                         [button removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
-                         [button addTarget:self
+                         [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
+                         [self.startStopButton addTarget:self
                                     action:@selector(stopButtonPressed:)
                           forControlEvents:UIControlEventTouchUpInside];
                          [UIView animateWithDuration:0.2
                                           animations:^{
-                                              button.alpha = 1.0;
+                                              self.startStopButton.alpha = 1.0;
                                           }];
                      }];
 
@@ -500,7 +500,7 @@ NSString *kmh = @"";
 //    remove the old and add a new target/action, and starting recording.
     assert(_isRecording == NO);
     [self startRecording];
-    [self setButtonToStopMode:sender];
+    [self setToStopMode];
 }
 
 -(void)stopButtonPressed:(UIButton*)sender{
@@ -676,7 +676,7 @@ NSString *kmh = @"";
 //    [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
 //    [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
 //    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
-    [self setButtonToStartMode:self.startStopButton];
+    [self setToStartMode];
 	
 	// reset trip, reminder managers
 	NSManagedObjectContext *context = tripManager.managedObjectContext;
