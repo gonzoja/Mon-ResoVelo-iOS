@@ -1075,6 +1075,7 @@ shouldSelectViewController:(UIViewController *)viewController
 - (void)dealloc {
     
     appDelegate.locationManager = nil;
+    self.startStopButton = nil;
     self.startButton = nil;
     self.infoButton = nil;
     self.saveButton = nil;
@@ -1100,6 +1101,7 @@ shouldSelectViewController:(UIViewController *)viewController
     [infoButton release];
     [saveButton release];
     [startButton release];
+    [_startStopButton release];
     [noteButton release];
     [timeCounter release];
     [distCounter release];
