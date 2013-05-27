@@ -399,7 +399,7 @@ NSString *kmh = @"";
 //    this is going to animate a quick fade out before switching images and animating a quick fade in
     [UIView animateWithDuration:0.2
                      animations:^{
-                         self.startStopButton.alpha = 0.0;
+                         self.startStopButton.alpha = 0.2;
                      } completion:^(BOOL finished) {
                          [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startbutton.png"]
                                            forState:UIControlStateNormal];
@@ -419,7 +419,7 @@ NSString *kmh = @"";
 -(void)setToStopMode{
     [UIView animateWithDuration:0.2
                      animations:^{
-                         self.startStopButton.alpha = 0.0;
+                         self.startStopButton.alpha = 0.2;
                      } completion:^(BOOL finished) {
                          [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopbutton"]
                                            forState:UIControlStateNormal];
