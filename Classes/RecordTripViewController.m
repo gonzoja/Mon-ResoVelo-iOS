@@ -99,37 +99,37 @@ NSString *kmh = @"";
     
     //mapview overlays
     
-    //    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
-    //    NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
-    //    NSArray *pointsArray = arrayArray[0];
-    //    //    NSArray *routesArray = [NSArray alloc
-    //
-    //     for (int i = 0; i < arrayArray.count; i++) {
-    //
-    //        pointsArray = arrayArray[i];
-    //        NSInteger pointsCount = pointsArray.count;
-    //        CLLocationCoordinate2D pointsToUse[pointsCount];
-    //        for (int j = 0; j < pointsCount ; j++){
-    //            CGPoint p = CGPointFromString(pointsArray[j]);
-    //            pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
-    //            //            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
-    //            //            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
-    //        }
-    //         //        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
-    //        MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
-    //         //        NSLog("routePolyLine Length: %@")
-    //
-    //
-    //        //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
-    //        [map addOverlay:routePolyline];
-    //        map.visibleMapRect = MKMapRectWorld;
-    //         //        map.visibleMapRect = ([routePolyline boundingMapRect]);
-    //         //        NSLog(@"overlay added");
-    //
-    //         //         free(pointsArray);
-    //    }
-    //    //    free(thePath);
-    //    //    free(arrayArray);
+//        NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
+//        NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
+//        NSArray *pointsArray = arrayArray[0];
+//    //    NSArray *routesArray = [NSArray alloc
+//
+//         for (int i = 0; i < arrayArray.count; i++) {
+//
+//            pointsArray = arrayArray[i];
+//            NSInteger pointsCount = pointsArray.count;
+//            CLLocationCoordinate2D pointsToUse[pointsCount];
+//            for (int j = 0; j < pointsCount ; j++){
+//                CGPoint p = CGPointFromString(pointsArray[j]);
+//                pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
+//                //            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
+//                //            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
+//            }
+//             //        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
+//            MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
+//             //        NSLog("routePolyLine Length: %@")
+//    
+//    
+//            //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
+//            [map addOverlay:routePolyline];
+//            map.visibleMapRect = MKMapRectWorld;
+//             //        map.visibleMapRect = ([routePolyline boundingMapRect]);
+//             //        NSLog(@"overlay added");
+//    
+//             //         free(pointsArray);
+//        }
+//        //    free(thePath);
+//        //    free(arrayArray);
     
     //    // init map region to Montreal
 	MKCoordinateRegion region = { { 45.553968,-73.664017 }, { 0.0178, 0.0168 } };
