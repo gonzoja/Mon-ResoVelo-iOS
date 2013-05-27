@@ -93,7 +93,7 @@
 	UIView *opacityMask;
 	UIView *parentView;
 	
-	BOOL recording;
+	BOOL _isRecording;
 	BOOL shouldUpdateCounter;
 	BOOL userInfoSaved;
     NSInteger pickerCategory;
@@ -128,7 +128,7 @@
 @property (nonatomic, retain) UIView   *parentView;
 
 
-@property (assign) BOOL recording;
+@property (assign) BOOL _isRecording;
 @property (assign) BOOL shouldUpdateCounter;
 @property (assign) BOOL userInfoSaved;
 

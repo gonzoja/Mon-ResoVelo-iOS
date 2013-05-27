@@ -59,7 +59,7 @@
 @synthesize noteManager;
 @synthesize infoButton, saveButton, startButton, noteButton, parentView;
 @synthesize timer, timeCounter, distCounter;
-@synthesize recording, shouldUpdateCounter, userInfoSaved;
+@synthesize _isRecording, shouldUpdateCounter, userInfoSaved;
 @synthesize appDelegate;
 @synthesize saveActionSheet;
 
@@ -142,7 +142,7 @@ NSString *kmh = @"";
 	
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = NO;
-	self.recording = NO;
+	self._isRecording = NO;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	self.shouldUpdateCounter = NO;
@@ -251,7 +251,7 @@ NSString *kmh = @"";
 		[map setCenterCoordinate:newLocation.coordinate animated:YES];
 	}
 
-	if ( recording )
+	if ( _isRecording )
 	{
 		// add to CoreData store
 		CLLocationDistance distance = [tripManager addCoord:newLocation];
@@ -364,23 +364,24 @@ NSString *kmh = @"";
 
 - (void)infoAction:(id)sender
 {
-	if ( !recording )
+	if ( !_isRecording )
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString: kInfoURL]];
 }
 
 #pragma mark - setting up UI elements
 
-//these two methods appear to be unnecessary, as buttons were already added in IB.
+
 -(void)setupStartButton{
 //    the button set up in interface builder is now being used as a placeholder.
 //    It should eventually be removed.
     
 #define BUTTON_SIZE 100.0 // height and width;
+#define BUTTON_PADDING_BOTTOM 64.0
     // to conform with preexisting layout, button should be 46px from bottom of parent view
     
     UIButton *roundStartButton = [UIButton buttonWithType:UIButtonTypeCustom];
     roundStartButton.frame = CGRectMake((self.view.bounds.size.width/2) - (BUTTON_SIZE/2),
-                                   (self.view.bounds.size.height - BUTTON_SIZE - 46),
+                                   (self.view.bounds.size.height - BUTTON_SIZE - BUTTON_PADDING_BOTTOM),
                                    BUTTON_SIZE,
                                    BUTTON_SIZE);
     [roundStartButton setBackgroundImage:[UIImage imageNamed:@"startbutton.png"]
@@ -392,9 +393,10 @@ NSString *kmh = @"";
     [self.view addSubview:roundStartButton];
     
     
-    //TODO: implement custom button
+
 }
 
+//these two methods appear to be unnecessary, as buttons were already added in IB.
 //- (UIButton *)createNoteButton
 //{
 //    UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
@@ -445,37 +447,18 @@ NSString *kmh = @"";
 // handle start button action
 - (IBAction)startButtonPressed:(UIButton *)sender
 {
-    
-    if(recording == NO)
+//    this is going to have to do a couple things: change the buttons appearance,
+//    remove the old and add a new target/action, and starting recording.
+    if(_isRecording == NO)
     {
-        NSLog(@"start");
-        
-        // start the timer if needed
-        if ( timer == nil )
-        {
-			[self resetCounter];
-			timer = [NSTimer scheduledTimerWithTimeInterval:kCounterTimeInterval
-													 target:self selector:@selector(updateCounter:)
-												   userInfo:[self newTripTimerUserInfo] repeats:YES];
-        }
-        
-        UIImage *buttonImage = [[UIImage imageNamed:@"blueButton.png"]
-                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-        UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
-                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-        [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-        [startButton setTitle:NSLocalizedString(@"Save", @"Save") forState:UIControlStateNormal];
-        
-        // set recording flag so future location updates will be added as coords
-        appDelegate = [[UIApplication sharedApplication] delegate];
-        appDelegate.isRecording = YES;
-        recording = YES;
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"recording"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        // set flag to update counter
-        shouldUpdateCounter = YES;
+        [self startRecording];
+//                UIImage *buttonImage = [[UIImage imageNamed:@"blueButton.png"]
+//                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//        UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+//                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//        [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+//        [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+//        [startButton setTitle:NSLocalizedString(@"Save", @"Save") forState:UIControlStateNormal];
     }
     // do the saving
     else
@@ -491,6 +474,28 @@ NSString *kmh = @"";
         [saveActionSheet showInView:[UIApplication sharedApplication].keyWindow];
     }
 	
+}
+-(void)startRecording{
+//    handle starting a new recording
+    NSLog(@"start");
+    if ( timer == nil )
+    {
+        [self resetCounter];
+        timer = [NSTimer scheduledTimerWithTimeInterval:kCounterTimeInterval
+                                                 target:self selector:@selector(updateCounter:)
+                                               userInfo:[self newTripTimerUserInfo] repeats:YES];
+    }
+    // set recording flag so future location updates will be added as coords
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.isRecording = YES;
+    _isRecording = YES;
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"recording"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // set flag to update counter
+    shouldUpdateCounter = YES;
+
+    
 }
 - (void)save
 {
@@ -618,7 +623,7 @@ NSString *kmh = @"";
 	// reset button states
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = NO;
-	recording = NO;
+	_isRecording = NO;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	startButton.enabled = YES;
@@ -938,7 +943,7 @@ shouldSelectViewController:(UIViewController *)viewController
 	[self.navigationController dismissModalViewControllerAnimated:YES];
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = YES;
-	recording = YES;
+	_isRecording = YES;
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	shouldUpdateCounter = YES;
@@ -958,7 +963,7 @@ shouldSelectViewController:(UIViewController *)viewController
 	// update UI
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = NO;
-	recording = NO;
+	_isRecording = NO;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	startButton.enabled = YES;
@@ -1018,7 +1023,7 @@ shouldSelectViewController:(UIViewController *)viewController
 
 - (Trip *)getRecordingInProgress
 {
-	if ( recording )
+	if ( _isRecording )
 		return tripManager.trip;
 	else
 		return nil;
@@ -1037,7 +1042,7 @@ shouldSelectViewController:(UIViewController *)viewController
     self.saveActionSheet = nil;
     self.timer = nil;
     self.parentView = nil;
-    self.recording = nil;
+    self._isRecording = nil;
     self.shouldUpdateCounter = nil;
     self.userInfoSaved = nil;
     self.tripManager = nil;
