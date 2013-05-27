@@ -435,14 +435,6 @@ NSString *kmh = @"";
                                           }];
                      }];
 
-//    [button setBackgroundImage:[UIImage imageNamed:@"stopbutton"]
-//                      forState:UIControlStateNormal];
-//    [button setBackgroundImage:[UIImage imageNamed:@"stopbuttonpressed"]
-//                      forState:UIControlStateHighlighted];
-//    [button removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
-//    [button addTarget:self
-//               action:@selector(stopButtonPressed:)
-//     forControlEvents:UIControlEventTouchUpInside];
 }
 
 //these two methods appear to be unnecessary, as buttons were already added in IB.
@@ -468,29 +460,7 @@ NSString *kmh = @"";
 //	return noteButton;
 //    
 //}
-//// instantiate start button
-//- (UIButton *)createStartButton
-//{
-//    UIImage *buttonImage = [[UIImage imageNamed:@"greenButton.png"]
-//                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
-//                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//    
-//    [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-//    [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-//    
-//    startButton.backgroundColor = [UIColor clearColor];
-//    startButton.enabled = YES;
-//    
-//    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
-//    [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    startButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
-//    startButton.titleLabel.shadowOffset = CGSizeMake (0, 0);
-//    startButton.titleLabel.textColor = [UIColor whiteColor];
-//    [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//	return startButton;
-//}
+
 
 #pragma mark - handling user actions
 // handle start button action
@@ -667,15 +637,6 @@ NSString *kmh = @"";
 	_isRecording = NO;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-//	startButton.enabled = YES;
-//    UIImage *buttonImage = [[UIImage imageNamed:@"greenButton.png"]
-//                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
-//                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//    
-//    [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-//    [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-//    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
     [self setToStartMode];
 	
 	// reset trip, reminder managers
