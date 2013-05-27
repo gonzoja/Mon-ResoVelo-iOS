@@ -149,7 +149,7 @@
 
 // IBAction handlers
 - (IBAction)save:(UIButton *)sender;
-- (void)save;
+- (void)saveAction;
 
 - (IBAction)startButtonPressed:(UIButton *)sender;
 

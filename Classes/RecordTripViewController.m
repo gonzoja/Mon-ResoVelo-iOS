@@ -457,9 +457,8 @@ NSString *kmh = @"";
                       forState:UIControlStateHighlighted];
     [sender removeTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [sender addTarget:self action:@selector(stopButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-
-    // do the saving
 }
+
 -(void)stopButtonPressed:(UIButton*)sender{
         assert(_isRecording == YES);
     NSLog(@"User Press Save Button");
@@ -495,12 +494,12 @@ NSString *kmh = @"";
 
     
 }
-- (void)save
+- (void)saveAction
 {
 	[[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"pickerCategory"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	// go directly to TripPurpose, user can cancel from there
-	if ( YES )
+	if ( YES ) //WHAT THE F   IS THIS
 	{
 		// Trip Purpose
 		NSLog(@"INIT + PUSH");
@@ -512,7 +511,7 @@ NSString *kmh = @"";
 		[self.navigationController presentModalViewController:tripPurposePickerView animated:YES];
 		[tripPurposePickerView release];
 	}
-	
+
 	// prompt to confirm first
 	else
 	{
@@ -753,7 +752,7 @@ NSString *kmh = @"";
                break;
            }
         case 1:{
-            [self save];
+            [self saveAction];
             break;
         }
 		default:{
