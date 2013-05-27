@@ -91,13 +91,6 @@ NSString *kmh = @"";
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
-    nf = [[NSNumberFormatter alloc] init];
-
-    [nf setLocale:[NSLocale currentLocale]];
-    [nf setNumberStyle:NSNumberFormatterDecimalStyle];
-    [nf setRoundingMode:NSNumberFormatterRoundHalfUp];
-    [nf setMaximumFractionDigits:1];
-    [nf setMinimumFractionDigits:1];
     
 	CLLocationDistance deltaDistance = [newLocation distanceFromLocation:oldLocation];
     
@@ -255,6 +248,14 @@ NSString *kmh = @"";
 	[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationController.navigationBarHidden = YES;
+    
+    nf = [[NSNumberFormatter alloc] init];
+    
+    [nf setLocale:[NSLocale currentLocale]];
+    [nf setNumberStyle:NSNumberFormatterDecimalStyle];
+    [nf setRoundingMode:NSNumberFormatterRoundHalfUp];
+    [nf setMaximumFractionDigits:1];
+    [nf setMinimumFractionDigits:1];
 	
 
     
