@@ -67,9 +67,9 @@
 
 NSNumberFormatter *nf;
 
-NSString *kmUnit = @"km";
+//NSString *kmUnit = @"km";
 NSString *km = @"";
-NSString *kmhUnit = @"km/h";
+//NSString *kmhUnit = @"km/h";
 NSString *kmh = @"";
 
 - (CLLocationManager *)getLocationManager {
@@ -92,16 +92,12 @@ NSString *kmh = @"";
            fromLocation:(CLLocation *)oldLocation
 {
     nf = [[NSNumberFormatter alloc] init];
-//    NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
-//    [nf setGroupingSeparator:groupingSeparator];
+
     [nf setLocale:[NSLocale currentLocale]];
-    [nf setUsesGroupingSeparator:NO];
     [nf setNumberStyle:NSNumberFormatterDecimalStyle];
-    [nf setRoundingMode:NSNumberFormatterRoundDown];
+    [nf setRoundingMode:NSNumberFormatterRoundHalfUp];
     [nf setMaximumFractionDigits:1];
     [nf setMinimumFractionDigits:1];
-    
-	
     
 	CLLocationDistance deltaDistance = [newLocation distanceFromLocation:oldLocation];
     
@@ -138,7 +134,8 @@ NSString *kmh = @"";
         
         km = [nf stringFromNumber:[NSNumber numberWithDouble:kmDouble]];
         
-        self.distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
+//        self.distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
+        self.distCounter.text = km;
 	}
 	
 	// 	double mph = ( [trip.distance doubleValue] / 1609.344 ) / ( [trip.duration doubleValue] / 3600. );
@@ -152,7 +149,9 @@ NSString *kmh = @"";
         kmh = [nf stringFromNumber:[NSNumber numberWithInt:0]];
        
     }
-     speedCounter.text = [[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
+//    speedCounter.text = [[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
+    speedCounter.text = kmh;
+
 }
 
 
@@ -730,10 +729,12 @@ NSString *kmh = @"";
 	if ( timeCounter != nil )
 		timeCounter.text = @"00:00:00";
 	
-	if ( distCounter != nil )
+	if ( distCounter != nil ){
         
         km = [nf stringFromNumber:[NSNumber numberWithInt:0]];
-		distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
+//		distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
+        distCounter.text = km;
+    }
 }
 
 
@@ -755,10 +756,11 @@ NSString *kmh = @"";
 		timeCounter.text = [inputFormatter stringFromDate:outputDate];
 	}
 	
-	if ( distCounter != nil )
-        kmh = [nf stringFromNumber:[NSNumber numberWithInt:0]];
-		distCounter.text = [[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
-;
+	if ( distCounter != nil ){
+        km = [nf stringFromNumber:[NSNumber numberWithInt:0]];
+//		distCounter.text = [[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
+        distCounter.text = km;
+    }
 }
 
 
@@ -1026,8 +1028,8 @@ shouldSelectViewController:(UIViewController *)viewController
     self.appDelegate = nil;
     km = nil;
     kmh = nil;
-    kmhUnit=nil;
-    kmhUnit=nil;
+//    kmhUnit=nil;
+//    kmhUnit=nil;
     
 //    [appDelegate.locationManager release];
     [appDelegate release];

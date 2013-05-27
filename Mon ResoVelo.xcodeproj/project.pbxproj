@@ -49,7 +49,6 @@
 		8D4E3B15172AF3AB007F6A35 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AF8172AF3AB007F6A35 /* MainWindow.xib */; };
 		8D4E3B16172AF3AB007F6A35 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AFA172AF3AB007F6A35 /* MapViewController.xib */; };
 		8D4E3B17172AF3AB007F6A35 /* PersonalInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AFC172AF3AB007F6A35 /* PersonalInfo.xib */; };
-		8D4E3B18172AF3AB007F6A35 /* RecordMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3AFE172AF3AB007F6A35 /* RecordMap.xib */; };
 		8D4E3B19172AF3AB007F6A35 /* TripPurposePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3B00172AF3AB007F6A35 /* TripPurposePicker.xib */; };
 		8D4E3B1A172AF3AB007F6A35 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3B05172AF3AB007F6A35 /* DetailView.xib */; };
 		8D4E3B1B172AF3AB007F6A35 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E3B07172AF3AB007F6A35 /* Localizable.strings */; };
@@ -430,7 +429,6 @@
 		8D4E3AF9172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MainWindow.xib; sourceTree = "<group>"; };
 		8D4E3AFB172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MapViewController.xib; sourceTree = "<group>"; };
 		8D4E3AFD172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = PersonalInfo.xib; sourceTree = "<group>"; };
-		8D4E3AFF172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = RecordMap.xib; sourceTree = "<group>"; };
 		8D4E3B01172AF3AB007F6A35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = TripPurposePicker.xib; sourceTree = "<group>"; };
 		8D4E3B06172AF3AB007F6A35 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = DetailView.xib; sourceTree = "<group>"; };
 		8D4E3B08172AF3AB007F6A35 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
@@ -448,7 +446,6 @@
 		8D7E57D3174C23C1006AC9C1 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		8D7EC6B6171F897D0076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		8D7EC6B9171F89810076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MapViewController.xib; sourceTree = "<group>"; };
-		8D7EC6BF171F89AC0076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RecordMap.xib; sourceTree = "<group>"; };
 		8D7EC6C2171F89B10076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TripPurposePicker.xib; sourceTree = "<group>"; };
 		8D7EC6C5171F89B80076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailView.xib; sourceTree = "<group>"; };
 		8D7EC6C8171F89BC0076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TripDetailViewController.xib; sourceTree = "<group>"; };
@@ -463,6 +460,7 @@
 		8D7EC6D7171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PersonalInfo.xib; sourceTree = "<group>"; };
 		8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon57.png; sourceTree = "<group>"; };
 		8D7EC6DA171F8D900076F17F /* AppIcon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon114.png; sourceTree = "<group>"; };
+		8DA2DA0F17533A690012F907 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RecordMap.xib; sourceTree = "<group>"; };
 		8DD3A31B172627F000356710 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8DD3A31D172627F000356710 /* BugSense-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BugSense-iOS-Info.plist"; sourceTree = "<group>"; };
 		8DD3A31E172627F000356710 /* BugSense-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BugSense-iOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -1244,7 +1242,6 @@
 				8D4E3AF8172AF3AB007F6A35 /* MainWindow.xib */,
 				8D4E3AFA172AF3AB007F6A35 /* MapViewController.xib */,
 				8D4E3AFC172AF3AB007F6A35 /* PersonalInfo.xib */,
-				8D4E3AFE172AF3AB007F6A35 /* RecordMap.xib */,
 				8D4E3B00172AF3AB007F6A35 /* TripPurposePicker.xib */,
 			);
 			path = en.lproj;
@@ -2599,7 +2596,6 @@
 				8D4E3B15172AF3AB007F6A35 /* MainWindow.xib in Resources */,
 				8D4E3B16172AF3AB007F6A35 /* MapViewController.xib in Resources */,
 				8D4E3B17172AF3AB007F6A35 /* PersonalInfo.xib in Resources */,
-				8D4E3B18172AF3AB007F6A35 /* RecordMap.xib in Resources */,
 				8D4E3B19172AF3AB007F6A35 /* TripPurposePicker.xib in Resources */,
 				8D4E3B1A172AF3AB007F6A35 /* DetailView.xib in Resources */,
 				8D4E3B1B172AF3AB007F6A35 /* Localizable.strings in Resources */,
@@ -2712,14 +2708,6 @@
 			name = PersonalInfo.xib;
 			sourceTree = "<group>";
 		};
-		8D4E3AFE172AF3AB007F6A35 /* RecordMap.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8D4E3AFF172AF3AB007F6A35 /* en */,
-			);
-			name = RecordMap.xib;
-			sourceTree = "<group>";
-		};
 		8D4E3B00172AF3AB007F6A35 /* TripPurposePicker.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2818,8 +2806,8 @@
 		8D7EC6C0171F89AC0076F17F /* RecordMap.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8D7EC6BF171F89AC0076F17F /* en */,
 				8D7EC6D3171F8BE60076F17F /* fr */,
+				8DA2DA0F17533A690012F907 /* en */,
 			);
 			name = RecordMap.xib;
 			sourceTree = "<group>";

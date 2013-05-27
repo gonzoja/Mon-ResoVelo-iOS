@@ -659,6 +659,7 @@
 			{
 				case 0:
 					cell.textLabel.text = NSLocalizedString(@"Getting started with Mon RésoVélo", nil);
+                    cell.textLabel.textAlignment = NSTextAlignmentCenter;
 					break;
 			}
 			
