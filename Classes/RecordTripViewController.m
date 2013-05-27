@@ -449,35 +449,33 @@ NSString *kmh = @"";
 {
 //    this is going to have to do a couple things: change the buttons appearance,
 //    remove the old and add a new target/action, and starting recording.
-    if(_isRecording == NO)
-    {
-        [self startRecording];
-//                UIImage *buttonImage = [[UIImage imageNamed:@"blueButton.png"]
-//                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//        UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
-//                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-//        [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-//        [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-//        [startButton setTitle:NSLocalizedString(@"Save", @"Save") forState:UIControlStateNormal];
-    }
+    assert(_isRecording == NO);
+    [self startRecording];
+    [sender setBackgroundImage:[UIImage imageNamed:@"stopbutton"]
+                      forState:UIControlStateNormal];
+    [sender setBackgroundImage:[UIImage imageNamed:@"stopbuttonpressed"]
+                      forState:UIControlStateHighlighted];
+    [sender removeTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [sender addTarget:self action:@selector(stopButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+
     // do the saving
-    else
-    {
-        NSLog(@"User Press Save Button");
-        saveActionSheet = [[UIActionSheet alloc]
-                           initWithTitle:@""
-                           delegate:self
-                           cancelButtonTitle:NSLocalizedString(@"Continue", @"Continue")
-                           destructiveButtonTitle:NSLocalizedString(@"Discard", @"Discard")
-                           otherButtonTitles:NSLocalizedString(@"Save", @"Save"),nil];
-        //[saveActionSheet showInView:self.view];
-        [saveActionSheet showInView:[UIApplication sharedApplication].keyWindow];
-    }
-	
+}
+-(void)stopButtonPressed:(UIButton*)sender{
+        assert(_isRecording == YES);
+    NSLog(@"User Press Save Button");
+    saveActionSheet = [[UIActionSheet alloc]
+                       initWithTitle:@""
+                       delegate:self
+                       cancelButtonTitle:NSLocalizedString(@"Continue", @"Continue")
+                       destructiveButtonTitle:NSLocalizedString(@"Discard", @"Discard")
+                       otherButtonTitles:NSLocalizedString(@"Save", @"Save"),nil];
+    //[saveActionSheet showInView:self.view];
+    [saveActionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 -(void)startRecording{
 //    handle starting a new recording
-    NSLog(@"start");
+
+    NSLog(@"starting recording");
     if ( timer == nil )
     {
         [self resetCounter];
