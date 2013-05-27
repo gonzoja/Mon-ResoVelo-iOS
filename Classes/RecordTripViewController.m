@@ -136,6 +136,7 @@ NSString *kmh = @"";
 	infoButton.showsTouchWhenHighlighted = YES;
 	
 	// Set up the buttons.
+    [self setupStartButton];
 //	[self.view addSubview:[self createStartButton]];
 //    [self.view addSubview:[self createNoteButton]];
 	
@@ -368,51 +369,77 @@ NSString *kmh = @"";
 }
 
 #pragma mark - setting up UI elements
-- (UIButton *)createNoteButton
-{
-    UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
-                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
-                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    
-    [noteButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [noteButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    [noteButton setTitleColor:[[[UIColor alloc] initWithRed:185.0 / 255 green:91.0 / 255 blue:47.0 / 255 alpha:1.0 ] autorelease] forState:UIControlStateHighlighted];
-    
-//    noteButton.backgroundColor = [UIColor clearColor];
-    noteButton.enabled = NO;
-    
-    [noteButton setTitle:@"Note this..." forState:UIControlStateNormal];
 
-//    noteButton.titleLabel.font = [UIFont boldSystemFontOfSize: 24];
-    [noteButton addTarget:self action:@selector(notethis:) forControlEvents:UIControlEventTouchUpInside];
+//these two methods appear to be unnecessary, as buttons were already added in IB.
+-(void)setupStartButton{
+//    the button set up in interface builder is now being used as a placeholder.
+//    It should eventually be removed.
     
-	return noteButton;
+#define BUTTON_SIZE 100.0 // height and width;
+    // to conform with preexisting layout, button should be 46px from bottom of parent view
     
+    UIButton *roundStartButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    roundStartButton.frame = CGRectMake((self.view.bounds.size.width/2) - (BUTTON_SIZE/2),
+                                   (self.view.bounds.size.height - BUTTON_SIZE - 46),
+                                   BUTTON_SIZE,
+                                   BUTTON_SIZE);
+    [roundStartButton setBackgroundImage:[UIImage imageNamed:@"startbutton.png"]
+                                forState:UIControlStateNormal];
+    [roundStartButton setBackgroundImage:[UIImage imageNamed:@"startbuttonpressed.png"]
+                                forState:UIControlStateHighlighted];
+    [roundStartButton addTarget:self
+                         action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:roundStartButton];
+    
+    
+    //TODO: implement custom button
 }
-// instantiate start button
-- (UIButton *)createStartButton
-{
-    UIImage *buttonImage = [[UIImage imageNamed:@"greenButton.png"]
-                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
-                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    
-    [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    
-    startButton.backgroundColor = [UIColor clearColor];
-    startButton.enabled = YES;
-    
-    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
-    [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    startButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
-    startButton.titleLabel.shadowOffset = CGSizeMake (0, 0);
-    startButton.titleLabel.textColor = [UIColor whiteColor];
-    [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-	return startButton;
-}
+
+//- (UIButton *)createNoteButton
+//{
+//    UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
+//                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
+//                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    
+//    [noteButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+//    [noteButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+//    [noteButton setTitleColor:[[[UIColor alloc] initWithRed:185.0 / 255 green:91.0 / 255 blue:47.0 / 255 alpha:1.0 ] autorelease] forState:UIControlStateHighlighted];
+//    
+////    noteButton.backgroundColor = [UIColor clearColor];
+//    noteButton.enabled = NO;
+//    
+//    [noteButton setTitle:@"Note this..." forState:UIControlStateNormal];
+//
+////    noteButton.titleLabel.font = [UIFont boldSystemFontOfSize: 24];
+//    [noteButton addTarget:self action:@selector(notethis:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//	return noteButton;
+//    
+//}
+//// instantiate start button
+//- (UIButton *)createStartButton
+//{
+//    UIImage *buttonImage = [[UIImage imageNamed:@"greenButton.png"]
+//                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
+//                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    
+//    [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+//    [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+//    
+//    startButton.backgroundColor = [UIColor clearColor];
+//    startButton.enabled = YES;
+//    
+//    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
+//    [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    startButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
+//    startButton.titleLabel.shadowOffset = CGSizeMake (0, 0);
+//    startButton.titleLabel.textColor = [UIColor whiteColor];
+//    [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//	return startButton;
+//}
 
 #pragma mark - handling user actions
 // handle start button action

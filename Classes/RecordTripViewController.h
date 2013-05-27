@@ -163,8 +163,8 @@
 - (void)setCounterTimeSince:(NSDate *)startDate distance:(CLLocationDistance)distance;
 - (void)updateCounter:(NSTimer *)theTimer;
 
-- (UIButton *)createSaveButton;
-- (UIButton *)createStartButton;
+//- (UIButton *)createSaveButton;
+//- (UIButton *)createStartButton;
 - (UIButton *)createNoteButton;
 
 - (void)displayUploadedTripMap;
