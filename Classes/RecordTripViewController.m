@@ -136,8 +136,8 @@ NSString *kmh = @"";
 	infoButton.showsTouchWhenHighlighted = YES;
 	
 	// Set up the buttons.
-	[self.view addSubview:[self createStartButton]];
-    [self.view addSubview:[self createNoteButton]];
+//	[self.view addSubview:[self createStartButton]];
+//    [self.view addSubview:[self createNoteButton]];
 	
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = NO;
@@ -409,14 +409,14 @@ NSString *kmh = @"";
     startButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
     startButton.titleLabel.shadowOffset = CGSizeMake (0, 0);
     startButton.titleLabel.textColor = [UIColor whiteColor];
-    [startButton addTarget:self action:@selector(start:) forControlEvents:UIControlEventTouchUpInside];
+    [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
 	return startButton;
 }
 
 #pragma mark - handling user actions
 // handle start button action
-- (IBAction)start:(UIButton *)sender
+- (IBAction)startButtonPressed:(UIButton *)sender
 {
     
     if(recording == NO)

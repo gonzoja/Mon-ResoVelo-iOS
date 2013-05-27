@@ -151,13 +151,13 @@
 - (IBAction)save:(UIButton *)sender;
 - (void)save;
 
-- (IBAction)start:(UIButton *)sender;
+- (IBAction)startButtonPressed:(UIButton *)sender;
 
 -(IBAction)notethis:(id)sender;
 
 
 // timer methods
-- (void)start:(UIButton *)sender;
+- (void)startButtonPressed:(UIButton *)sender;
 - (void)createCounter;
 - (void)resetCounter;
 - (void)setCounterTimeSince:(NSDate *)startDate distance:(CLLocationDistance)distance;
