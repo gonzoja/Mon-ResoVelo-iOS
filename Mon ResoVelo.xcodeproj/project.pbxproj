@@ -1096,12 +1096,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				8D3260AD17398797002F63A3 /* libsqlite3.dylib */,
-				8DD3A5441726280900356710 /* SystemConfiguration.framework */,
 				8DD3A31A172627F000356710 /* plcrashreporter-bugsense */,
-				8D7EC6DA171F8D900076F17F /* AppIcon114.png */,
-				8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */,
-				9D504DA316B6D0AE00B99EBC /* libz.dylib */,
 				64119AA81068672100C201F0 /* Trip Purpose data source */,
 				6411992B1068371B00C201F0 /* Data Model */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -1130,6 +1125,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D7EC6DA171F8D900076F17F /* AppIcon114.png */,
+				8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */,
 				9D46482B1604EF3800A4F9CB /* TabBarIcons V2 */,
 				9D4648201604EF2F00A4F9CB /* UI Elements */,
 				9D4647FB1604EF2600A4F9CB /* TripPurposePickerIcons V3 */,
@@ -1156,6 +1153,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D3260AD17398797002F63A3 /* libsqlite3.dylib */,
+				8DD3A5441726280900356710 /* SystemConfiguration.framework */,
+				9D504DA316B6D0AE00B99EBC /* libz.dylib */,
 				8FD696E81655E36600324E6E /* MediaPlayer.framework */,
 				8FD696E51655E35800324E6E /* MobileCoreServices.framework */,
 				642647FC107435A200E43DEF /* AudioToolbox.framework */,
