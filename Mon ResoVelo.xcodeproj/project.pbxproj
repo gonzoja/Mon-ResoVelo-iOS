@@ -432,6 +432,8 @@
 		64F823E0106AC151001413F8 /* SaveRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveRequest.m; sourceTree = "<group>"; };
 		64F824E4106AFFA4001413F8 /* PersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoViewController.h; sourceTree = "<group>"; };
 		64F824E5106AFFA4001413F8 /* PersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoViewController.m; sourceTree = "<group>"; };
+		8D01DF1E1754FB7C009DD879 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RecordMap.xib; sourceTree = "<group>"; };
+		8D01DF1F1754FC58009DD879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RecordMap.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Mon-ResoVelo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mon-ResoVelo-Info.plist"; sourceTree = "<group>"; };
 		8D2292A417500B4A0006DDFE /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		8D2292A517500B4B0006DDFE /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
@@ -469,14 +471,12 @@
 		8D7EC6CF171F8AC40076F17F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NoteViewController.xib; sourceTree = "<group>"; };
 		8D7EC6D1171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MapViewController.xib; sourceTree = "<group>"; };
 		8D7EC6D2171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/NoteViewController.xib; sourceTree = "<group>"; };
-		8D7EC6D3171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RecordMap.xib; sourceTree = "<group>"; };
 		8D7EC6D4171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/TripPurposePicker.xib; sourceTree = "<group>"; };
 		8D7EC6D5171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/DetailView.xib; sourceTree = "<group>"; };
 		8D7EC6D6171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/TripDetailViewController.xib; sourceTree = "<group>"; };
 		8D7EC6D7171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PersonalInfo.xib; sourceTree = "<group>"; };
 		8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon57.png; sourceTree = "<group>"; };
 		8D7EC6DA171F8D900076F17F /* AppIcon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon114.png; sourceTree = "<group>"; };
-		8DA2DA0F17533A690012F907 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RecordMap.xib; sourceTree = "<group>"; };
 		8DD3A31B172627F000356710 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8DD3A31D172627F000356710 /* BugSense-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BugSense-iOS-Info.plist"; sourceTree = "<group>"; };
 		8DD3A31E172627F000356710 /* BugSense-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BugSense-iOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -2846,8 +2846,8 @@
 		8D7EC6C0171F89AC0076F17F /* RecordMap.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8D7EC6D3171F8BE60076F17F /* fr */,
-				8DA2DA0F17533A690012F907 /* en */,
+				8D01DF1E1754FB7C009DD879 /* fr */,
+				8D01DF1F1754FC58009DD879 /* en */,
 			);
 			name = RecordMap.xib;
 			sourceTree = "<group>";
