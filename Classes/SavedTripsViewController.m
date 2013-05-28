@@ -596,12 +596,12 @@
     
     CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), 0.93 * [trip.distance doubleValue] / 1000];
     
-    double calory = 49 * [trip.distance doubleValue] / 1609.344 - 1.69; //TODO Update these formulas
-    if (calory <= 0) {
+    double calorie = 49 * [trip.distance doubleValue] / 1609.344 - 1.69; //TODO Update these formulas
+    if (calorie <= 0) {
         CaloryText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
     }
     else
-        CaloryText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calory];
+        CaloryText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calorie];
     
     [cell.contentView addSubview:CaloryText];
     [cell.contentView addSubview:CO2Text];
