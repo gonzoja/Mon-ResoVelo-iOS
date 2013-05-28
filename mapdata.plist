@@ -20,6 +20,23 @@
 		<string>{45.519849, -73.618085}</string>
 	</array>
 	<array>
+		<string>{45.519027, -73.605019}</string>
+		<string>{45.518388, -73.605584}</string>
+		<string>{45.51773, -73.606186}</string>
+		<string>{45.516721, -73.607056}</string>
+		<string>{45.516118, -73.607685}</string>
+	</array>
+    <array>
+		<string>{45.517543, -73.610896}</string>
+		<string>{45.51694, -73.61143}</string>
+		<string>{45.516828, -73.611536}</string>
+	</array>
+    <array>
+		<string>{45.521184, -73.61692}</string>
+		<string>{45.520527, -73.617497}</string>
+		<string>{45.519849, -73.618085}</string>
+	</array>
+	<array>
 		<string>{45.52203,-73.549092}</string>
 		<string>{45.521541,-73.549552}</string>
 		<string>{45.521399,-73.549686}</string>

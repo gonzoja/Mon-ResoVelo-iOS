@@ -52,6 +52,7 @@
 
 //TODO: Fix incomplete implementation
 @interface RecordTripViewController ()
+@property (nonatomic, retain) UIImageView* buttonRing;
 @property (nonatomic, retain) UIButton* startStopButton; // our current actual start/stop button
 
 @end
@@ -99,37 +100,37 @@ NSString *kmh = @"";
     
     //mapview overlays
     
-    //    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
-    //    NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
-    //    NSArray *pointsArray = arrayArray[0];
-    //    //    NSArray *routesArray = [NSArray alloc
-    //
-    //     for (int i = 0; i < arrayArray.count; i++) {
-    //
-    //        pointsArray = arrayArray[i];
-    //        NSInteger pointsCount = pointsArray.count;
-    //        CLLocationCoordinate2D pointsToUse[pointsCount];
-    //        for (int j = 0; j < pointsCount ; j++){
-    //            CGPoint p = CGPointFromString(pointsArray[j]);
-    //            pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
-    //            //            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
-    //            //            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
-    //        }
-    //         //        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
-    //        MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
-    //         //        NSLog("routePolyLine Length: %@")
-    //
-    //
-    //        //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
-    //        [map addOverlay:routePolyline];
-    //        map.visibleMapRect = MKMapRectWorld;
-    //         //        map.visibleMapRect = ([routePolyline boundingMapRect]);
-    //         //        NSLog(@"overlay added");
-    //
-    //         //         free(pointsArray);
-    //    }
-    //    //    free(thePath);
-    //    //    free(arrayArray);
+//        NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
+//        NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
+//        NSArray *pointsArray = arrayArray[0];
+//    //    NSArray *routesArray = [NSArray alloc
+//
+//         for (int i = 0; i < arrayArray.count; i++) {
+//
+//            pointsArray = arrayArray[i];
+//            NSInteger pointsCount = pointsArray.count;
+//            CLLocationCoordinate2D pointsToUse[pointsCount];
+//            for (int j = 0; j < pointsCount ; j++){
+//                CGPoint p = CGPointFromString(pointsArray[j]);
+//                pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
+//                //            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
+//                //            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
+//            }
+//             //        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
+//            MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
+//             //        NSLog("routePolyLine Length: %@")
+//    
+//    
+//            //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
+//            [map addOverlay:routePolyline];
+//            map.visibleMapRect = MKMapRectWorld;
+//             //        map.visibleMapRect = ([routePolyline boundingMapRect]);
+//             //        NSLog(@"overlay added");
+//    
+//             //         free(pointsArray);
+//        }
+//        //    free(thePath);
+//        //    free(arrayArray);
     
     //    // init map region to Montreal
 	MKCoordinateRegion region = { { 45.553968,-73.664017 }, { 0.0178, 0.0168 } };
@@ -382,28 +383,31 @@ NSString *kmh = @"";
 #define BUTTON_SIZE 100.0 // height and width;
 #define BUTTON_PADDING_BOTTOM 64.0
     // to conform with preexisting layout, button should be 46px from bottom of parent view
-    
+//    the outer 'ring' of the record/stop button is a seperate imageview that doesn't change.
+    self.buttonRing = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"buttoncircle"]];
+    self.buttonRing.frame = CGRectMake((self.view.bounds.size.width/2) - (BUTTON_SIZE/2),
+                                       (self.view.bounds.size.height - BUTTON_SIZE - BUTTON_PADDING_BOTTOM),
+                                       BUTTON_SIZE,
+                                       BUTTON_SIZE);
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.startStopButton.frame = CGRectMake((self.view.bounds.size.width/2) - (BUTTON_SIZE/2),
-                                   (self.view.bounds.size.height - BUTTON_SIZE - BUTTON_PADDING_BOTTOM),
-                                   BUTTON_SIZE,
-                                   BUTTON_SIZE);
+    self.startStopButton.frame = self.buttonRing.frame;
     [self setToStartMode];
+    [self.view addSubview:self.buttonRing];
     [self.view addSubview:self.startStopButton];
 
 }
 
 -(void)setToStartMode{
+    //these two methods are just for toggling the visual appearance of the start/stop button.
     // a really nasty way of doing this but will work for now
-    // this should really just be stored in a property, to save us from having to pass it around
 //    this is going to animate a quick fade out before switching images and animating a quick fade in
     [UIView animateWithDuration:0.2
                      animations:^{
                          self.startStopButton.alpha = 0.2;
                      } completion:^(BOOL finished) {
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startbutton.png"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcircle"]
                                            forState:UIControlStateNormal];
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startbuttonpressed.png"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcirclepressed"]
                                            forState:UIControlStateHighlighted];
                          [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
                          [self.startStopButton addTarget:self
@@ -421,9 +425,9 @@ NSString *kmh = @"";
                      animations:^{
                          self.startStopButton.alpha = 0.2;
                      } completion:^(BOOL finished) {
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopbutton"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquare"]
                                            forState:UIControlStateNormal];
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopbuttonpressed"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquarepressed"]
                                            forState:UIControlStateHighlighted];
                          [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
                          [self.startStopButton addTarget:self
@@ -474,6 +478,8 @@ NSString *kmh = @"";
 }
 
 -(void)stopButtonPressed:(UIButton*)sender{
+//    stop updating the counter:
+    shouldUpdateCounter = NO;
         assert(_isRecording == YES);
     NSLog(@"User Press Save Button");
     saveActionSheet = [[UIActionSheet alloc]
@@ -1036,6 +1042,7 @@ shouldSelectViewController:(UIViewController *)viewController
 - (void)dealloc {
     
     appDelegate.locationManager = nil;
+    self.buttonRing = nil;
     self.startStopButton = nil;
     self.startButton = nil;
     self.infoButton = nil;
@@ -1063,6 +1070,7 @@ shouldSelectViewController:(UIViewController *)viewController
     [saveButton release];
     [startButton release];
     [_startStopButton release];
+    [_buttonRing release];
     [noteButton release];
     [timeCounter release];
     [distCounter release];
