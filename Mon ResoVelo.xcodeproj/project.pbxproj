@@ -81,6 +81,8 @@
 		8D7EC6D9171F8D8A0076F17F /* AppIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */; };
 		8D7EC6DB171F8D900076F17F /* AppIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7EC6DA171F8D900076F17F /* AppIcon114.png */; };
 		8DD3A5451726280900356710 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD3A5441726280900356710 /* SystemConfiguration.framework */; };
+		8DDEF17517552DB00096A119 /* GHGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDEF17417552DB00096A119 /* GHGModel.m */; };
+		8DDEF19717553AEF0096A119 /* CalorieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDEF19617553AEF0096A119 /* CalorieModel.m */; };
 		8F1B1D3F164B94C60022B776 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1B1D3E164B94C60022B776 /* DetailViewController.m */; };
 		8F20B0AC16F0F08A00031712 /* TripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F20B0AA16F0F08A00031712 /* TripDetailViewController.m */; };
 		8F25EC7916E13E7C004263D4 /* SavedNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F25EC7716E13E7B004263D4 /* SavedNotesViewController.m */; };
@@ -398,7 +400,7 @@
 		64119ABD10689ED800C201F0 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PickerViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		64119ABE10689ED800C201F0 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PickerViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		64119F021069ACF800C201F0 /* TripManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripManager.h; sourceTree = "<group>"; };
-		64119F031069ACF800C201F0 /* TripManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripManager.m; path = Classes/TripManager.m; sourceTree = "<group>"; };
+		64119F031069ACF800C201F0 /* TripManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripManager.m; sourceTree = "<group>"; };
 		6411A186106A90E400C201F0 /* commute.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = commute.tif; sourceTree = "<group>"; };
 		6411A187106A90E400C201F0 /* errands.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = errands.tif; sourceTree = "<group>"; };
 		6411A188106A90E400C201F0 /* exercise.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = exercise.tif; sourceTree = "<group>"; };
@@ -891,6 +893,10 @@
 		8DD3A4F3172627F200356710 /* SymbolicatorLogicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SymbolicatorLogicTests.m; sourceTree = "<group>"; };
 		8DD3A4F4172627F200356710 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8DD3A5441726280900356710 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8DDEF17317552DB00096A119 /* GHGModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHGModel.h; sourceTree = "<group>"; };
+		8DDEF17417552DB00096A119 /* GHGModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHGModel.m; sourceTree = "<group>"; };
+		8DDEF19517553AEE0096A119 /* CalorieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalorieModel.h; sourceTree = "<group>"; };
+		8DDEF19617553AEF0096A119 /* CalorieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalorieModel.m; sourceTree = "<group>"; };
 		8F1B1D3D164B94C60022B776 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		8F1B1D3E164B94C60022B776 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8F20B0A916F0F08A00031712 /* TripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDetailViewController.h; sourceTree = "<group>"; };
@@ -1074,6 +1080,7 @@
 				64F823DF106AC151001413F8 /* SaveRequest.h */,
 				64F823E0106AC151001413F8 /* SaveRequest.m */,
 				64119F021069ACF800C201F0 /* TripManager.h */,
+				64119F031069ACF800C201F0 /* TripManager.m */,
 				6433E54E106D542100C27387 /* TripPurposeDelegate.h */,
 				8F5E60641602CBE000D8F85D /* UIDevice+IdentifierAddition.h */,
 				8F5E60651602CBE000D8F85D /* UIDevice+IdentifierAddition.m */,
@@ -1081,6 +1088,10 @@
 				8FAD930416F189EE00082B6F /* UIImageViewResizable.m */,
 				9D504D9F16B6CF4000B99EBC /* ZipUtil.h */,
 				9D504DA016B6CF4000B99EBC /* ZipUtil.m */,
+				8DDEF19517553AEE0096A119 /* CalorieModel.h */,
+				8DDEF19617553AEF0096A119 /* CalorieModel.m */,
+				8DDEF17317552DB00096A119 /* GHGModel.h */,
+				8DDEF17417552DB00096A119 /* GHGModel.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1119,7 +1130,6 @@
 			isa = PBXGroup;
 			children = (
 				8D7E57D3174C23C1006AC9C1 /* constants.h */,
-				64119F031069ACF800C201F0 /* TripManager.m */,
 				8D3260B1173AC5DD002F63A3 /* mapdata.plist */,
 				32CA4F630368D1EE00C91783 /* Cycle Atlanta_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -2692,6 +2702,8 @@
 				8F316F671703161E0087529E /* Model.xcmappingmodel in Sources */,
 				8D7E57D2174C1E06006AC9C1 /* CustomPickerDataSource.m in Sources */,
 				8D2292A717500B4B0006DDFE /* NewsViewController.m in Sources */,
+				8DDEF17517552DB00096A119 /* GHGModel.m in Sources */,
+				8DDEF19717553AEF0096A119 /* CalorieModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

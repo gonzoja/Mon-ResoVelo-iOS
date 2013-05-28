@@ -47,6 +47,8 @@
 #import "Trip.h"
 #import "TripManager.h"
 #import "TripPurposeDelegate.h"
+#import "GHGModel.h"
+#import "CalorieModel.h"
 
 
 #define kAccessoryViewX	282.0
@@ -452,10 +454,10 @@
     [CO2Text setFont:[UIFont systemFontOfSize:12]];
     [CO2Text setTextColor:[UIColor grayColor]];
     
-    UILabel *CaloryText = [[[UILabel alloc] init] autorelease];
-    CaloryText.frame = CGRectMake( 170, 50, 190, 20);
-    [CaloryText setFont:[UIFont systemFontOfSize:12]];
-    [CaloryText setTextColor:[UIColor grayColor]];
+    UILabel *CalorieText = [[[UILabel alloc] init] autorelease];
+    CalorieText.frame = CGRectMake( 170, 50, 190, 20);
+    [CalorieText setFont:[UIFont systemFontOfSize:12]];
+    [CalorieText setTextColor:[UIColor grayColor]];
     
 	UIImage	*image;
     
@@ -596,14 +598,21 @@
     
     CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), 0.93 * [trip.distance doubleValue] / 1000];
     
-    double calorie = 49 * [trip.distance doubleValue] / 1609.344 - 1.69; //TODO Update these formulas
+//    double calorie = 49 * [trip.distance doubleValue] / 1609.344 - 1.69; //TODO Update these formulas
+    
+    double avgSpeed = [trip.distance doubleValue]/[trip.duration doubleValue];
+    
+    CalorieModel *cal = [[CalorieModel alloc] initWithDuration:[trip.duration doubleValue] andAverageSpeed:avgSpeed andWeight:140]; //weight is temporarily hardcoded
+    
+    double calorie = [cal getCalories];
+    
     if (calorie <= 0) {
-        CaloryText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
+        CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
     }
     else
-        CaloryText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calorie];
+        CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calorie];
     
-    [cell.contentView addSubview:CaloryText];
+    [cell.contentView addSubview:CalorieText];
     [cell.contentView addSubview:CO2Text];
     [cell.contentView addSubview:durationText];
     [cell.contentView addSubview:purposeText];
@@ -749,7 +758,11 @@
  return YES;
  }
  */
+#pragma mark GHG and Calorie Models
 
+- (NSString *)GetGHG{
+    
+}
 
 #pragma mark UINavigationController
 
