@@ -52,6 +52,7 @@
 
 //TODO: Fix incomplete implementation
 @interface RecordTripViewController ()
+@property (nonatomic, retain) UIImageView* buttonRing;
 @property (nonatomic, retain) UIButton* startStopButton; // our current actual start/stop button
 
 @end
@@ -382,13 +383,16 @@ NSString *kmh = @"";
 #define BUTTON_SIZE 100.0 // height and width;
 #define BUTTON_PADDING_BOTTOM 64.0
     // to conform with preexisting layout, button should be 46px from bottom of parent view
-    
+//    the outer 'ring' of the record/stop button is a seperate imageview that doesn't change.
+    self.buttonRing = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"buttoncircle"]];
+    self.buttonRing.frame = CGRectMake((self.view.bounds.size.width/2) - (BUTTON_SIZE/2),
+                                       (self.view.bounds.size.height - BUTTON_SIZE - BUTTON_PADDING_BOTTOM),
+                                       BUTTON_SIZE,
+                                       BUTTON_SIZE);
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.startStopButton.frame = CGRectMake((self.view.bounds.size.width/2) - (BUTTON_SIZE/2),
-                                   (self.view.bounds.size.height - BUTTON_SIZE - BUTTON_PADDING_BOTTOM),
-                                   BUTTON_SIZE,
-                                   BUTTON_SIZE);
+    self.startStopButton.frame = self.buttonRing.frame;
     [self setToStartMode];
+    [self.view addSubview:self.buttonRing];
     [self.view addSubview:self.startStopButton];
 
 }
@@ -401,9 +405,9 @@ NSString *kmh = @"";
                      animations:^{
                          self.startStopButton.alpha = 0.2;
                      } completion:^(BOOL finished) {
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startbutton.png"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcircle"]
                                            forState:UIControlStateNormal];
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startbuttonpressed.png"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcirclepressed"]
                                            forState:UIControlStateHighlighted];
                          [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
                          [self.startStopButton addTarget:self
@@ -421,9 +425,9 @@ NSString *kmh = @"";
                      animations:^{
                          self.startStopButton.alpha = 0.2;
                      } completion:^(BOOL finished) {
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopbutton"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquare"]
                                            forState:UIControlStateNormal];
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopbuttonpressed"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquarepressed"]
                                            forState:UIControlStateHighlighted];
                          [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
                          [self.startStopButton addTarget:self
@@ -1036,6 +1040,7 @@ shouldSelectViewController:(UIViewController *)viewController
 - (void)dealloc {
     
     appDelegate.locationManager = nil;
+    self.buttonRing = nil;
     self.startStopButton = nil;
     self.startButton = nil;
     self.infoButton = nil;
@@ -1063,6 +1068,7 @@ shouldSelectViewController:(UIViewController *)viewController
     [saveButton release];
     [startButton release];
     [_startStopButton release];
+    [_buttonRing release];
     [noteButton release];
     [timeCounter release];
     [distCounter release];
