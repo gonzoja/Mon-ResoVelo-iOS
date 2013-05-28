@@ -398,8 +398,8 @@ NSString *kmh = @"";
 }
 
 -(void)setToStartMode{
+    //these two methods are just for toggling the visual appearance of the start/stop button.
     // a really nasty way of doing this but will work for now
-    // this should really just be stored in a property, to save us from having to pass it around
 //    this is going to animate a quick fade out before switching images and animating a quick fade in
     [UIView animateWithDuration:0.2
                      animations:^{
@@ -478,6 +478,8 @@ NSString *kmh = @"";
 }
 
 -(void)stopButtonPressed:(UIButton*)sender{
+//    stop updating the counter:
+    shouldUpdateCounter = NO;
         assert(_isRecording == YES);
     NSLog(@"User Press Save Button");
     saveActionSheet = [[UIActionSheet alloc]
