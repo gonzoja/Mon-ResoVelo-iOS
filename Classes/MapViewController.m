@@ -147,11 +147,9 @@
     
     NSNumberFormatter* nf = [[NSNumberFormatter alloc] init];
     [nf setLocale:[NSLocale currentLocale]];
-    [nf setUsesGroupingSeparator:NO];
     [nf setNumberStyle:NSNumberFormatterDecimalStyle];
-    [nf setUsesSignificantDigits:YES];
     [nf setMaximumFractionDigits:1];
-    [nf setRoundingMode:NSNumberFormatterRoundDown];
+    [nf setRoundingMode:NSNumberFormatterRoundHalfUp];
     
 	if ( trip )
 	{
@@ -177,6 +175,7 @@
 		
 		self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"elapsed: %@ ~ %@", @"elapsedTime"), [inputFormatter stringFromDate:outputDate], [dateFormatter stringFromDate:[trip start]]];
         
+        //TODO fix strings
 		self.title = [NSString stringWithFormat:@"%@ km ~ %@ km/h",
 					  [nf stringFromNumber:[NSNumber numberWithDouble:[trip.distance doubleValue] / 1000]],
 					  [nf stringFromNumber:[NSNumber numberWithDouble:kph]]];
