@@ -93,7 +93,7 @@
 	UIView *opacityMask;
 	UIView *parentView;
 	
-	BOOL recording;
+	BOOL _isRecording;
 	BOOL shouldUpdateCounter;
 	BOOL userInfoSaved;
     NSInteger pickerCategory;
@@ -128,7 +128,7 @@
 @property (nonatomic, retain) UIView   *parentView;
 
 
-@property (assign) BOOL recording;
+@property (assign) BOOL _isRecording;
 @property (assign) BOOL shouldUpdateCounter;
 @property (assign) BOOL userInfoSaved;
 
@@ -149,22 +149,22 @@
 
 // IBAction handlers
 - (IBAction)save:(UIButton *)sender;
-- (void)save;
+- (void)saveAction;
 
-- (IBAction)start:(UIButton *)sender;
+- (IBAction)startButtonPressed:(UIButton *)sender;
 
 -(IBAction)notethis:(id)sender;
 
 
 // timer methods
-- (void)start:(UIButton *)sender;
+- (void)startButtonPressed:(UIButton *)sender;
 - (void)createCounter;
 - (void)resetCounter;
 - (void)setCounterTimeSince:(NSDate *)startDate distance:(CLLocationDistance)distance;
 - (void)updateCounter:(NSTimer *)theTimer;
 
-- (UIButton *)createSaveButton;
-- (UIButton *)createStartButton;
+//- (UIButton *)createSaveButton;
+//- (UIButton *)createStartButton;
 - (UIButton *)createNoteButton;
 
 - (void)displayUploadedTripMap;

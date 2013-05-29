@@ -51,6 +51,11 @@
 #import "User.h"
 
 //TODO: Fix incomplete implementation
+@interface RecordTripViewController ()
+@property (nonatomic, retain) UIImageView* buttonRing;
+@property (nonatomic, retain) UIButton* startStopButton; // our current actual start/stop button
+
+@end
 @implementation RecordTripViewController
 
 
@@ -59,7 +64,7 @@
 @synthesize noteManager;
 @synthesize infoButton, saveButton, startButton, noteButton, parentView;
 @synthesize timer, timeCounter, distCounter;
-@synthesize recording, shouldUpdateCounter, userInfoSaved;
+@synthesize _isRecording, shouldUpdateCounter, userInfoSaved;
 @synthesize appDelegate;
 @synthesize saveActionSheet;
 
@@ -95,37 +100,37 @@ NSString *kmh = @"";
     
     //mapview overlays
     
-    //    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
-    //    NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
-    //    NSArray *pointsArray = arrayArray[0];
-    //    //    NSArray *routesArray = [NSArray alloc
-    //
-    //     for (int i = 0; i < arrayArray.count; i++) {
-    //
-    //        pointsArray = arrayArray[i];
-    //        NSInteger pointsCount = pointsArray.count;
-    //        CLLocationCoordinate2D pointsToUse[pointsCount];
-    //        for (int j = 0; j < pointsCount ; j++){
-    //            CGPoint p = CGPointFromString(pointsArray[j]);
-    //            pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
-    //            //            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
-    //            //            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
-    //        }
-    //         //        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
-    //        MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
-    //         //        NSLog("routePolyLine Length: %@")
-    //
-    //
-    //        //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
-    //        [map addOverlay:routePolyline];
-    //        map.visibleMapRect = MKMapRectWorld;
-    //         //        map.visibleMapRect = ([routePolyline boundingMapRect]);
-    //         //        NSLog(@"overlay added");
-    //
-    //         //         free(pointsArray);
-    //    }
-    //    //    free(thePath);
-    //    //    free(arrayArray);
+//        NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
+//        NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
+//        NSArray *pointsArray = arrayArray[0];
+//    //    NSArray *routesArray = [NSArray alloc
+//
+//         for (int i = 0; i < arrayArray.count; i++) {
+//
+//            pointsArray = arrayArray[i];
+//            NSInteger pointsCount = pointsArray.count;
+//            CLLocationCoordinate2D pointsToUse[pointsCount];
+//            for (int j = 0; j < pointsCount ; j++){
+//                CGPoint p = CGPointFromString(pointsArray[j]);
+//                pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
+//                //            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
+//                //            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
+//            }
+//             //        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
+//            MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
+//             //        NSLog("routePolyLine Length: %@")
+//    
+//    
+//            //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
+//            [map addOverlay:routePolyline];
+//            map.visibleMapRect = MKMapRectWorld;
+//             //        map.visibleMapRect = ([routePolyline boundingMapRect]);
+//             //        NSLog(@"overlay added");
+//    
+//             //         free(pointsArray);
+//        }
+//        //    free(thePath);
+//        //    free(arrayArray);
     
     //    // init map region to Montreal
 	MKCoordinateRegion region = { { 45.553968,-73.664017 }, { 0.0178, 0.0168 } };
@@ -136,12 +141,13 @@ NSString *kmh = @"";
 	infoButton.showsTouchWhenHighlighted = YES;
 	
 	// Set up the buttons.
-	[self.view addSubview:[self createStartButton]];
-    [self.view addSubview:[self createNoteButton]];
+    [self setupStartButton];
+//	[self.view addSubview:[self createStartButton]];
+//    [self.view addSubview:[self createNoteButton]];
 	
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = NO;
-	self.recording = NO;
+	self._isRecording = NO;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	self.shouldUpdateCounter = NO;
@@ -250,7 +256,7 @@ NSString *kmh = @"";
 		[map setCenterCoordinate:newLocation.coordinate animated:YES];
 	}
 
-	if ( recording )
+	if ( _isRecording )
 	{
 		// add to CoreData store
 		CLLocationDistance distance = [tripManager addCoord:newLocation];
@@ -363,114 +369,157 @@ NSString *kmh = @"";
 
 - (void)infoAction:(id)sender
 {
-	if ( !recording )
+	if ( !_isRecording )
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString: kInfoURL]];
 }
 
 #pragma mark - setting up UI elements
-- (UIButton *)createNoteButton
-{
-    UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
-                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
-                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    
-    [noteButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [noteButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    [noteButton setTitleColor:[[[UIColor alloc] initWithRed:185.0 / 255 green:91.0 / 255 blue:47.0 / 255 alpha:1.0 ] autorelease] forState:UIControlStateHighlighted];
-    
-//    noteButton.backgroundColor = [UIColor clearColor];
-    noteButton.enabled = NO;
-    
-    [noteButton setTitle:@"Note this..." forState:UIControlStateNormal];
 
-//    noteButton.titleLabel.font = [UIFont boldSystemFontOfSize: 24];
-    [noteButton addTarget:self action:@selector(notethis:) forControlEvents:UIControlEventTouchUpInside];
+
+-(void)setupStartButton{
+//    the button set up in interface builder is now being used as a placeholder.
+//    It should eventually be removed.
     
-	return noteButton;
-    
+#define BUTTON_SIZE 100.0 // height and width;
+#define BUTTON_PADDING_BOTTOM 64.0
+    // to conform with preexisting layout, button should be 46px from bottom of parent view
+//    the outer 'ring' of the record/stop button is a seperate imageview that doesn't change.
+    self.buttonRing = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"buttoncircle"]];
+    self.buttonRing.frame = CGRectMake((self.view.bounds.size.width/2) - (BUTTON_SIZE/2),
+                                       (self.view.bounds.size.height - BUTTON_SIZE - BUTTON_PADDING_BOTTOM),
+                                       BUTTON_SIZE,
+                                       BUTTON_SIZE);
+    self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.startStopButton.frame = self.buttonRing.frame;
+    [self setToStartMode];
+    [self.view addSubview:self.buttonRing];
+    [self.view addSubview:self.startStopButton];
+
 }
-// instantiate start button
-- (UIButton *)createStartButton
-{
-    UIImage *buttonImage = [[UIImage imageNamed:@"greenButton.png"]
-                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
-                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    
-    [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    
-    startButton.backgroundColor = [UIColor clearColor];
-    startButton.enabled = YES;
-    
-    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
-    [startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    startButton.titleLabel.font = [UIFont boldSystemFontOfSize: 18];
-    startButton.titleLabel.shadowOffset = CGSizeMake (0, 0);
-    startButton.titleLabel.textColor = [UIColor whiteColor];
-    [startButton addTarget:self action:@selector(start:) forControlEvents:UIControlEventTouchUpInside];
-    
-	return startButton;
+
+-(void)setToStartMode{
+    //these two methods are just for toggling the visual appearance of the start/stop button.
+    // a really nasty way of doing this but will work for now
+//    this is going to animate a quick fade out before switching images and animating a quick fade in
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         self.startStopButton.alpha = 0.2;
+                     } completion:^(BOOL finished) {
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcircle"]
+                                           forState:UIControlStateNormal];
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcirclepressed"]
+                                           forState:UIControlStateHighlighted];
+                         [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
+                         [self.startStopButton addTarget:self
+                                    action:@selector(startButtonPressed:)
+                          forControlEvents:UIControlEventTouchUpInside];
+                         [UIView animateWithDuration:0.2
+                                          animations:^{
+                                              self.startStopButton.alpha = 1.0;
+                                          }];
+                     }];
+    }
+
+-(void)setToStopMode{
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         self.startStopButton.alpha = 0.2;
+                     } completion:^(BOOL finished) {
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquare"]
+                                           forState:UIControlStateNormal];
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquarepressed"]
+                                           forState:UIControlStateHighlighted];
+                         [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
+                         [self.startStopButton addTarget:self
+                                    action:@selector(stopButtonPressed:)
+                          forControlEvents:UIControlEventTouchUpInside];
+                         [UIView animateWithDuration:0.2
+                                          animations:^{
+                                              self.startStopButton.alpha = 1.0;
+                                          }];
+                     }];
+
 }
+
+//these two methods appear to be unnecessary, as buttons were already added in IB.
+//- (UIButton *)createNoteButton
+//{
+//    UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
+//                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
+//                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+//    
+//    [noteButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+//    [noteButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+//    [noteButton setTitleColor:[[[UIColor alloc] initWithRed:185.0 / 255 green:91.0 / 255 blue:47.0 / 255 alpha:1.0 ] autorelease] forState:UIControlStateHighlighted];
+//    
+////    noteButton.backgroundColor = [UIColor clearColor];
+//    noteButton.enabled = NO;
+//    
+//    [noteButton setTitle:@"Note this..." forState:UIControlStateNormal];
+//
+////    noteButton.titleLabel.font = [UIFont boldSystemFontOfSize: 24];
+//    [noteButton addTarget:self action:@selector(notethis:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//	return noteButton;
+//    
+//}
+
 
 #pragma mark - handling user actions
 // handle start button action
-- (IBAction)start:(UIButton *)sender
+- (IBAction)startButtonPressed:(UIButton *)sender
 {
-    
-    if(recording == NO)
-    {
-        NSLog(@"start");
-        
-        // start the timer if needed
-        if ( timer == nil )
-        {
-			[self resetCounter];
-			timer = [NSTimer scheduledTimerWithTimeInterval:kCounterTimeInterval
-													 target:self selector:@selector(updateCounter:)
-												   userInfo:[self newTripTimerUserInfo] repeats:YES];
-        }
-        
-        UIImage *buttonImage = [[UIImage imageNamed:@"blueButton.png"]
-                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-        UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
-                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-        [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-        [startButton setTitle:NSLocalizedString(@"Save", @"Save") forState:UIControlStateNormal];
-        
-        // set recording flag so future location updates will be added as coords
-        appDelegate = [[UIApplication sharedApplication] delegate];
-        appDelegate.isRecording = YES;
-        recording = YES;
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"recording"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        // set flag to update counter
-        shouldUpdateCounter = YES;
-    }
-    // do the saving
-    else
-    {
-        NSLog(@"User Press Save Button");
-        saveActionSheet = [[UIActionSheet alloc]
-                           initWithTitle:@""
-                           delegate:self
-                           cancelButtonTitle:NSLocalizedString(@"Continue", @"Continue")
-                           destructiveButtonTitle:NSLocalizedString(@"Discard", @"Discard")
-                           otherButtonTitles:NSLocalizedString(@"Save", @"Save"),nil];
-        //[saveActionSheet showInView:self.view];
-        [saveActionSheet showInView:[UIApplication sharedApplication].keyWindow];
-    }
-	
+//    this is going to have to do a couple things: change the buttons appearance,
+//    remove the old and add a new target/action, and starting recording.
+    assert(_isRecording == NO);
+    [self startRecording];
+    [self setToStopMode];
 }
-- (void)save
+
+-(void)stopButtonPressed:(UIButton*)sender{
+//    stop updating the counter:
+    shouldUpdateCounter = NO;
+        assert(_isRecording == YES);
+    NSLog(@"User Press Save Button");
+    saveActionSheet = [[UIActionSheet alloc]
+                       initWithTitle:@""
+                       delegate:self
+                       cancelButtonTitle:NSLocalizedString(@"Continue", @"Continue")
+                       destructiveButtonTitle:NSLocalizedString(@"Discard", @"Discard")
+                       otherButtonTitles:NSLocalizedString(@"Save", @"Save"),nil];
+    //[saveActionSheet showInView:self.view];
+    [saveActionSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+-(void)startRecording{
+//    handle starting a new recording
+
+    NSLog(@"starting recording");
+    if ( timer == nil )
+    {
+        [self resetCounter];
+        timer = [NSTimer scheduledTimerWithTimeInterval:kCounterTimeInterval
+                                                 target:self selector:@selector(updateCounter:)
+                                               userInfo:[self newTripTimerUserInfo] repeats:YES];
+    }
+    // set recording flag so future location updates will be added as coords
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.isRecording = YES;
+    _isRecording = YES;
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"recording"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // set flag to update counter
+    shouldUpdateCounter = YES;
+
+    
+}
+- (void)saveAction
 {
 	[[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"pickerCategory"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	// go directly to TripPurpose, user can cancel from there
-	if ( YES )
+	if ( YES ) //WHAT THE F   IS THIS
 	{
 		// Trip Purpose
 		NSLog(@"INIT + PUSH");
@@ -482,7 +531,7 @@ NSString *kmh = @"";
 		[self.navigationController presentModalViewController:tripPurposePickerView animated:YES];
 		[tripPurposePickerView release];
 	}
-	
+
 	// prompt to confirm first
 	else
 	{
@@ -591,18 +640,10 @@ NSString *kmh = @"";
 	// reset button states
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = NO;
-	recording = NO;
+	_isRecording = NO;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-	startButton.enabled = YES;
-    UIImage *buttonImage = [[UIImage imageNamed:@"greenButton.png"]
-                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greenButtonHighlight.png"]
-                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    
-    [startButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [startButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    [startButton setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
+    [self setToStartMode];
 	
 	// reset trip, reminder managers
 	NSManagedObjectContext *context = tripManager.managedObjectContext;
@@ -723,7 +764,7 @@ NSString *kmh = @"";
                break;
            }
         case 1:{
-            [self save];
+            [self saveAction];
             break;
         }
 		default:{
@@ -911,7 +952,7 @@ shouldSelectViewController:(UIViewController *)viewController
 	[self.navigationController dismissModalViewControllerAnimated:YES];
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = YES;
-	recording = YES;
+	_isRecording = YES;
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	shouldUpdateCounter = YES;
@@ -931,7 +972,7 @@ shouldSelectViewController:(UIViewController *)viewController
 	// update UI
     appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isRecording = NO;
-	recording = NO;
+	_isRecording = NO;
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey: @"recording"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 	startButton.enabled = YES;
@@ -991,7 +1032,7 @@ shouldSelectViewController:(UIViewController *)viewController
 
 - (Trip *)getRecordingInProgress
 {
-	if ( recording )
+	if ( _isRecording )
 		return tripManager.trip;
 	else
 		return nil;
@@ -1001,6 +1042,8 @@ shouldSelectViewController:(UIViewController *)viewController
 - (void)dealloc {
     
     appDelegate.locationManager = nil;
+    self.buttonRing = nil;
+    self.startStopButton = nil;
     self.startButton = nil;
     self.infoButton = nil;
     self.saveButton = nil;
@@ -1010,7 +1053,7 @@ shouldSelectViewController:(UIViewController *)viewController
     self.saveActionSheet = nil;
     self.timer = nil;
     self.parentView = nil;
-    self.recording = nil;
+    self._isRecording = nil;
     self.shouldUpdateCounter = nil;
     self.userInfoSaved = nil;
     self.tripManager = nil;
@@ -1026,6 +1069,8 @@ shouldSelectViewController:(UIViewController *)viewController
     [infoButton release];
     [saveButton release];
     [startButton release];
+    [_startStopButton release];
+    [_buttonRing release];
     [noteButton release];
     [timeCounter release];
     [distCounter release];

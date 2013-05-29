@@ -1,0 +1,20 @@
+//
+//  GHGModel.h
+//  Mon ResoVelo
+//
+//  Created by Stewart Jackson on 2013-05-28.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface GHGModel : NSObject
+{
+    int hour;
+    double distance;
+    NSMutableArray *factors;
+}
+
+-(id) initWithHour:(int)tripStartHour andDistance:(double)inMeters;
+
+@end
