@@ -69,8 +69,9 @@
         }else{
             factor = [[factors objectAtIndex:12]doubleValue];
         }
-        calories = factor*weight*duration/60;
         
+        calories = factor*weight*duration/60;
+        return calories;
         
     }
 }
