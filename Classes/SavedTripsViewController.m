@@ -100,6 +100,7 @@
 
 @synthesize delegate, managedObjectContext;
 @synthesize trips, tripManager, selectedTrip;
+@synthesize defaults;
 
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext*)context
@@ -177,6 +178,8 @@
 {
     [super viewDidLoad];
 	self.tableView.rowHeight = kRowHeight;
+    
+    self.defaults = [NSUserDefaults standardUserDefaults];
 
 	// Set up the buttons.
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -609,21 +612,35 @@
     
 //    double calorie = 49 * [trip.distance doubleValue] / 1609.344 - 1.69; //TODO Update these formulas
     
-    double avgSpeed = 3.6*[trip.distance doubleValue]/[trip.duration doubleValue];
-    
-    NSLog(@"avgSpeed: %f", avgSpeed);
-    
-    NSLog(@"distance: %f", [trip.distance doubleValue]);
-    
-    CalorieModel *cal = [[CalorieModel alloc] initWithDuration:[trip.duration doubleValue] andAverageSpeed:avgSpeed andWeight:140]; //weight is temporarily hardcoded
-    
-    double calorie = [cal getCalories];
-    
-    if (calorie <= 0) {
-        CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
+    if ([defaults boolForKey:@"useCalorie"]){
+        NSLog(@"Using Calories");
+        double avgSpeed = 3.6*[trip.distance doubleValue]/[trip.duration doubleValue];
+        int weight = [defaults integerForKey:@"riderWeight"];
+        if([defaults integerForKey:@"weightUnit"] == 1){
+            weight = (int)weight*2.20462;
+        }
+        NSLog(@"weight: %i", weight);
+        CalorieModel *cal = [[CalorieModel alloc] initWithDuration:[trip.duration doubleValue] andAverageSpeed:avgSpeed andWeight:weight]; //weight is temporarily hardcoded
+        double calorie = [cal getCalories];
+        
+        if (calorie <= 0) {
+            CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
+        }
+        else
+            CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calorie];
     }
-    else
-        CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calorie];
+    else{
+        NSLog(@"Not Using Calories");
+        CalorieText.text = @"";
+    }
+    
+    [GHGModel release];
+    [CalorieModel release];
+    
+        
+    
+    
+    
     
     [cell.contentView addSubview:CalorieText];
     [cell.contentView addSubview:CO2Text];
@@ -771,11 +788,6 @@
  return YES;
  }
  */
-#pragma mark GHG and Calorie Models
-
-- (NSString *)GetGHG{
-    
-}
 
 #pragma mark UINavigationController
 
@@ -973,4 +985,3 @@
 
 
 @end
-

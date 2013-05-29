@@ -41,6 +41,8 @@
 #import <MapKit/MapKit.h>
 #import "ActivityIndicatorDelegate.h"
 #import "RecordingInProgressDelegate.h"
+#import "CalorieModel.h"
+#import "GHGModel.h"
 
 @class LoadingView;
 @class MapViewController;
@@ -63,6 +65,9 @@
 	LoadingView *loading;
     
     NSInteger pickerCategory;
+    
+    NSUserDefaults *defaults;
+
 }
 
 @property (nonatomic, retain) NSMutableArray *trips;
@@ -71,6 +76,10 @@
 @property (nonatomic, retain) id <RecordingInProgressDelegate> delegate;
 @property (nonatomic, retain) TripManager *tripManager;
 @property (nonatomic, retain) Trip *selectedTrip;
+
+@property (nonatomic, retain) NSUserDefaults *defaults;
+
+
 
 - (void)initTripManager:(TripManager*)manager;
 
