@@ -421,6 +421,12 @@
         timeFormatter = [[NSDateFormatter alloc] init];
         [timeFormatter setTimeStyle:NSDateFormatterShortStyle];
     }
+    
+    static NSDateFormatter *hourFormatter = nil;
+    if (hourFormatter == nil) {
+        hourFormatter = [[NSDateFormatter alloc] init];
+        [hourFormatter setDateFormat:@"HH"];
+    }
 	
 	Trip *trip = (Trip *)[trips objectAtIndex:indexPath.row];
 	TripCell *cell = nil;
@@ -589,18 +595,25 @@
     
     cell.detailTextLabel.numberOfLines = 2;
     
-    timeText.text = [NSString stringWithFormat:@"%@ at %@", [dateFormatter stringFromDate:[trip start]], [timeFormatter stringFromDate:[trip start]]];
+    timeText.text = [NSString stringWithFormat:@"%@ @ %@", [dateFormatter stringFromDate:[trip start]], [timeFormatter stringFromDate:[trip start]]];
     
     
     purposeText.text = [NSString stringWithFormat:@"%@", trip.purpose];
     durationText.text = [NSString stringWithFormat:@"%@",[inputFormatter stringFromDate:outputDate]];
 	
+    GHGModel *ghgModel = [[GHGModel alloc] initWithHour:[[hourFormatter stringFromDate:[trip start]] intValue] andDistance:[trip.distance doubleValue]];
+
+    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), [ghgModel getGHG]];
     
-    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), 0.93 * [trip.distance doubleValue] / 1000];
+//    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), 0.93 * [trip.distance doubleValue] / 1000];
     
 //    double calorie = 49 * [trip.distance doubleValue] / 1609.344 - 1.69; //TODO Update these formulas
     
-    double avgSpeed = [trip.distance doubleValue]/[trip.duration doubleValue];
+    double avgSpeed = 3.6*[trip.distance doubleValue]/[trip.duration doubleValue];
+    
+    NSLog(@"avgSpeed: %f", avgSpeed);
+    
+    NSLog(@"distance: %f", [trip.distance doubleValue]);
     
     CalorieModel *cal = [[CalorieModel alloc] initWithDuration:[trip.duration doubleValue] andAverageSpeed:avgSpeed andWeight:140]; //weight is temporarily hardcoded
     

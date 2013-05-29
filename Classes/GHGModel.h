@@ -17,4 +17,6 @@
 
 -(id) initWithHour:(int)tripStartHour andDistance:(double)inMeters;
 
+-(double)getGHG;
+
 @end

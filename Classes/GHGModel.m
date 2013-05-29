@@ -15,7 +15,7 @@
     self = [super init];
     if (self) {
         hour = tripStartHour;
-        distance = tripStartHour;
+        distance = inMeters;
         
         factors = [NSMutableArray arrayWithObjects:
                    [NSNumber numberWithDouble:1.14],
@@ -56,6 +56,12 @@
     if (self){
         hourFactor = [[factors objectAtIndex:hour]doubleValue];
         ghg = hourFactor*0.0000919*2.289*distance;
+        
+        NSLog(@"Hour: %i", hour);
+        NSLog(@"Distance: %f", distance);
+        NSLog(@"Hour Factor: %f", hourFactor);
+        NSLog(@"Greenhouse Gas: %f", ghg);
+        
     }
     return ghg;
     
