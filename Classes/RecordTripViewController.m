@@ -71,10 +71,8 @@
 
 NSNumberFormatter *nf;
 
-//NSString *kmUnit = @"km";
 NSString *km = @"";
-//NSString *kmhUnit = @"km/h";
-NSString *kmh = @"";
+double kmh = 0;
 
 #pragma mark - init and setup methods
 
@@ -264,24 +262,20 @@ NSString *kmh = @"";
         double kmDouble = distance/1000;
         
         km = [nf stringFromNumber:[NSNumber numberWithDouble:kmDouble]];
-        
-//        self.distCounter.text = [[NSArray arrayWithObjects:km, kmUnit, nil] componentsJoinedByString:@" "];
+
         self.distCounter.text = km;
 	}
 	
-	// 	double mph = ( [trip.distance doubleValue] / 1609.344 ) / ( [trip.duration doubleValue] / 3600. );
+//	 	double mph = ( [trip.distance doubleValue] / 1609.344 ) / ( [trip.duration doubleValue] / 3600. );
     
-    if ( newLocation.speed >= 0. ){
-        kmh = [nf stringFromNumber:[NSNumber numberWithDouble:newLocation.speed*3.6]];
-//		speedCounter.text = [NSString stringWithFormat:@"%.1f km/h", newLocation.speed * 3600 / 1000];
-//        speedCounter.text =[[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
-	}
-    else{
-        kmh = [nf stringFromNumber:[NSNumber numberWithInt:0]];
-       
+    if (([tripManager.trip.distance doubleValue] > 0) && ([tripManager.trip.duration doubleValue] > 0)){
+        
+        kmh = 3.6*[tripManager.trip.distance doubleValue]/[tripManager.trip.duration doubleValue];
+    } else {
+        kmh = 0;
     }
-//    speedCounter.text = [[NSArray arrayWithObjects:kmh, kmhUnit, nil] componentsJoinedByString:@" "];
-    speedCounter.text = kmh;
+    
+    speedCounter.text = [nf stringFromNumber:[NSNumber numberWithDouble:kmh]];
 
 }
 
@@ -1060,7 +1054,7 @@ shouldSelectViewController:(UIViewController *)viewController
     self.noteManager = nil;
     self.appDelegate = nil;
     km = nil;
-    kmh = nil;
+    kmh = 0;
 //    kmhUnit=nil;
 //    kmhUnit=nil;
     
