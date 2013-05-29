@@ -603,7 +603,7 @@
 	
     GHGModel *ghgModel = [[GHGModel alloc] initWithHour:[[hourFormatter stringFromDate:[trip start]] intValue] andDistance:[trip.distance doubleValue]];
 
-    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), [ghgModel getGHG]];
+    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.2f kg", @"emissionsString"), [ghgModel getGHG]];
     
 //    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), 0.93 * [trip.distance doubleValue] / 1000];
     
