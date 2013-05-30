@@ -622,7 +622,7 @@
         NSLog(@"weight: %i", weight);
         CalorieModel *cal = [[CalorieModel alloc] initWithDuration:[trip.duration doubleValue] andAverageSpeed:avgSpeed andWeight:weight]; //weight is temporarily hardcoded
         double calorie = [cal getCalories];
-        
+        [cal release];
         if (calorie <= 0) {
             CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
         }
@@ -634,19 +634,13 @@
         CalorieText.text = @"";
     }
     
-    [GHGModel release];
-    [CalorieModel release];
+    [ghgModel release];
+  
     
         
     
     
-    double calorie = [cal getCalories];
-    [cal release];
-    if (calorie <= 0) {
-        CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
-    }
-    else
-        CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calorie];
+    
     
     [cell.contentView addSubview:CalorieText];
     [cell.contentView addSubview:CO2Text];
