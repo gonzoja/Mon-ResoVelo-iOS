@@ -70,6 +70,12 @@
             factor = [[_factors objectAtIndex:12]doubleValue];
         }
         
+        NSLog(@"Factor: %f", factor);
+        NSLog(@"Weight: %i", weight);
+        NSLog(@"Avg Speed: %f", avgSpeed);
+        NSLog(@"Duration: %f", duration);
+        
+        
         calories = factor*weight*duration/60;
     }
     return calories;

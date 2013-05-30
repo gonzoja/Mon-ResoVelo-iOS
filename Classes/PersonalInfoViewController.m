@@ -46,10 +46,10 @@
 
 @implementation PersonalInfoViewController
 
-@synthesize delegate, managedObjectContext, user;
+@synthesize delegate, managedObjectContext, user, defaults;
 @synthesize age, email, gender, ethnicity, income, homeZIP, workZIP, schoolZIP;
-@synthesize cyclingFreq, riderType, riderHistory, riderWinter;
-@synthesize ageSelectedRow, genderSelectedRow, ethnicitySelectedRow, incomeSelectedRow, cyclingFreqSelectedRow, riderTypeSelectedRow, riderHistorySelectedRow, riderWinterSelectedRow, selectedItem;
+@synthesize cyclingFreq, riderType, riderHistory, riderWinter, useCalorie, riderWeight, weightUnit;
+@synthesize ageSelectedRow, genderSelectedRow, ethnicitySelectedRow, incomeSelectedRow, cyclingFreqSelectedRow, riderTypeSelectedRow, riderHistorySelectedRow, riderWinterSelectedRow,  weightUnitSelectedRow, selectedItem;
 
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -126,7 +126,7 @@
 }
 
 
-- (UITextField*)initTextFieldNumeric
+- (UITextField*)initTextFieldAlphaNumeric
 {
 	CGRect frame = CGRectMake( 152, 7, 138, 29 );
 	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
@@ -137,6 +137,26 @@
 	textField.returnKeyType = UIReturnKeyDone;
 	textField.delegate = self;
 	return textField;
+}
+
+- (UITextField*)initTextFieldNumeric
+{
+	CGRect frame = CGRectMake( 202, 7, 88, 29 );
+	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
+	textField.borderStyle = UITextBorderStyleRoundedRect;
+	textField.textAlignment = UITextAlignmentRight;
+	textField.placeholder = @"123";
+	textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+	textField.returnKeyType = UIReturnKeyDone;
+	textField.delegate = self;
+	return textField;
+}
+
+- (UISwitch*)initSwitch
+{
+    UISwitch *toggle = [[UISwitch alloc] initWithFrame:CGRectMake(215, 7, 138, 29)];
+    toggle.on = YES;
+    return toggle;
 }
 
 
@@ -178,6 +198,8 @@
     
     riderWinterArray = [[NSArray alloc]initWithObjects: @" ",  NSLocalizedString(@"No", nil), NSLocalizedString(@"Yes", nil), nil];
     
+    weightUnitArray = [[NSArray alloc]initWithObjects: NSLocalizedString(@"lbs", nil), NSLocalizedString(@"kg", nil), nil];
+    
     
     CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
     pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
@@ -192,13 +214,18 @@
 	self.gender		= [self initTextFieldAlpha];
     self.ethnicity  = [self initTextFieldAlpha];
     self.income     = [self initTextFieldAlpha];
-	self.homeZIP	= [self initTextFieldNumeric];
-	self.workZIP	= [self initTextFieldNumeric];
-	self.schoolZIP	= [self initTextFieldNumeric];
+	self.homeZIP	= [self initTextFieldAlphaNumeric];
+	self.workZIP	= [self initTextFieldAlphaNumeric];
+	self.schoolZIP	= [self initTextFieldAlphaNumeric];
     self.cyclingFreq = [self initTextFieldGamma];
     self.riderType  =  [self initTextFieldBeta];
     self.riderHistory =[self initTextFieldGamma];
-    self.riderWinter = [self initTextFieldBeta];
+    self.riderWinter = [self initTextFieldNumeric];
+    
+    self.riderWeight = [self initTextFieldNumeric];
+    self.useCalorie = [self initSwitch];
+    self.weightUnit = [self initTextFieldNumeric];
+    
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -219,7 +246,10 @@
 	NSError *error;
 	NSInteger count = [managedObjectContext countForFetchRequest:request error:&error];
 	NSLog(@"saved user count  = %d", count);
-	if ( count == 0 )
+    
+    self.defaults = [NSUserDefaults standardUserDefaults];
+	
+    if ( count == 0 )
 	{
 		// create an empty User entity
 		[self setUser:[self createUser]];
@@ -259,6 +289,7 @@
         riderHistorySelectedRow = [user.rider_history integerValue];
         riderWinter.text       = [riderWinterArray objectAtIndex:[user.winter integerValue]];
         riderWinterSelectedRow = [user.winter integerValue];
+        
 		
 		// init cycling frequency
 		//NSLog(@"init cycling freq: %d", [user.cyclingFreq intValue]);
@@ -269,7 +300,23 @@
         //    inSection:2]];
 	}
 	else
-		NSLog(@"init FAIL");
+		NSLog(@"user init FAIL");
+    
+    
+    // Weight is going to be saved to defaults since it's not getting transferred. This is easier than filtering it later.
+    if (defaults != nil){
+        if ([defaults integerForKey:@"riderWeight"] == 0){
+            riderWeight.text = nil;
+        }else{
+        riderWeight.text = [NSString stringWithFormat:@"%i", [defaults integerForKey:@"riderWeight"]];
+        }
+        weightUnitSelectedRow = [defaults integerForKey:@"weightUnit"];
+        weightUnit.text = [weightUnitArray objectAtIndex:[defaults integerForKey:@"weightUnit"]];
+        useCalorie.on = [defaults boolForKey:@"useCalorie"];
+        
+        
+        
+    }
 	
 	[mutableFetchResults release];
 	[request release];
@@ -279,7 +326,7 @@
 #pragma mark UITextFieldDelegate methods
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if(currentTextField == email || currentTextField == workZIP || currentTextField == homeZIP || currentTextField == schoolZIP || textField != email || textField != workZIP || textField != homeZIP || textField != schoolZIP){
+    if(currentTextField == email || currentTextField == workZIP || currentTextField == homeZIP || currentTextField == schoolZIP || textField != email || textField != workZIP || textField != homeZIP || textField != schoolZIP || textField != riderWeight){
         NSLog(@"currentTextField: text2");
         [currentTextField resignFirstResponder];
         [textField resignFirstResponder];
@@ -297,7 +344,7 @@
     NSLog(@"currentTextfield: picker");*/
     currentTextField = myTextField;
     
-    if(myTextField == gender || myTextField == age || myTextField == income || myTextField == cyclingFreq || myTextField == riderType || myTextField == riderHistory|| myTextField == riderWinter){
+    if(myTextField == gender || myTextField == age || myTextField == income || myTextField == cyclingFreq || myTextField == riderType || myTextField == riderHistory|| myTextField == riderWinter || myTextField == weightUnit){
         
         [myTextField resignFirstResponder];
         
@@ -345,6 +392,8 @@
             selectedItem = [user.rider_history integerValue];
         }else if (myTextField == riderWinter){
             selectedItem = [user.winter integerValue];
+        }else if (myTextField == weightUnit){
+            selectedItem = [defaults integerForKey:@"weightUnit"];
         }
         
         [pickerView selectRow:selectedItem inComponent:0 animated:NO];
@@ -410,6 +459,16 @@
 			NSLog(@"saving workZIP: %@", workZIP.text);
 			[user setWorkZIP:workZIP.text];
 		}
+        
+    if (defaults != nil)
+    {
+        if (textField == riderWeight)
+        {
+            if ([riderWeight.text integerValue] != [defaults integerForKey:@"riderWeight"]){
+                self.navigationItem.rightBarButtonItem.enabled = YES;
+            }
+        }
+    }
        
 		
 		NSError *error;
@@ -466,7 +525,6 @@
         
         [user setWinter:[NSNumber numberWithInt:riderWinterSelectedRow]];
         NSLog(@"saved rider winter index: %@ and text: %@", user.winter, riderWinter.text);
-
 		
 		//NSLog(@"saving cycling freq: %d", [cyclingFreq intValue]);
 		//[user setCyclingFreq:cyclingFreq];
@@ -479,7 +537,28 @@
 	}
 	else
 		NSLog(@"ERROR can't save personal info for nil user");
-	
+    
+    if (defaults != nil){
+        [defaults setInteger:[[riderWeight text] integerValue] forKey:@"riderWeight"];
+        
+        [defaults setBool:[useCalorie isOn] forKey:@"useCalorie"];
+        
+        [defaults setInteger:weightUnitSelectedRow forKey:@"weightUnit"];
+        
+        [defaults synchronize];
+        
+        NSLog(@"weightUnitSelectedRow: %i", weightUnitSelectedRow);
+        
+        NSLog(@"weight data saved: %i", [defaults integerForKey:@"riderWeight"]);
+        NSLog(@"use calories: %c", [defaults boolForKey:@"useCalorie"]);
+        NSLog(@"weight unit saved: %i", [defaults integerForKey:@"weightUnit"]);
+    }
+    
+    else
+		NSLog(@"ERROR can't save weight info for nil default");
+    
+    
+//    
 	// update UI
 	
 	[delegate setSaved:YES];
@@ -530,7 +609,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 6;
+    return 7;
 }
 
 
@@ -555,6 +634,8 @@
 			return NSLocalizedString(@"Do you cycle in the winter (December to March)?", nil);
 			break;
         case 6:
+            return NSLocalizedString(@"Use calorie counter? Weight data is not transmitted to the city of Montreal", nil);
+        case 7:
 			return NSLocalizedString(@"What kind of rider are you?", nil);
 			break;
 	}
@@ -628,8 +709,10 @@
 			return 1;
 			break;
         case 6:
-            return 1;
+            return 3;
             break;
+        case 7:
+            return 1;
 		default:
 			return 0;
 	}
@@ -796,6 +879,36 @@
             break;
             
         case 6:
+		{
+			static NSString *CellIdentifier = @"CellCalories";
+			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			}
+            
+			// inner switch statement identifies row
+			switch ([indexPath indexAtPosition:1])
+			{
+                case 0:
+                    cell.textLabel.text = NSLocalizedString(@"Calorie Counter", nil);
+                    [cell.contentView addSubview:useCalorie];
+                    break;
+                    
+				case 1:
+                    cell.textLabel.text = NSLocalizedString(@"Input Weight", nil);
+                    [cell.contentView addSubview:riderWeight];
+					break;
+                case 2:
+                    cell.textLabel.text = NSLocalizedString(@"Weight Units", nil);
+                    [cell.contentView addSubview:weightUnit];
+                    break;
+			}
+			
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+		}
+            break;
+            
+        case 7:
 		{
 			static NSString *CellIdentifier = @"CellType";
 			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -1070,6 +1183,9 @@
     else if(currentTextField == riderWinter){
         return [riderWinterArray count];
     }
+    else if(currentTextField == weightUnit){
+        return [weightUnitArray count];
+    }
     return 0;
 }
 
@@ -1098,6 +1214,10 @@
     else if(currentTextField == riderWinter){
         return [riderWinterArray objectAtIndex:row];
     }
+    else if(currentTextField == weightUnit){
+        return [weightUnitArray objectAtIndex:row];
+    }
+
     return nil;
 }
 
@@ -1184,6 +1304,19 @@
         NSString *riderWinterSelect = [riderWinterArray objectAtIndex:selectedRow];
         riderWinter.text = riderWinterSelect;
     }
+    
+    if(currentTextField == weightUnit){
+        if (selectedRow != [defaults integerForKey:@"weightUnit"]){ //this is the problem?
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+        }
+        
+        weightUnitSelectedRow = selectedRow;
+        NSLog(@"WeightUnitSelectedRow = %i", selectedRow);
+        
+        NSString *weightUnitSelect = [weightUnitArray objectAtIndex:selectedRow];
+        weightUnit.text = weightUnitSelect;
+    }
+
 
     [actionSheet dismissWithClickedButtonIndex:1 animated:YES];
 }
@@ -1216,6 +1349,9 @@
     self.riderTypeSelectedRow = nil;
     self.riderHistorySelectedRow = nil;
     self.riderWinterSelectedRow = nil;
+    self.weightUnitSelectedRow = nil;
+    self.riderWeight = nil;
+    self.weightUnit = nil;  
     self.selectedItem = nil;
     
     [delegate release];
@@ -1242,6 +1378,7 @@
     [ageArray release];
     [ethnicityArray release];
     [riderWinterArray release];
+    [weightUnitArray release];
     [riderHistoryArray release];
     [riderTypeArray release];
     
