@@ -366,6 +366,7 @@
     LoadingView *loading = (LoadingView*)[self.parentViewController.view viewWithTag:909];
 	//NSLog(@"loading: %@", loading);
 	[loading performSelector:@selector(removeView) withObject:nil afterDelay:0.5];
+    [nf release];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

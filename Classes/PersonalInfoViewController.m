@@ -1353,6 +1353,7 @@
     self.riderWeight = nil;
     self.weightUnit = nil;  
     self.selectedItem = nil;
+    self.useCalorie = nil;
     
     [delegate release];
     [managedObjectContext release];
@@ -1381,7 +1382,8 @@
     [weightUnitArray release];
     [riderHistoryArray release];
     [riderTypeArray release];
-    
+    [useCalorie release];
+    [weightUnit release];
     [super dealloc];
 }
 
