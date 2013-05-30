@@ -44,6 +44,7 @@
 #import "LoadingView.h"
 #import "Note.h"
 
+@class RecordTripViewController;
 @class Note;
 
 
@@ -68,7 +69,7 @@
 
 @property (nonatomic, retain) LoadingView *uploadingView;
 
-@property (nonatomic, retain) UIViewController *parent; 
+@property (nonatomic, retain) RecordTripViewController *parent;
 
 @property (assign) BOOL dirty;
 @property (nonatomic, retain) Note *note;

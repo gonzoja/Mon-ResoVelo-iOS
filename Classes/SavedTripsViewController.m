@@ -605,7 +605,7 @@
     CalorieModel *cal = [[CalorieModel alloc] initWithDuration:[trip.duration doubleValue] andAverageSpeed:avgSpeed andWeight:140]; //weight is temporarily hardcoded
     
     double calorie = [cal getCalories];
-    
+    [cal release];
     if (calorie <= 0) {
         CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
     }
