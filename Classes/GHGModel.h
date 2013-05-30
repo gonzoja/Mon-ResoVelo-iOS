@@ -12,7 +12,7 @@
 {
     int hour;
     double distance;
-    NSMutableArray *factors;
+    NSMutableArray *_factors;
 }
 
 -(id) initWithHour:(int)tripStartHour andDistance:(double)inMeters;

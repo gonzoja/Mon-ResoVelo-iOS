@@ -17,7 +17,7 @@
         hour = tripStartHour;
         distance = tripStartHour;
         
-        factors = [NSMutableArray arrayWithObjects:
+        _factors = [NSMutableArray arrayWithObjects:
                    [NSNumber numberWithDouble:1.14],
                    [NSNumber numberWithDouble:1.14],
                    [NSNumber numberWithDouble:1.14],
@@ -54,11 +54,17 @@
     double hourFactor = 0;
     
     if (self){
-        hourFactor = [[factors objectAtIndex:hour]doubleValue];
+        hourFactor = [[_factors objectAtIndex:hour]doubleValue];
         ghg = hourFactor*0.0000919*2.289*distance;
     }
     return ghg;
     
 }
 
+-(void)dealloc {
+
+    _factors = nil;
+    [_factors release];
+    [super dealloc];
+}
 @end

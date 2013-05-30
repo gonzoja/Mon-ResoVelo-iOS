@@ -13,7 +13,7 @@
     int weight;
     double duration;
     double avgSpeed;
-    NSMutableArray *factors;
+    NSMutableArray *_factors;
 }
 
 -(id) initWithDuration:(double)inSeconds andAverageSpeed:(double)inKPH andWeight:(int)inPounds;

@@ -18,7 +18,7 @@
         avgSpeed = inKPH;
         duration = inSeconds;
 		
-        factors = [NSMutableArray arrayWithObjects:
+        _factors = [NSMutableArray arrayWithObjects:
                    [NSNumber numberWithDouble:0.0295],
                    [NSNumber numberWithDouble:0.0355],
                    [NSNumber numberWithDouble:0.0426],
@@ -43,37 +43,42 @@
     
     if (self){
         if (avgSpeed <= 12.9){
-            factor = [[factors objectAtIndex:0]doubleValue];
+            factor = [[_factors objectAtIndex:0]doubleValue];
         }else if (avgSpeed <= 16.1){
-            factor = [[factors objectAtIndex:1]doubleValue];
+            factor = [[_factors objectAtIndex:1]doubleValue];
         }else if (avgSpeed <= 19.3){
-            factor = [[factors objectAtIndex:2]doubleValue];
+            factor = [[_factors objectAtIndex:2]doubleValue];
         }else if (avgSpeed <= 22.5){
-            factor = [[factors objectAtIndex:3]doubleValue];
+            factor = [[_factors objectAtIndex:3]doubleValue];
         }else if (avgSpeed <= 24.1){
-            factor = [[factors objectAtIndex:4]doubleValue];
+            factor = [[_factors objectAtIndex:4]doubleValue];
         }else if (avgSpeed <= 25.8){
-            factor = [[factors objectAtIndex:5]doubleValue];
+            factor = [[_factors objectAtIndex:5]doubleValue];
         }else if (avgSpeed <= 27.4){
-            factor = [[factors objectAtIndex:6]doubleValue];
+            factor = [[_factors objectAtIndex:6]doubleValue];
         }else if (avgSpeed <= 29.0){
-            factor = [[factors objectAtIndex:7]doubleValue];
+            factor = [[_factors objectAtIndex:7]doubleValue];
         }else if (avgSpeed <= 30.6){
-            factor = [[factors objectAtIndex:8]doubleValue];
+            factor = [[_factors objectAtIndex:8]doubleValue];
         }else if (avgSpeed <= 32.2){
-            factor = [[factors objectAtIndex:9]doubleValue];
+            factor = [[_factors objectAtIndex:9]doubleValue];
         }else if (avgSpeed <= 33.8){
-            factor = [[factors objectAtIndex:10]doubleValue];
+            factor = [[_factors objectAtIndex:10]doubleValue];
         }else if (avgSpeed <= 37.0){
-            factor = [[factors objectAtIndex:11]doubleValue];
+            factor = [[_factors objectAtIndex:11]doubleValue];
         }else{
-            factor = [[factors objectAtIndex:12]doubleValue];
+            factor = [[_factors objectAtIndex:12]doubleValue];
         }
         
         calories = factor*weight*duration/60;
-        return calories;
-        
     }
+    return calories;
+}
+
+-(void)dealloc{
+    _factors = nil;
+    [_factors release];
+    [super dealloc];
 }
 
 @end
