@@ -123,7 +123,7 @@
 	notesHeader.backgroundColor = [UIColor clearColor];
 	notesHeader.font			= [UIFont boldSystemFontOfSize:18.0];
 	notesHeader.opaque			= NO;
-	notesHeader.text			= @"Trip Notes";
+	notesHeader.text			= NSLocalizedString(@"Trip Notes", nil);
 	notesHeader.textColor		= [UIColor whiteColor];
 	[infoView addSubview:notesHeader];
 	

@@ -682,9 +682,9 @@
 	// present action sheet
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:confirm
 															 delegate:self
-													cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
+													cancelButtonTitle:NSLocalizedString(@"No", nil)
 											   destructiveButtonTitle:nil
-													otherButtonTitles:NSLocalizedString(@"Upload", @"Upload"), nil];
+													otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
 	
 	actionSheet.actionSheetStyle	= UIActionSheetStyleBlackTranslucent;
 	[actionSheet showInView:self.tabBarController.view];
