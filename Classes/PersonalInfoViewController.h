@@ -43,12 +43,12 @@
 
 @class User;
 
-
 @interface PersonalInfoViewController : UITableViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate, UIWebViewDelegate>
 {
 	id <PersonalInfoDelegate> delegate;
 	NSManagedObjectContext *managedObjectContext;
 	User *user;
+    NSUserDefaults *defaults;
 
 	UITextField *age;
 	UITextField *email;
@@ -62,6 +62,11 @@
     UITextField *riderType;
     UITextField *riderHistory;
     UITextField *riderWinter;
+    
+    UITextField *riderWeight;
+    UISwitch *useCalorie;
+    UITextField *weightUnit;
+    
     UIToolbar *doneToolbar;
     UIActionSheet *actionSheet;
     UIPickerView *pickerView;
@@ -75,6 +80,7 @@
     NSArray *riderTypeArray;
     NSArray *riderHistoryArray;
     NSArray *riderWinterArray;
+    NSArray *weightUnitArray;
     
     NSInteger ageSelectedRow;
     NSInteger genderSelectedRow;
@@ -84,6 +90,7 @@
     NSInteger riderTypeSelectedRow;
     NSInteger riderHistorySelectedRow;
     NSInteger riderWinterSelectedRow;
+    NSInteger weightUnitSelectedRow;
     NSInteger selectedItem;
 }
 
@@ -91,6 +98,7 @@
 @property (nonatomic, retain) id <PersonalInfoDelegate> delegate;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) NSUserDefaults *defaults;
 
 @property (nonatomic, retain) UITextField	*age;
 @property (nonatomic, retain) UITextField	*email;
@@ -106,6 +114,10 @@
 @property (nonatomic, retain) UITextField   *riderHistory;
 @property (nonatomic, retain) UITextField   *riderWinter;
 
+@property (nonatomic, retain) UISwitch      *useCalorie;
+@property (nonatomic, retain) UITextField   *riderWeight;
+@property (nonatomic, retain) UITextField   *weightUnit;
+
 @property (nonatomic) NSInteger ageSelectedRow;
 @property (nonatomic) NSInteger genderSelectedRow;
 @property (nonatomic) NSInteger ethnicitySelectedRow;
@@ -114,6 +126,10 @@
 @property (nonatomic) NSInteger riderTypeSelectedRow;
 @property (nonatomic) NSInteger riderHistorySelectedRow;
 @property (nonatomic) NSInteger riderWinterSelectedRow;
+
+//@property (nonatomic) NSInteger useCalorieSelectedRow;
+@property (nonatomic) NSInteger weightUnitSelectedRow;
+
 @property (nonatomic) NSInteger selectedItem;
 
 // DEPRECATED
