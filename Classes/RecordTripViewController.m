@@ -380,7 +380,7 @@ NSString *kmh = @"";
 //    the button set up in interface builder is now being used as a placeholder.
 //    It should eventually be removed.
     
-#define BUTTON_SIZE 100.0 // height and width;
+#define BUTTON_SIZE 86.0 // height and width;
 #define BUTTON_PADDING_BOTTOM 64.0
     // to conform with preexisting layout, button should be 46px from bottom of parent view
 //    the outer 'ring' of the record/stop button is a seperate imageview that doesn't change.
@@ -392,7 +392,7 @@ NSString *kmh = @"";
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.startStopButton.frame = self.buttonRing.frame;
     [self setToStartMode];
-    [self.view addSubview:self.buttonRing];
+//    [self.view addSubview:self.buttonRing];
     [self.view addSubview:self.startStopButton];
 
 }
@@ -401,19 +401,19 @@ NSString *kmh = @"";
     //these two methods are just for toggling the visual appearance of the start/stop button.
     // a really nasty way of doing this but will work for now
 //    this is going to animate a quick fade out before switching images and animating a quick fade in
-    [UIView animateWithDuration:0.2
+    [UIView animateWithDuration:0.15
                      animations:^{
-                         self.startStopButton.alpha = 0.2;
+                         self.startStopButton.alpha = 0.5;
                      } completion:^(BOOL finished) {
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcircle"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"start_android"]
                                            forState:UIControlStateNormal];
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcirclepressed"]
-                                           forState:UIControlStateHighlighted];
+//                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"startcirclepressed"]
+//                                           forState:UIControlStateHighlighted];
                          [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
                          [self.startStopButton addTarget:self
                                     action:@selector(startButtonPressed:)
                           forControlEvents:UIControlEventTouchUpInside];
-                         [UIView animateWithDuration:0.2
+                         [UIView animateWithDuration:0.15
                                           animations:^{
                                               self.startStopButton.alpha = 1.0;
                                           }];
@@ -421,19 +421,19 @@ NSString *kmh = @"";
     }
 
 -(void)setToStopMode{
-    [UIView animateWithDuration:0.2
+    [UIView animateWithDuration:0.15
                      animations:^{
-                         self.startStopButton.alpha = 0.2;
+                         self.startStopButton.alpha = 0.5;
                      } completion:^(BOOL finished) {
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquare"]
+                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stop_android"]
                                            forState:UIControlStateNormal];
-                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquarepressed"]
-                                           forState:UIControlStateHighlighted];
+//                         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stopsquarepressed"]
+//                                           forState:UIControlStateHighlighted];
                          [self.startStopButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
                          [self.startStopButton addTarget:self
                                     action:@selector(stopButtonPressed:)
                           forControlEvents:UIControlEventTouchUpInside];
-                         [UIView animateWithDuration:0.2
+                         [UIView animateWithDuration:0.15
                                           animations:^{
                                               self.startStopButton.alpha = 1.0;
                                           }];

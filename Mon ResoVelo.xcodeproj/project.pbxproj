@@ -13,6 +13,10 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		62307AAD1757C27B004F7E36 /* start_android.png in Resources */ = {isa = PBXBuildFile; fileRef = 62307AA91757C27B004F7E36 /* start_android.png */; };
+		62307AAE1757C27B004F7E36 /* start_android@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62307AAA1757C27B004F7E36 /* start_android@2x.png */; };
+		62307AAF1757C27B004F7E36 /* stop_android.png in Resources */ = {isa = PBXBuildFile; fileRef = 62307AAB1757C27B004F7E36 /* stop_android.png */; };
+		62307AB01757C27B004F7E36 /* stop_android@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62307AAC1757C27B004F7E36 /* stop_android@2x.png */; };
 		624C0DC11755096000429051 /* buttoncircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 624C0DB91755096000429051 /* buttoncircle.png */; };
 		624C0DC21755096000429051 /* buttoncircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 624C0DBA1755096000429051 /* buttoncircle@2x.png */; };
 		624C0DC71755096000429051 /* stopsquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 624C0DBF1755096000429051 /* stopsquare@2x.png */; };
@@ -384,6 +388,10 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Cycle Atlanta_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cycle Atlanta_Prefix.pch"; sourceTree = "<group>"; };
+		62307AA91757C27B004F7E36 /* start_android.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_android.png; sourceTree = "<group>"; };
+		62307AAA1757C27B004F7E36 /* start_android@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_android@2x.png"; sourceTree = "<group>"; };
+		62307AAB1757C27B004F7E36 /* stop_android.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_android.png; sourceTree = "<group>"; };
+		62307AAC1757C27B004F7E36 /* stop_android@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop_android@2x.png"; sourceTree = "<group>"; };
 		624C0DB91755096000429051 /* buttoncircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttoncircle.png; sourceTree = "<group>"; };
 		624C0DBA1755096000429051 /* buttoncircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttoncircle@2x.png"; sourceTree = "<group>"; };
 		624C0DBF1755096000429051 /* stopsquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopsquare@2x.png"; sourceTree = "<group>"; };
@@ -2136,6 +2144,10 @@
 		9D4647A81604EBF400A4F9CB /* Button Icons */ = {
 			isa = PBXGroup;
 			children = (
+				62307AA91757C27B004F7E36 /* start_android.png */,
+				62307AAA1757C27B004F7E36 /* start_android@2x.png */,
+				62307AAB1757C27B004F7E36 /* stop_android.png */,
+				62307AAC1757C27B004F7E36 /* stop_android@2x.png */,
 				624C0DD517550DB600429051 /* startcircle.png */,
 				624C0DD617550DB600429051 /* startcircle@2x.png */,
 				624C0DD717550DB600429051 /* startcirclepressed.png */,
@@ -2668,6 +2680,10 @@
 				624C0DDA17550DB600429051 /* startcircle@2x.png in Resources */,
 				624C0DDB17550DB600429051 /* startcirclepressed.png in Resources */,
 				624C0DDC17550DB600429051 /* startcirclepressed@2x.png in Resources */,
+				62307AAD1757C27B004F7E36 /* start_android.png in Resources */,
+				62307AAE1757C27B004F7E36 /* start_android@2x.png in Resources */,
+				62307AAF1757C27B004F7E36 /* stop_android.png in Resources */,
+				62307AB01757C27B004F7E36 /* stop_android@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
