@@ -50,10 +50,16 @@
 #import "Trip.h"
 #import "User.h"
 
+
+#import "TSTMultiLineOverlay.h"
+#import "TSTMultiLineOverlayView.h"
+
 //TODO: Fix incomplete implementation
 @interface RecordTripViewController ()
 @property (nonatomic, retain) UIImageView* buttonRing;
 @property (nonatomic, retain) UIButton* startStopButton; // our current actual start/stop button
+@property (nonatomic, retain) TSTMultiLineOverlay *overlay;
+@property (nonatomic, retain) TSTMultiLineOverlayView *overlayView;
 
 @end
 @implementation RecordTripViewController
@@ -94,7 +100,8 @@ double kmh = 0;
     [nf setMaximumFractionDigits:1];
     [nf setMinimumFractionDigits:1];
 	
-    
+//    TODO: THIS IS FOR DEBUG
+    [self setupNewOverlays];
     
     //mapview overlays
     
@@ -204,6 +211,36 @@ double kmh = 0;
 	// Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark - overlays
+
+
+-(void)setupNewOverlays{
+    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
+    self.overlay = [[TSTMultiLineOverlay alloc]initWithPlist:thePath];
+    [map addOverlay:self.overlay];
+}
+
+#pragma mark MKMapViewDelegate methods
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+    NSLog(@"MKOverlayView is being called");
+    if ([overlay isKindOfClass:MKPolyline.class]) {
+        MKPolylineView *lineView = [[MKPolylineView alloc] initWithOverlay:overlay];
+        lineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.9];
+        
+        return [lineView autorelease];
+    }else if ([overlay isMemberOfClass:[TSTMultiLineOverlay class]]){
+        if (!self.overlayView)
+        {
+            _overlayView = [[TSTMultiLineOverlayView alloc]initWithOverlay:overlay];
+        }
+        return self.overlayView;
+    }
+
+    
+    return nil;
+}
+
 #pragma mark - CLLocationManagerDelegate methods
 
 - (CLLocationManager *)getLocationManager {
@@ -285,19 +322,7 @@ double kmh = 0;
 }
 
 
-#pragma mark MKMapViewDelegate methods
 
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
-    NSLog(@"MKOverlayView is being called");
-    if ([overlay isKindOfClass:MKPolyline.class]) {
-        MKPolylineView *lineView = [[MKPolylineView alloc] initWithOverlay:overlay];
-        lineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.9];
-        
-        return [lineView autorelease];
-    }
-    
-    return nil;
-}
 
 - (BOOL)hasUserInfoBeenSaved
 {
