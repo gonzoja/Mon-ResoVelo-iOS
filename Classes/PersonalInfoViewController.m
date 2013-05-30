@@ -1383,6 +1383,7 @@
     [riderHistoryArray release];
     [riderTypeArray release];
     [useCalorie release];
+    [weightUnit release];
     [super dealloc];
 }
 
