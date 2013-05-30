@@ -2650,6 +2650,8 @@
 				62307AAE1757C27B004F7E36 /* start_android@2x.png in Resources */,
 				62307AAF1757C27B004F7E36 /* stop_android.png in Resources */,
 				62307AB01757C27B004F7E36 /* stop_android@2x.png in Resources */,
+				8D8B22451757A6FB00F7EA13 /* MonRésoVélo_512X512.png in Resources */,
+				8D8B22461757A6FB00F7EA13 /* MonRésoVélo_1024X1024.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

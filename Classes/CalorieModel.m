@@ -42,7 +42,9 @@
     double factor = 0;
     
     if (self){
-        if (avgSpeed <= 12.9){
+        if (avgSpeed < 3.0){
+            factor = 0;
+        } else if (avgSpeed <= 12.9){
             factor = [[_factors objectAtIndex:0]doubleValue];
         }else if (avgSpeed <= 16.1){
             factor = [[_factors objectAtIndex:1]doubleValue];
@@ -76,7 +78,7 @@
         NSLog(@"Duration: %f", duration);
         
         
-        calories = factor*weight*duration/60;
+        calories =factor*weight*duration/60;
     }
     return calories;
 }
