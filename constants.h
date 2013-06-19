@@ -89,10 +89,10 @@
 #define kSaveAccepted		NSLocalizedString(@"Your trip has already been uploaded. Thank you.", nil)
 #define kSaveError			NSLocalizedString(@"Your trip has been saved. Please try uploading again later.", nil)
 
-#define kInfoURL			NSLocalizedString(@"http://ks3309217.kimsufi.com/monresovelo/CycleAtlantaInfo", nil)
-#define kInstructionsURL	NSLocalizedString(@"http://ks3309217.kimsufi.com/monresovelo/instructions-v2/", nil)
+#define kInfoURL			NSLocalizedString(@"http://ville.montreal.qc.ca/resovelo", nil)
+#define kInstructionsURL	NSLocalizedString(@"http://ville.montreal.qc.ca/resovelo/aide", nil)
 
-#define kSaveURL			NSLocalizedString(@"http://ks3309217.kimsufi.com/monresovelo/post/index.php", nil)
+#define kSaveURL			NSLocalizedString(@"http://donnees.monresovelo.ca/post/index.php", nil)
 //#define kSaveURL			NSLocalizedString(@""
 
 #define kTripNotesPlaceholder	NSLocalizedString(@"Comments", nil)
