@@ -593,6 +593,7 @@
 
     //switch to map w/ trip view
     [parent displayUploadedTripMap];
+//    bad implementation in existing code. This works, but should be re-written using protocols if codebase is reused
     
     //TODO: get screenshot and store.
 

@@ -48,7 +48,10 @@
 @class Note;
 
 
-@interface NoteManager : NSObject <ActivityIndicatorDelegate, UIAlertViewDelegate, UITextViewDelegate>
+//@interface NoteManager : NSObject <ActivityIndicatorDelegate, UIAlertViewDelegate, UITextViewDelegate>
+//TODO: commented out ActivityIndicatorDelegate to suppress warnings when notes not implemented
+@interface NoteManager : NSObject <UIAlertViewDelegate, UITextViewDelegate>
+
 {
 	Note *note;
 

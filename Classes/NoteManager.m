@@ -69,7 +69,8 @@
     if ( self = [super init] )
 	{
 		self.managedObjectContext = context;
-        self.activityDelegate = self;
+//        self.activityDelegate = self;
+        // TODO: uncomment if using activity delegate
         if (!note) {
             self.note = nil;
         }
@@ -488,7 +489,8 @@
 {
     if ( self = [super init] )
 	{
-		self.activityDelegate = self;
+//		self.activityDelegate = self;
+//        uncomment if using activityDelegate
 		[self loadNote:_note];
     }
     return self;

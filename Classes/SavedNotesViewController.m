@@ -498,6 +498,7 @@
         noteManager = [[NoteManager alloc] initWithNote:selectedNote];
         noteManager.alertDelegate = self;
         noteManager.parent = self;
+//        lazy implementation in existing codebase, will be replaced for MRV 2.0
         // prompt to upload
         [self promptToConfirmPurpose];
     }
