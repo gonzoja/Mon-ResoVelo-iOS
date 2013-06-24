@@ -430,6 +430,22 @@
         hourFormatter = [[NSDateFormatter alloc] init];
         [hourFormatter setDateFormat:@"HH"];
     }
+    
+    static NSNumberFormatter *calorieFormatter = nil;
+    if (calorieFormatter == nil) {
+        calorieFormatter = [[NSNumberFormatter alloc] init];
+        [calorieFormatter setMinimumIntegerDigits:1];
+        [calorieFormatter setLocale:[NSLocale currentLocale]];
+        [calorieFormatter setMaximumFractionDigits:1];
+    }
+    
+    static NSNumberFormatter *ghgFormatter = nil;
+    if (ghgFormatter == nil) {
+        ghgFormatter = [[NSNumberFormatter alloc] init];
+        [ghgFormatter setMinimumIntegerDigits:1];
+        [ghgFormatter setLocale:[NSLocale currentLocale]];
+        [ghgFormatter setMaximumFractionDigits:2];
+    }
 	
 	Trip *trip = (Trip *)[trips objectAtIndex:indexPath.row];
 	TripCell *cell = nil;
@@ -605,8 +621,10 @@
     durationText.text = [NSString stringWithFormat:@"%@",[inputFormatter stringFromDate:outputDate]];
 	
     GHGModel *ghgModel = [[GHGModel alloc] initWithHour:[[hourFormatter stringFromDate:[trip start]] intValue] andDistance:[trip.distance doubleValue]];
+    
+    NSNumber *ghg = [NSNumber numberWithDouble:[ghgModel getGHG]];
 
-    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.2f kg", @"emissionsString"), [ghgModel getGHG]];
+    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %@ kg", @"emissionsString"), [ghgFormatter stringFromNumber:ghg]];
     
 //    CO2Text.text = [NSString stringWithFormat:NSLocalizedString(@"Emissions saved: %.1f kg", @"emissionsString"), 0.93 * [trip.distance doubleValue] / 1000];
     
@@ -621,13 +639,13 @@
         }
         NSLog(@"weight: %i", weight);
         CalorieModel *cal = [[CalorieModel alloc] initWithDuration:[trip.duration doubleValue] andAverageSpeed:avgSpeed andWeight:weight]; //weight is temporarily hardcoded
-        double calorie = [cal getCalories];
+        NSNumber *calorie = [NSNumber numberWithDouble:[cal getCalories]];
         [cal release];
         if (calorie <= 0) {
             CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: 0 kcal", @"zeroCaloriesString")];
         }
         else
-            CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %.1f kcal", @"someCaloriesString"), calorie];
+            CalorieText.text = [NSString stringWithFormat:NSLocalizedString(@"Calories Burned: %@ kcal", @"someCaloriesString"), [calorieFormatter stringFromNumber:calorie]];
     }
     else{
         NSLog(@"Not Using Calories");
