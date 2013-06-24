@@ -32,6 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [navigationController setNavigationBarHidden: YES animated:NO];
+    webView.scalesPageToFit = YES;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ville.montreal.qc.ca/velo"]]]; 
 }
 
