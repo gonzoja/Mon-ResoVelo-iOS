@@ -76,6 +76,7 @@
 		8D7EC6CA171F89C00076F17F /* PersonalInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7EC6CC171F89C00076F17F /* PersonalInfo.xib */; };
 		8D7EC6D9171F8D8A0076F17F /* AppIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */; };
 		8D7EC6DB171F8D900076F17F /* AppIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7EC6DA171F8D900076F17F /* AppIcon114.png */; };
+		8D85449B177BA58200CD48C4 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D85449A177BA58200CD48C4 /* appIcon.png */; };
 		8D8B22451757A6FB00F7EA13 /* MonRésoVélo_512X512.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D8B22431757A6FB00F7EA13 /* MonRésoVélo_512X512.png */; };
 		8D8B22461757A6FB00F7EA13 /* MonRésoVélo_1024X1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D8B22441757A6FB00F7EA13 /* MonRésoVélo_1024X1024.png */; };
 		8DD3A5451726280900356710 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD3A5441726280900356710 /* SystemConfiguration.framework */; };
@@ -472,6 +473,7 @@
 		8D7EC6D7171F8BE60076F17F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PersonalInfo.xib; sourceTree = "<group>"; };
 		8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon57.png; sourceTree = "<group>"; };
 		8D7EC6DA171F8D900076F17F /* AppIcon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon114.png; sourceTree = "<group>"; };
+		8D85449A177BA58200CD48C4 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
 		8D8B22431757A6FB00F7EA13 /* MonRésoVélo_512X512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MonRésoVélo_512X512.png"; sourceTree = "<group>"; };
 		8D8B22441757A6FB00F7EA13 /* MonRésoVélo_1024X1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MonRésoVélo_1024X1024.png"; sourceTree = "<group>"; };
 		8DD3A31B172627F000356710 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -507,16 +509,11 @@
 		8DD3A342172627F100356710 /* CrashReporterDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CrashReporterDemoViewController.xib; sourceTree = "<group>"; };
 		8DD3A343172627F100356710 /* database.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = database.txt; sourceTree = "<group>"; };
 		8DD3A345172627F100356710 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8DD3A346172627F100356710 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8DD3A347172627F100356710 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8DD3A348172627F100356710 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8DD3A349172627F100356710 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8DD3A34A172627F100356710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DD3A34B172627F100356710 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8DD3A34C172627F100356710 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		8DD3A34D172627F100356710 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8DD3A34E172627F100356710 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		8DD3A34F172627F100356710 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8DD3A350172627F100356710 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8DD3A351172627F100356710 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		8DD3A352172627F100356710 /* CrashReporter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CrashReporter.xcodeproj; sourceTree = "<group>"; };
@@ -1129,6 +1126,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D85449A177BA58200CD48C4 /* appIcon.png */,
 				8D7EC6DA171F8D900076F17F /* AppIcon114.png */,
 				8D7EC6D8171F8D8A0076F17F /* AppIcon57.png */,
 				9D46482B1604EF3800A4F9CB /* TabBarIcons V2 */,
@@ -2649,6 +2647,7 @@
 				62307AB01757C27B004F7E36 /* stop_android@2x.png in Resources */,
 				8D8B22451757A6FB00F7EA13 /* MonRésoVélo_512X512.png in Resources */,
 				8D8B22461757A6FB00F7EA13 /* MonRésoVélo_1024X1024.png in Resources */,
+				8D85449B177BA58200CD48C4 /* appIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2906,12 +2905,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8DD3A345172627F100356710 /* English */,
-				8DD3A346172627F100356710 /* es */,
-				8DD3A347172627F100356710 /* fi */,
 				8DD3A348172627F100356710 /* French */,
-				8DD3A349172627F100356710 /* German */,
-				8DD3A34D172627F100356710 /* pt */,
-				8DD3A34F172627F100356710 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2989,6 +2983,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7682DFBF-AE70-4C0B-AED0-DC1BBCD2D87F";
 				SDKROOT = iphoneos;
 			};
@@ -3022,6 +3017,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7682DFBF-AE70-4C0B-AED0-DC1BBCD2D87F";
 				SDKROOT = iphoneos;
 			};
@@ -3056,6 +3052,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7682DFBF-AE70-4C0B-AED0-DC1BBCD2D87F";
 				SDKROOT = iphoneos;
 			};
@@ -3088,6 +3085,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7682DFBF-AE70-4C0B-AED0-DC1BBCD2D87F";
 				SDKROOT = iphoneos;
 			};
@@ -3101,6 +3099,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7682DFBF-AE70-4C0B-AED0-DC1BBCD2D87F";
 				SDKROOT = iphoneos;
 			};
