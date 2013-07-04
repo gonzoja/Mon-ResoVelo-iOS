@@ -23,21 +23,12 @@
 		64119AAD1068672100C201F0 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64119AAA1068672100C201F0 /* CustomView.m */; };
 		64119ABF10689ED800C201F0 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64119ABE10689ED800C201F0 /* PickerViewController.m */; };
 		64119F041069ACF800C201F0 /* TripManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64119F031069ACF800C201F0 /* TripManager.m */; };
-		6411A18E106A90E400C201F0 /* commute.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A186106A90E400C201F0 /* commute.tif */; };
-		6411A18F106A90E400C201F0 /* errands.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A187106A90E400C201F0 /* errands.tif */; };
-		6411A190106A90E400C201F0 /* exercise.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A188106A90E400C201F0 /* exercise.tif */; };
-		6411A191106A90E400C201F0 /* other.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A189106A90E400C201F0 /* other.tif */; };
-		6411A192106A90E400C201F0 /* school.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A18A106A90E400C201F0 /* school.tif */; };
-		6411A193106A90E400C201F0 /* shopping.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A18B106A90E400C201F0 /* shopping.tif */; };
-		6411A194106A90E400C201F0 /* social.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A18C106A90E400C201F0 /* social.tif */; };
-		6411A195106A90E400C201F0 /* work-related.tif in Resources */ = {isa = PBXBuildFile; fileRef = 6411A18D106A90E400C201F0 /* work-related.tif */; };
 		64210F6111350C8500415F1A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64210F6011350C8500415F1A /* AboutViewController.m */; };
 		6426476E1073FEC300E43DEF /* ReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6426476D1073FEC300E43DEF /* ReminderManager.m */; };
 		642647FD107435A200E43DEF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642647FC107435A200E43DEF /* AudioToolbox.framework */; };
 		642F151C1071D9DD0050BCB9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642F151B1071D9DD0050BCB9 /* MapKit.framework */; };
 		642F15271071DA700050BCB9 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F15261071DA700050BCB9 /* MapViewController.m */; };
 		642F161D1071ED1C0050BCB9 /* MapCoord.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F161C1071ED1C0050BCB9 /* MapCoord.m */; };
-		644ED3E410853DEC008725A8 /* commuter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 644ED3E310853DEC008725A8 /* commuter2.png */; };
 		64577E29106DC2FD003ACBFD /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64577E28106DC2FD003ACBFD /* dist.plist */; };
 		6458114E107AA4D30075DABD /* bicycle-bell-normalized.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 6458114D107AA4D30075DABD /* bicycle-bell-normalized.aiff */; };
 		645E4EDC1200C1C800EFF0E6 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E4EDB1200C1C800EFF0E6 /* LoadingView.m */; };
@@ -395,14 +386,6 @@
 		64119ABE10689ED800C201F0 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PickerViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		64119F021069ACF800C201F0 /* TripManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripManager.h; sourceTree = "<group>"; };
 		64119F031069ACF800C201F0 /* TripManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripManager.m; sourceTree = "<group>"; };
-		6411A186106A90E400C201F0 /* commute.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = commute.tif; sourceTree = "<group>"; };
-		6411A187106A90E400C201F0 /* errands.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = errands.tif; sourceTree = "<group>"; };
-		6411A188106A90E400C201F0 /* exercise.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = exercise.tif; sourceTree = "<group>"; };
-		6411A189106A90E400C201F0 /* other.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = other.tif; sourceTree = "<group>"; };
-		6411A18A106A90E400C201F0 /* school.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = school.tif; sourceTree = "<group>"; };
-		6411A18B106A90E400C201F0 /* shopping.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = shopping.tif; sourceTree = "<group>"; };
-		6411A18C106A90E400C201F0 /* social.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = social.tif; sourceTree = "<group>"; };
-		6411A18D106A90E400C201F0 /* work-related.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "work-related.tif"; sourceTree = "<group>"; };
 		64210F5F11350C8500415F1A /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		64210F6011350C8500415F1A /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AboutViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6426476C1073FEC300E43DEF /* ReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderManager.h; sourceTree = "<group>"; };
@@ -416,7 +399,6 @@
 		6433E54E106D542100C27387 /* TripPurposeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripPurposeDelegate.h; sourceTree = "<group>"; };
 		6433E5C5106D62ED00C27387 /* PersonalInfoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoDelegate.h; sourceTree = "<group>"; };
 		6433E5D3106D66EA00C27387 /* ActivityIndicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ActivityIndicatorDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		644ED3E310853DEC008725A8 /* commuter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commuter2.png; sourceTree = "<group>"; };
 		64577E28106DC2FD003ACBFD /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		6458114D107AA4D30075DABD /* bicycle-bell-normalized.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "bicycle-bell-normalized.aiff"; sourceTree = "<group>"; };
 		64581198107AC1080075DABD /* RecordingInProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingInProgressDelegate.h; sourceTree = "<group>"; };
@@ -1134,7 +1116,6 @@
 				9D4647FB1604EF2600A4F9CB /* TripPurposePickerIcons V3 */,
 				9D4647C61604EF1200A4F9CB /* Depricated Images */,
 				9D4647A81604EBF400A4F9CB /* Button Icons */,
-				6411A185106A90E400C201F0 /* TripPurposePickerIcons v2 */,
 				6411A16A106A05DE00C201F0 /* Images */,
 				6458114D107AA4D30075DABD /* bicycle-bell-normalized.aiff */,
 				8D1107310486CEB800E47090 /* Mon-ResoVelo-Info.plist */,
@@ -1243,22 +1224,6 @@
 				9D47F8FA160BA4E900B8B14D /* appStoreIcon1024.png */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		6411A185106A90E400C201F0 /* TripPurposePickerIcons v2 */ = {
-			isa = PBXGroup;
-			children = (
-				644ED3E310853DEC008725A8 /* commuter2.png */,
-				6411A186106A90E400C201F0 /* commute.tif */,
-				6411A187106A90E400C201F0 /* errands.tif */,
-				6411A188106A90E400C201F0 /* exercise.tif */,
-				6411A189106A90E400C201F0 /* other.tif */,
-				6411A18A106A90E400C201F0 /* school.tif */,
-				6411A18B106A90E400C201F0 /* shopping.tif */,
-				6411A18C106A90E400C201F0 /* social.tif */,
-				6411A18D106A90E400C201F0 /* work-related.tif */,
-			);
-			path = "TripPurposePickerIcons v2";
 			sourceTree = "<group>";
 		};
 		8D4E3AF1172AF3AB007F6A35 /* en.lproj */ = {
@@ -2505,18 +2470,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D7EC6C1171F89B10076F17F /* TripPurposePicker.xib in Resources */,
-				6411A18E106A90E400C201F0 /* commute.tif in Resources */,
-				6411A18F106A90E400C201F0 /* errands.tif in Resources */,
-				6411A190106A90E400C201F0 /* exercise.tif in Resources */,
-				6411A191106A90E400C201F0 /* other.tif in Resources */,
-				6411A192106A90E400C201F0 /* school.tif in Resources */,
-				6411A193106A90E400C201F0 /* shopping.tif in Resources */,
-				6411A194106A90E400C201F0 /* social.tif in Resources */,
-				6411A195106A90E400C201F0 /* work-related.tif in Resources */,
 				64577E29106DC2FD003ACBFD /* dist.plist in Resources */,
 				8D7EC6B8171F89810076F17F /* MapViewController.xib in Resources */,
 				6458114E107AA4D30075DABD /* bicycle-bell-normalized.aiff in Resources */,
-				644ED3E410853DEC008725A8 /* commuter2.png in Resources */,
 				8D7EC6B5171F897D0076F17F /* MainWindow.xib in Resources */,
 				8D7EC6CA171F89C00076F17F /* PersonalInfo.xib in Resources */,
 				8D7EC6BE171F89AC0076F17F /* RecordMap.xib in Resources */,

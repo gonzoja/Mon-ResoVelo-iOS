@@ -1200,7 +1200,7 @@
 			return NSLocalizedString(@"School", nil);
 			break;
 		case kTripPurposeWork:
-			return NSLocalizedString(@"Work-related", nil);
+			return NSLocalizedString(@"Work-Related", nil);
 			break;
 		case kTripPurposeExercise:
 			return NSLocalizedString(@"Exercise", nil);

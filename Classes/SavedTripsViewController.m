@@ -526,7 +526,7 @@
 				image = [UIImage imageNamed:kTripPurposeOtherIcon];
 				break;
 			default:
-				image = [UIImage imageNamed:@"GreenCheckMark2.png"];
+				image = [UIImage imageNamed:kTripPurposeOtherIcon];
 		}
         UIImageView *imageView	= [[[UIImageView alloc] initWithImage:image] autorelease];
         imageView.frame			= CGRectMake( kAccessoryViewX, kAccessoryViewY, image.size.width, image.size.height );

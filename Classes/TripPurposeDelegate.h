@@ -60,14 +60,14 @@
 #define kNoteThisIssue              @"noteIssuePicker.png"
 #define kNoteBlank                  @"noteBlankPicker.png"
 
-#define kTripPurposeCommuteString	@"Commute"
-#define kTripPurposeSchoolString	@"School"
-#define kTripPurposeWorkString		@"Work-Related"
-#define kTripPurposeExerciseString	@"Exercise"
-#define kTripPurposeSocialString	@"Social"
-#define kTripPurposeShoppingString	@"Shopping"
-#define kTripPurposeErrandString	@"Errand"
-#define kTripPurposeOtherString		@"Other"
+#define kTripPurposeCommuteString	NSLocalizedString(@"Commute", nil)
+#define kTripPurposeSchoolString	NSLocalizedString(@"School", nil)
+#define kTripPurposeWorkString		NSLocalizedString(@"Work-Related", nil)
+#define kTripPurposeExerciseString	NSLocalizedString(@"Exercise", nil)
+#define kTripPurposeSocialString	NSLocalizedString(@"Social", nil)
+#define kTripPurposeShoppingString	NSLocalizedString(@"Shopping", nil)
+#define kTripPurposeErrandString	NSLocalizedString(@"Errand", nil)
+#define kTripPurposeOtherString		NSLocalizedString(@"Other", nil)
 
 
 
