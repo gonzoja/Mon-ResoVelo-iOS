@@ -45,6 +45,9 @@
 #import "Trip.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
+#import "MRVMultiLineOverlay.h"
+#import "MRVMultiLineOverlayView.h"
+
 #define kFudgeFactor	1.5
 #define kInfoViewAlpha	0.8
 #define kMinLatDelta	0.0039
@@ -367,6 +370,7 @@
 	//NSLog(@"loading: %@", loading);
 	[loading performSelector:@selector(removeView) withObject:nil afterDelay:0.5];
     [nf release];
+    [self setupOverlays];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -390,6 +394,26 @@
     NSLog(@"Size: %f, %f", thumbnail.size.height, thumbnail.size.width);
     
     [delegate getTripThumbnail:thumbnailData];
+}
+
+-(void)setupOverlays {
+    
+    NSString *pathsPath = [[NSBundle mainBundle] pathForResource:@"paths" ofType:@"plist"];
+    NSString *lanesPath = [[NSBundle mainBundle] pathForResource:@"lanes" ofType:@"plist"];
+    NSString *otherPath = [[NSBundle mainBundle] pathForResource:@"other" ofType:@"plist"];
+    
+    MRVMultiLineOverlay * pathsOverlay = [[[MRVMultiLineOverlay alloc]initWithPlist:pathsPath]autorelease];
+    MRVMultiLineOverlay * lanesOverlay = [[[MRVMultiLineOverlay alloc]initWithPlist:lanesPath]autorelease];
+    MRVMultiLineOverlay * otherOverlay = [[[MRVMultiLineOverlay alloc]initWithPlist:otherPath]autorelease];
+    
+    pathsOverlay.strokeColor = [UIColor colorWithRed:0.02 green:0.4 blue:0 alpha:1.0];
+    lanesOverlay.strokeColor = [UIColor colorWithRed:0.02 green:0.58 blue:0 alpha:1.0];
+    otherOverlay.strokeColor = [UIColor colorWithRed:0.02 green:0.58 blue:0 alpha:1.0];
+    pathsOverlay.strokeWidthModifier = 0.6;
+    lanesOverlay.strokeWidthModifier = 0.4;
+    otherOverlay.strokeWidthModifier = 0.4;
+    
+    [mapView addOverlays:@[pathsOverlay, lanesOverlay, otherOverlay]];
 }
 
 
@@ -600,11 +624,18 @@ UIImage *shrinkImage(UIImage *original, CGSize size) {
 
 - (MKOverlayView*)mapView:(MKMapView*)theMapView viewForOverlay:(id <MKOverlay>)overlay
 {
-    MKPolylineView* lineView = [[[MKPolylineView alloc] initWithPolyline:self.routeLine] autorelease];
-    lineView.strokeColor = [UIColor blueColor];
-    lineView.lineWidth = 5;
-    return lineView;
+    if ([overlay isKindOfClass:[MRVMultiLineOverlay class]]) {
+        MRVMultiLineOverlayView *overlayView = [[MRVMultiLineOverlayView alloc]initWithOverlay:overlay];
+        return [overlayView autorelease];
+    }else if ([overlay isKindOfClass:[MKPolyline class]]){
+        MKPolylineView* lineView = [[[MKPolylineView alloc] initWithPolyline:overlay] autorelease];
+        lineView.strokeColor = [UIColor blueColor];
+        lineView.lineWidth = 5;
+        return lineView;
+    }
+    return nil;
 }
+
 
 - (void)dealloc {
     self.trip = nil;
