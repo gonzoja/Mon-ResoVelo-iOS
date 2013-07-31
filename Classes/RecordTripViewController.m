@@ -49,6 +49,8 @@
 #import "NoteManager.h"
 #import "Trip.h"
 #import "User.h"
+#import "MRVMultiLineOverlayView.h"
+#import "MRVMultiLineOverlay.h"
 
 //TODO: Fix incomplete implementation
 @interface RecordTripViewController ()
@@ -95,40 +97,7 @@ double kmh = 0;
     [nf setMinimumFractionDigits:1];
 	
     
-    
-    //mapview overlays
-    
-//        NSString *thePath = [[NSBundle mainBundle] pathForResource:@"mapdata" ofType:@"plist"];
-//        NSArray *arrayArray = [NSArray arrayWithContentsOfFile:thePath];
-//        NSArray *pointsArray = arrayArray[0];
-//    //    NSArray *routesArray = [NSArray alloc
-//
-//         for (int i = 0; i < arrayArray.count; i++) {
-//
-//            pointsArray = arrayArray[i];
-//            NSInteger pointsCount = pointsArray.count;
-//            CLLocationCoordinate2D pointsToUse[pointsCount];
-//            for (int j = 0; j < pointsCount ; j++){
-//                CGPoint p = CGPointFromString(pointsArray[j]);
-//                pointsToUse[j] = CLLocationCoordinate2DMake(p.x, p.y);
-//                //            NSLog(@"pointsToUse=%f,%f", pointsToUse[j].latitude, pointsToUse[j].longitude);
-//                //            NSLog(@"Coordinates (lat:%f, lon:%f)", p.x, p.y);
-//            }
-//             //        NSLog(@"PointsToUseOutOfLoop=%f,%f", pointsToUse[pointsArray.count -1].latitude, pointsToUse[pointsArray.count -1].longitude);
-//            MKPolyline *routePolyline = [MKPolyline polylineWithCoordinates:pointsToUse count:pointsCount];
-//             //        NSLog("routePolyLine Length: %@")
-//    
-//    
-//            //TODO: Implement an array of all polylines and change addOverlay to addOverlays to make this more efficient. Also make bounding box based on routes.
-//            [map addOverlay:routePolyline];
-//            map.visibleMapRect = MKMapRectWorld;
-//             //        map.visibleMapRect = ([routePolyline boundingMapRect]);
-//             //        NSLog(@"overlay added");
-//    
-//             //         free(pointsArray);
-//        }
-//        //    free(thePath);
-//        //    free(arrayArray);
+    [self setupOverlays];
     
     //    // init map region to Montreal
 	MKCoordinateRegion region = { { 45.553968,-73.664017 }, { 0.0178, 0.0168 } };
@@ -178,6 +147,26 @@ double kmh = 0;
 {
 	self.noteManager = manager;
     manager.parent = self;
+}
+
+-(void)setupOverlays {
+    
+    NSString *pathsPath = [[NSBundle mainBundle] pathForResource:@"paths" ofType:@"plist"];
+    NSString *lanesPath = [[NSBundle mainBundle] pathForResource:@"lanes" ofType:@"plist"];
+    NSString *otherPath = [[NSBundle mainBundle] pathForResource:@"other" ofType:@"plist"];
+    
+    MRVMultiLineOverlay * pathsOverlay = [[[MRVMultiLineOverlay alloc]initWithPlist:pathsPath]autorelease];
+    MRVMultiLineOverlay * lanesOverlay = [[[MRVMultiLineOverlay alloc]initWithPlist:lanesPath]autorelease];
+    MRVMultiLineOverlay * otherOverlay = [[[MRVMultiLineOverlay alloc]initWithPlist:otherPath]autorelease];
+    
+    pathsOverlay.strokeColor = [UIColor colorWithRed:0.02 green:0.4 blue:0 alpha:1.0];
+    lanesOverlay.strokeColor = [UIColor colorWithRed:0.02 green:0.58 blue:0 alpha:1.0];
+    otherOverlay.strokeColor = [UIColor colorWithRed:0.02 green:0.58 blue:0 alpha:1.0];
+    pathsOverlay.strokeWidthModifier = 0.6;
+    lanesOverlay.strokeWidthModifier = 0.4;
+    otherOverlay.strokeWidthModifier = 0.4;
+    
+    [map addOverlays:@[pathsOverlay, lanesOverlay, otherOverlay]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -288,14 +277,10 @@ double kmh = 0;
 #pragma mark MKMapViewDelegate methods
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
-    NSLog(@"MKOverlayView is being called");
-    if ([overlay isKindOfClass:MKPolyline.class]) {
-        MKPolylineView *lineView = [[MKPolylineView alloc] initWithOverlay:overlay];
-        lineView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.9];
-        
-        return [lineView autorelease];
+    if ([overlay isKindOfClass:[MRVMultiLineOverlay class]]) {
+        MRVMultiLineOverlayView *overlayView = [[MRVMultiLineOverlayView alloc]initWithOverlay:overlay];
+        return [overlayView autorelease];
     }
-    
     return nil;
 }
 
